@@ -1,0 +1,17 @@
+.breadcrumb-wrapper{
+    border-bottom: solid 0.1rem var(--gray-2);
+}
+.breadcrumb-item::before{
+    color: var(--gray-3)!important;
+}
+.breadcrumb-item > a{
+    color: var(--gray-3);
+    text-decoration: none;
+}
+.breadcrumb-item.active{
+    font-family: 'Metropolis Bold', sans-serif;
+    color: var(--black);
+}
+.breadcrumb-item::before {
+    font-family: 'Metropolis Regular', sans-serif;; /* Reset font-family for the separator */
+}

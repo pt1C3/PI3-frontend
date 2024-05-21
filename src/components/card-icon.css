@@ -1,0 +1,14 @@
+.card {
+    aspect-ratio: 1/1;
+
+}
+@media (max-width: 992px) {
+    .card .card-description {
+        display: none;
+
+    }
+    .card {
+        aspect-ratio: auto;
+    
+    }
+}

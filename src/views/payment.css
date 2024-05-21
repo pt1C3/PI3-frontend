@@ -1,0 +1,14 @@
+
+.product-info, .stripe-info {
+  color: var(--gray-3);
+}
+
+.product-price {
+  font-family: 'Metropolis Medium', sans-serif;
+  color: var(--gray-3); 
+}
+
+.payment-total{
+  font-family: 'Metropolis Medium', sans-serif;
+
+}
