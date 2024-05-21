@@ -12,7 +12,7 @@ function App() {
     <Router>
       <div className="App">
         <nav className="navbar bg-white px-10vw">
-            <Link to="/" className="navbar-brand">
+            <Link to="/payment" className="navbar-brand">
               <img src="images/logicleap.png" alt="Logo" height="40" />
             </Link>
             <span className="d-flex">
