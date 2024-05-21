@@ -11,7 +11,7 @@ export default function Payment() {
           <div className="col-md-6 mt-5">
             <div>
               <div className="product-header d-flex align-items-center mb-5">
-                <img src="/produto.png" alt="Logo" height="70" />
+                <img src="/Produto.png" alt="Logo" height="70" />
                 <span className="product-title ms-3"><h4>Creativortex</h4></span>
               </div>
               <div className="d-flex align-items-end justify-content-between mb-2">
