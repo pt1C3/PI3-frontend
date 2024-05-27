@@ -1,8 +1,12 @@
 import Breadcrumbs from "../components/breadcrumbs";
+import { useState } from 'react';
 import "./product.css";
 
 export default function Product() {
-
+    const [section, setSection] = useState('features');
+    const changeSection = function (sectionID) {
+        setSection(sectionID)
+    }
     return (
         <div>
             <Breadcrumbs page1="Designer Pack" page2="CreatiVortex" link1="/"></Breadcrumbs>
@@ -37,30 +41,31 @@ export default function Product() {
                 </div>
             </section>
             <section className="mt-5">
-                <ul class="nav nav-underline justify-content-center">
-                    <li class="nav-item">
-                        <a class="nav-link active"href="#">Features</a>
+                <ul className="nav nav-underline justify-content-center">
+                    <li className="nav-item">
+                        <button className={`nav-link btn btn-link ${section === 'features' ? 'active' : ''}`} onClick={() => changeSection('features')}>Features</button>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Release Notes</a>
+                    <li className="nav-item">
+                        <button className={`nav-link btn btn-link ${section === 'releaseNotes' ? 'active' : ''}`} onClick={() => changeSection('releaseNotes')}>Release Notes</button>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Plans</a>
+                    <li className="nav-item">
+                        <button className={`nav-link btn btn-link ${section === 'plans' ? 'active' : ''}`} onClick={() => changeSection('plans')}>Plans</button>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Requirements</a>
+                    <li className="nav-item">
+                        <button className={`nav-link btn btn-link ${section === 'requirements' ? 'active' : ''}`} onClick={() => changeSection('requirements')}>Requirements</button>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">FAQ</a>
+                    <li className="nav-item">
+                        <button className={`nav-link btn btn-link ${section === 'faq' ? 'active' : ''}`} onClick={() => changeSection('faq')}>FAQ</button>
                     </li>
-
                 </ul>
+
+
             </section>
-            <section id="requirements" className="my-3">
+            <section id="requirements" className="my-3" style={{ display: section === 'requirements' ? 'block' : 'none' }}>
                 <table class="table mx-10vw">
                     <thead>
-                    <th></th>
-                    <th>Minimum</th>
+                        <th></th>
+                        <th>Minimum</th>
                     </thead>
                     <tbody>
                         <tr>
@@ -68,27 +73,51 @@ export default function Product() {
                             <td>Windows 10 64bits</td>
                         </tr>
                         <tr>
-                            <td>Operating System</td>
+                            <td>Processor</td>
                             <td>Multicore Intel or AMD processor</td>
                         </tr>
                         <tr>
-                            <td>Operating System</td>
+                            <td>RAM</td>
                             <td>8GB</td>
                         </tr>
                         <tr>
-                            <td>Operating System</td>
+                            <td>Graphics Card</td>
                             <td><ul><li>1 GB of GPU memory</li><li>GPU with DirectX12</li></ul></td>
                         </tr>
                         <tr>
-                            <td>Operating System</td>
+                            <td>Hard disk space</td>
                             <td>15 GB of available hard disk space</td>
                         </tr>
                         <tr>
-                            <td>Operating System</td>
+                            <td>Internet</td>
                             <td>Internet conectivity is required to activate the software </td>
                         </tr>
                     </tbody>
                 </table>
+            </section>
+            <section id="releaseNotes" className="my-3" style={{ display: section === 'releaseNotes' ? 'block' : 'none' }}>
+                <div className="rounded-3 p-3 mx-10vw">
+                    <p className="text-bold">v1.0.4</p>
+                    <p className="text-medium">Changes implemented</p>
+                    <p>Lorem ipsum dolor sit amet consectetur. Ac aliquam sed fringilla nec est. Mattis ipsum eget odio cursus. Placerat vitae quam elit viverra vitae lacus et ut. Integer dis nunc aliquet madduris vitae mauris.</p>
+                </div>
+            </section>
+            <section id="faq" className="my-3" style={{ display: section === 'faq' ? 'block' : 'none' }}>
+                <div class="accordion mx-10vw" id="accordionExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header text-bold">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Can I access CreatiVortex offline?
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                Yes, you can access CreatiVortex offline. However, internet is required for the installation and to access certain features and receive updates.
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </section>
         </div>
     )
