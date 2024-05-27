@@ -1,0 +1,7 @@
+.background-color {
+    background-color: var(--gray-1);
+}
+
+.form-container{
+    border: .1rem solid var(--gray-2)!important;
+}
