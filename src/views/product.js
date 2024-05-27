@@ -1,11 +1,12 @@
 import Breadcrumbs from "../components/breadcrumbs";
+import "./product.css";
 
 export default function Product() {
 
     return (
         <div>
             <Breadcrumbs page1="Designer Pack" page2="CreatiVortex" link1="/"></Breadcrumbs>
-            <section className="mx-10vw mt-4">
+            <section className="mx-10vw mt-3">
                 <div className="row g-4 align-items-center">
                     <div className="col-12 col-xl-6">
                         <div className="d-flex mb-3">
@@ -34,6 +35,60 @@ export default function Product() {
                         </div>
                     </div>
                 </div>
+            </section>
+            <section className="mt-5">
+                <ul class="nav nav-underline justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link active"href="#">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Release Notes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Plans</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Requirements</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">FAQ</a>
+                    </li>
+
+                </ul>
+            </section>
+            <section id="requirements" className="my-3">
+                <table class="table mx-10vw">
+                    <thead>
+                    <th></th>
+                    <th>Minimum</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Operating System</td>
+                            <td>Windows 10 64bits</td>
+                        </tr>
+                        <tr>
+                            <td>Operating System</td>
+                            <td>Multicore Intel or AMD processor</td>
+                        </tr>
+                        <tr>
+                            <td>Operating System</td>
+                            <td>8GB</td>
+                        </tr>
+                        <tr>
+                            <td>Operating System</td>
+                            <td><ul><li>1 GB of GPU memory</li><li>GPU with DirectX12</li></ul></td>
+                        </tr>
+                        <tr>
+                            <td>Operating System</td>
+                            <td>15 GB of available hard disk space</td>
+                        </tr>
+                        <tr>
+                            <td>Operating System</td>
+                            <td>Internet conectivity is required to activate the software </td>
+                        </tr>
+                    </tbody>
+                </table>
             </section>
         </div>
     )

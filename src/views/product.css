@@ -1,0 +1,38 @@
+.nav-underline {
+    border-bottom: solid 0.1rem var(--gray-2);
+}
+
+.nav-item {
+    width: 10rem;
+    text-align: center;
+    font-family: 'Metropolis Medium', sans-serif;
+}
+
+.nav-item a {
+    color: var(--black) !important;
+}
+
+.table {
+    width: 80vw;
+}
+
+table,
+th,
+td {
+    border: .1rem solid var(--gray-3)!important;
+    border-collapse: collapse;
+}
+
+.table thead {
+    background-color: var(--gray-1);
+}
+
+.table>thead>th:first-child {
+    width: 40%
+}
+
+.table td,
+.table th {
+    box-sizing: border-box;
+    padding: 1rem 1.5rem;
+}
