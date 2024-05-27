@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './login.css';
 
-const LoginComponent = () => {
+export default function Login(){
   return (
     <div className="background-color d-flex flex-column align-items-center justify-content-center" style={{ height: '100vh' }}>
       <div className="col-md-3 bg-white p-4 rounded-3 form-container">
@@ -27,4 +27,3 @@ const LoginComponent = () => {
   );
 };
 
-export default LoginComponent;
