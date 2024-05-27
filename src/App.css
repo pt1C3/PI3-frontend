@@ -30,7 +30,16 @@ body {
     color: var(--black);
 
 }
-
+.text-medium{
+    font-family: 'Metropolis Medium';
+}
+.text-bold{
+    font-family: 'Metropolis Bold';
+}
+.text-secondary{
+    font-family: 'Metropolis Medium';
+    color: var(--gray-3)
+}
 /*Navbar*/
 .nav-link {
     height: 100%;
@@ -86,3 +95,6 @@ body {
     border: .1rem solid var(--gray-2);
   }
 
+.fs-6{
+    font-size: 0.8rem;
+}

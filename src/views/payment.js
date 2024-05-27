@@ -10,9 +10,9 @@ export default function Payment() {
 
           <div className="col-md-6 mt-5">
             <div>
-              <div className="product-header d-flex align-items-center mb-5">
-                <img src="/Produto.png" alt="Logo" height="70" />
-                <span className="product-title ms-3"><h4>Creativortex</h4></span>
+              <div className="d-flex align-items-center mb-5">
+                <img src={process.env.PUBLIC_URL + "/images/Produto.png"} alt="CreatiVortex" height="70" />
+                <span className="ms-3"><h4>Creativortex</h4></span>
               </div>
               <div className="d-flex align-items-end justify-content-between mb-2">
                 <div>

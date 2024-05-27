@@ -6,14 +6,14 @@ import { faBell } from "@fortawesome/free-regular-svg-icons";
 import './App.css';
 import Home from './views/home';
 import Payment from './views/payment';
-
+import Product from './views/product';
 function App() {
   return (
     <Router>
       <div className="App">
         <nav className="navbar bg-white px-10vw">
             <Link to="/payment" className="navbar-brand">
-              <img src="images/logicleap.png" alt="Logo" height="40" />
+              <img src={process.env.PUBLIC_URL +"/images/logicleap.png"} alt="Logo" height="40" />
             </Link>
             <span className="d-flex">
               <form className="inline-form">
@@ -37,6 +37,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/payment" element={<Payment />} />
+        <Route path="/product/:id" element={<Product />} />
+
         {/* Define other routes as needed */}
       </Routes>
     </div>
