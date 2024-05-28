@@ -7,6 +7,8 @@ import './App.css';
 import Home from './views/home';
 import Payment from './views/payment';
 import Product from './views/product';
+import Login from './views/Login';
+import SignUp from "./views/SignUp";
 function App() {
   return (
     <Router>
@@ -38,6 +40,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/payment" element={<Payment />} />
         <Route path="/product/:id" element={<Product />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
 
         {/* Define other routes as needed */}
       </Routes>

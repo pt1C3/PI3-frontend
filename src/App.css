@@ -30,6 +30,10 @@ body {
     color: var(--black);
 
 }
+.navbar{
+    position: fixed;
+    width: 100%;
+}
 .text-medium{
     font-family: 'Metropolis Medium';
 }
@@ -37,7 +41,7 @@ body {
     font-family: 'Metropolis Bold';
 }
 .text-secondary{
-    font-family: 'Metropolis Medium';
+    font-family: 'Metropolis Regular';
     color: var(--gray-3)
 }
 /*Navbar*/
@@ -96,7 +100,7 @@ body {
   }
 
 .fs-6{
-    font-size: 0.8rem;
+    font-size: 0.8rem!important;
 }
 .form-check-input:checked{
     background-color: var(--black);
