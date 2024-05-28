@@ -119,6 +119,46 @@ export default function Product() {
 
                 </div>
             </section>
+            <section id="plans" className="my-3" style={{ display: section === 'plans' ? 'block' : 'none' }}>
+                <div className="plans-wrapper mx-10vw row g-4">
+                    <div className="col-lg-4">
+                        <div className="plan rounded-3 py-3 px-5">
+                            <div className="d-flex align-items-center flex-column">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" />
+                                <h3 className="fs-2 mt-4">10 users</h3>
+                            </div>
+                            <p className="fs-4 text-bold">€359.99/yr.</p>
+                            <p>Auto renews annually</p>
+                        </div>
+                    </div>
+                    <div className="col-lg-4">
+                        <div className="plan rounded-3 py-3 px-5">
+                            <div className="d-flex align-items-center flex-column">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" />
+                                <h3 className="fs-2 mt-4">100 users</h3>
+                            </div>
+                            <p className="fs-4 text-bold">€649.99/yr.</p>
+                            <p>Auto renews annually</p>
+                        </div>
+                    </div>
+                    <div className="col-lg-4">
+                        <div className="plan rounded-3 py-3 px-5">
+                            <div className="d-flex align-items-center flex-column">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" />
+                                <h3 className="fs-2 mt-4">Custom</h3>
+                            </div>
+                            <p>Ask for a budget, the price depends on the quantity of users.</p>
+                            <p className="fs-4 text-bold">€-/yr.</p>
+                            <p>Auto renews annually</p>
+                        </div>
+                    </div>
+                </div>
+                <div className="row justify-content-center mx-10vw mt-4">
+                    <div className="col-lg-4">
+                        <button className="btn btn-primary w-100">Buy now</button>
+                    </div>
+                </div>
+            </section>
         </div>
     )
 }

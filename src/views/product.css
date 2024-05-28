@@ -55,44 +55,85 @@ td {
 
 /* Change border for the accordion container (top border only) */
 .accordion {
-    border-top: .1rem solid var(--gray-3); /* Adjust as needed */
+    border-top: .1rem solid var(--gray-3);
+    /* Adjust as needed */
 }
 
 /* Change border for each accordion item (bottom border only) */
 .accordion-item {
-    border-bottom: .1rem solid var(--gray-3); /* Adjust as needed */
-    border-top: none; /* Ensure no top border */
-    border-left: none; /* Remove left border */
-    border-right: none; /* Remove right border */
-    box-shadow: none; /* Remove any box shadow */
-    background-color: white; /* Set background color to white */
+    border-bottom: .1rem solid var(--gray-3);
+    /* Adjust as needed */
+    border-top: none;
+    /* Ensure no top border */
+    border-left: none;
+    /* Remove left border */
+    border-right: none;
+    /* Remove right border */
+    box-shadow: none;
+    /* Remove any box shadow */
+    background-color: white;
+    /* Set background color to white */
 }
 
 /* Change border for the accordion button (remove borders and background color) */
 .accordion-button {
     border: none;
-    border-radius: 0; /* Remove rounded corners */
-    box-shadow: none; /* Remove any box shadow */
-    background-color: white; /* Set background color to white */
+    border-radius: 0;
+    /* Remove rounded corners */
+    box-shadow: none;
+    /* Remove any box shadow */
+    background-color: white;
+    /* Set background color to white */
 }
-.accordion-item.collapsed{
-    border-radius: 0; /* Remove rounded corners */
+
+.accordion-item.collapsed {
+    border-radius: 0;
+    /* Remove rounded corners */
 
 }
-.accordion-button:not(.collapsed){
+
+.accordion-button:not(.collapsed) {
     background-color: white;
-    
+
 }
-.accordion-button:focus{
+
+.accordion-button:focus {
     box-shadow: none;
 
 }
+
 /* Ensure no additional borders or shadows on the accordion body */
 .accordion-body {
     border: none;
-    box-shadow: none; /* Remove any box shadow */
-    background-color: white; /* Set background color to white */
+    box-shadow: none;
+    /* Remove any box shadow */
+    background-color: white;
+    /* Set background color to white */
 }
-.accordion-item:last-of-type>.accordion-header .accordion-button.collapsed{
-    border-radius: 0        ;
+
+.accordion-item:last-of-type>.accordion-header .accordion-button.collapsed {
+    border-radius: 0;
+}
+
+.plans-wrapper{
+    display: flex;
+}
+.plan>*{
+    text-align: center;
+}
+.plan {
+    background-color: var(--gray-1);
+    border: .1rem solid var(--gray-2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    min-height: 18rem;
+    height: 100%;
+}
+
+
+.form-check-input {
+    width: 2rem;
+    height: 2rem;
 }

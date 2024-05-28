@@ -98,3 +98,7 @@ body {
 .fs-6{
     font-size: 0.8rem;
 }
+.form-check-input:checked{
+    background-color: var(--black);
+    border-color: var(--black);
+}
