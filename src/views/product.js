@@ -1,12 +1,11 @@
 import Breadcrumbs from "../components/breadcrumbs";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import "./product.css";
 
 export default function Product() {
     const [section, setSection] = useState('features');
-    const changeSection = function (sectionID) {
-        setSection(sectionID)
-    }
+    const [selectedPlan, setPlan] = useState(0);
+
     return (
         <div className="wrapper">
             <Breadcrumbs page1="Designer Pack" page2="CreatiVortex" link1="/"></Breadcrumbs>
@@ -43,19 +42,19 @@ export default function Product() {
             <section className="mt-5">
                 <ul className="nav nav-underline justify-content-center">
                     <li className="nav-item">
-                        <button className={`nav-link btn btn-link ${section === 'features' ? 'active' : ''}`} onClick={() => changeSection('features')}>Features</button>
+                        <button className={`nav-link btn btn-link ${section === 'features' ? 'active' : ''}`} onClick={() => setSection('features')}>Features</button>
                     </li>
                     <li className="nav-item">
-                        <button className={`nav-link btn btn-link ${section === 'releaseNotes' ? 'active' : ''}`} onClick={() => changeSection('releaseNotes')}>Release Notes</button>
+                        <button className={`nav-link btn btn-link ${section === 'releaseNotes' ? 'active' : ''}`} onClick={() => setSection('releaseNotes')}>Release Notes</button>
                     </li>
                     <li className="nav-item">
-                        <button className={`nav-link btn btn-link ${section === 'plans' ? 'active' : ''}`} onClick={() => changeSection('plans')}>Plans</button>
+                        <button className={`nav-link btn btn-link ${section === 'plans' ? 'active' : ''}`} onClick={() => setSection('plans')}>Plans</button>
                     </li>
                     <li className="nav-item">
-                        <button className={`nav-link btn btn-link ${section === 'requirements' ? 'active' : ''}`} onClick={() => changeSection('requirements')}>Requirements</button>
+                        <button className={`nav-link btn btn-link ${section === 'requirements' ? 'active' : ''}`} onClick={() => setSection('requirements')}>Requirements</button>
                     </li>
                     <li className="nav-item">
-                        <button className={`nav-link btn btn-link ${section === 'faq' ? 'active' : ''}`} onClick={() => changeSection('faq')}>FAQ</button>
+                        <button className={`nav-link btn btn-link ${section === 'faq' ? 'active' : ''}`} onClick={() => setSection('faq')}>FAQ</button>
                     </li>
                 </ul>
 
@@ -122,9 +121,9 @@ export default function Product() {
             <section id="plans" className="my-3" style={{ display: section === 'plans' ? 'block' : 'none' }}>
                 <div className="plans-wrapper mx-10vw row g-4">
                     <div className="col-lg-4">
-                        <div className="plan rounded-3 py-3 px-5">
+                        <div className={`plan rounded-3 py-3 px-5 ${selectedPlan === 0 ? 'active' : ''}`}>
                             <div className="d-flex align-items-center flex-column">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" />
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" checked={selectedPlan === 0} onChange={() =>setPlan(0)} />
                                 <h3 className="fs-2 mt-4">10 users</h3>
                             </div>
                             <p className="fs-4 text-bold">€359.99/yr.</p>
@@ -132,9 +131,9 @@ export default function Product() {
                         </div>
                     </div>
                     <div className="col-lg-4">
-                        <div className="plan rounded-3 py-3 px-5">
+                        <div className={`plan rounded-3 py-3 px-5 ${selectedPlan === 1 ? 'active' : ''}`}>
                             <div className="d-flex align-items-center flex-column">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" />
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" checked={selectedPlan === 1}   onChange={() =>setPlan(1)}/>
                                 <h3 className="fs-2 mt-4">100 users</h3>
                             </div>
                             <p className="fs-4 text-bold">€649.99/yr.</p>
@@ -142,9 +141,9 @@ export default function Product() {
                         </div>
                     </div>
                     <div className="col-lg-4">
-                        <div className="plan rounded-3 py-3 px-5">
+                        <div className={`plan rounded-3 py-3 px-5 ${selectedPlan === 2 ? 'active' : ''}`}>
                             <div className="d-flex align-items-center flex-column">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" />
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" checked={selectedPlan === 2} onChange={() => setPlan(2)} />
                                 <h3 className="fs-2 mt-4">Custom</h3>
                             </div>
                             <p>Ask for a budget, the price depends on the quantity of users.</p>
@@ -158,7 +157,7 @@ export default function Product() {
                         <button className="btn btn-primary w-100">Buy now</button>
                     </div>
                 </div>
-            </section>
-        </div>
+            </section >
+        </div >
     )
 }

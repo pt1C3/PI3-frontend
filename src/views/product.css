@@ -131,9 +131,16 @@ td {
     min-height: 18rem;
     height: 100%;
 }
+.plan.active{
+    background-color: var(--white);
 
+}
 
 .form-check-input {
     width: 2rem;
     height: 2rem;
+}
+.form-check-input:checked{
+    background-color: var(--black);
+    border-color: var(--black);
 }

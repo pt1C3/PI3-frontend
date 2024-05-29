@@ -108,7 +108,3 @@ body {
   }
 
 
-.form-check-input:checked{
-    background-color: var(--black);
-    border-color: var(--black);
-}
