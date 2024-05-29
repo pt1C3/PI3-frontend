@@ -7,8 +7,13 @@ import './App.css';
 import Home from './views/home';
 import Payment from './views/payment';
 import Product from './views/product';
+<<<<<<< Updated upstream
 import Login from './views/Login';
 import SignUp from "./views/SignUp";
+=======
+import Manager from './views/manager';
+
+>>>>>>> Stashed changes
 function App() {
   return (
     <Router>
@@ -40,8 +45,12 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/payment" element={<Payment />} />
         <Route path="/product/:id" element={<Product />} />
+<<<<<<< Updated upstream
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
+=======
+        <Route path="/manager" element={<Manager />} />
+>>>>>>> Stashed changes
 
         {/* Define other routes as needed */}
       </Routes>
