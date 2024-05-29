@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import './login.css';
 
 export default function SignUp() {
-    return (
-        <div className="wrapper background-color d-flex flex-column align-items-center justify-content-center" style={{ minHeight: '100vh' }}>
-               <div className="container mt-5">
+  return (
+    <div className="wrapper background-color d-flex flex-column align-items-center justify-content-center" style={{ minHeight: '100vh' }}>
+      <div className="container mt-5">
         <div className="row justify-content-center">
           <div className="col-md-8">
             <div className="card">
@@ -77,13 +77,13 @@ export default function SignUp() {
                       />
                     </div>
                     <div className="form-group">
-                      <div className="form-check form-check-inline">
+                      <div className="form-check form-check-inline" style={{ display: 'inline-block', alignItems: 'center' }}>
                         <input className="form-check-input" type="radio" name="role" id="business" value="business" defaultChecked />
-                        <label className="form-check-label" htmlFor="business">Business</label>
+                        <label className="form-check-label" htmlFor="business" style={{ marginTop: '9px', marginLeft: '9px' }}>Business</label>
                       </div>
                       <div className="form-check form-check-inline">
                         <input className="form-check-input" type="radio" name="role" id="manager" value="manager" />
-                        <label className="form-check-label" htmlFor="manager">Manager</label>
+                        <label className="form-check-label" htmlFor="manager" style={{ marginTop: '9px', marginLeft: '9px' }}>Manager</label>
                       </div>
                     </div>
                     <div className="col-sm-12">
@@ -118,7 +118,7 @@ export default function SignUp() {
           </div>
         </div>
       </div>
-        </div >
-    );
+    </div >
+  );
 };
 
