@@ -10,6 +10,7 @@ import Product from './views/product';
 import Login from './views/Login';
 import SignUp from "./views/SignUp";
 import Manager from './views/manager';
+import MyProducts from './views/myProducts';
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/manager" element={<Manager />} />
+        <Route path="/myProducts" element={<MyProducts />} />
 
         {/* Define other routes as needed */}
       </Routes>
