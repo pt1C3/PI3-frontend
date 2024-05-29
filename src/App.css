@@ -30,8 +30,12 @@ body {
     color: var(--black);
 
 }
+.wrapper {
+    padding-top: 10vh;
+}
 .navbar{
     position: fixed;
+    z-index: 999;
     width: 100%;
 }
 .text-medium{
@@ -43,6 +47,9 @@ body {
 .text-secondary{
     font-family: 'Metropolis Regular';
     color: var(--gray-3)
+}
+.fs-6{
+    font-size: 0.8rem!important;
 }
 /*Navbar*/
 .nav-link {
@@ -89,6 +96,7 @@ body {
 
 }
 
+
 /*Forms*/
 .input-group{
     background-color: var(--gray-1);
@@ -99,9 +107,7 @@ body {
     border: .1rem solid var(--gray-2);
   }
 
-.fs-6{
-    font-size: 0.8rem!important;
-}
+
 .form-check-input:checked{
     background-color: var(--black);
     border-color: var(--black);

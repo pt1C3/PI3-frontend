@@ -3,7 +3,7 @@ import Breadcrumbs from "../components/breadcrumbs";
 
 export default function Payment() {
   return (
-    <div>
+    <div className="wrapper">
       <Breadcrumbs page1="Designer Pack" page2="CreatiVortex" page3="Payment" link1="/" link2="/"></Breadcrumbs>
       <div className="mx-10vw">
         <div className="row">

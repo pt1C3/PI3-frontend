@@ -2,7 +2,7 @@ import './card-icon.css';
 
 export default function Card({ title, category, image, description, price, discount, oldPrice }) {
     return (
-        <div className="wrapper col-lg-4 col-sm-6" >
+        <div className="col-lg-4 col-sm-6" >
             <div className="card rounded-2 p-3">
                 <div className="d-flex align-items-center mb-2">
                     <img src={process.env.PUBLIC_URL +"/images/" + image} className="rounded-2" height="60"/>

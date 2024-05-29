@@ -8,7 +8,7 @@ export default function Product() {
         setSection(sectionID)
     }
     return (
-        <div>
+        <div className="wrapper">
             <Breadcrumbs page1="Designer Pack" page2="CreatiVortex" link1="/"></Breadcrumbs>
             <section className="mx-10vw mt-3">
                 <div className="row g-4 align-items-center">

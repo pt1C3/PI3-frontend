@@ -1,6 +1,6 @@
 export default function Card({title, category, image, description, price, discount, oldPrice}) {
     return (
-    <div className="wrapper col-lg-4 col-sm-6">
+    <div className="col-lg-4 col-sm-6">
         <div className="card rounded-2">
             <img src={process.env.PUBLIC_URL + "/images/" + image } className="card-img-top rounded-2" />
             <div class="card-body p-3">

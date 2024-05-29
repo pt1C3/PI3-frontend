@@ -4,7 +4,7 @@ import './login.css';
 
 export default function SignUp() {
     return (
-        <div className="background-color d-flex flex-column align-items-center justify-content-center" style={{ minHeight: '100vh' }}>
+        <div className="wrapper background-color d-flex flex-column align-items-center justify-content-center" style={{ minHeight: '100vh' }}>
             <div className="col-md-6 bg-white p-4 rounded-3 form-container">
                 <h3 className='text-bold mb-0'>Sign Up</h3>
                 <p className="text-secondary">Already have an account? <Link to="/register">Login</Link></p>
