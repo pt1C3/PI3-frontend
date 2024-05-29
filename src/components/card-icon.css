@@ -12,3 +12,7 @@
     
     }
 }
+.card-discount{
+    background-color:var(--primary-blue);
+    width: fit-content;
+}
