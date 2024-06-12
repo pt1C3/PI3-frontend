@@ -1,10 +1,15 @@
 import "./payment.css";
 import Breadcrumbs from "../components/breadcrumbs";
+import { Helmet } from 'react-helmet';
+
 import {useEffect, useState } from 'react';
 
 export default function Payment() {
   return (
     <div className="wrapper">
+      <Helmet>
+        <title>Payment - CreatiVortex</title>
+      </Helmet>
       <Breadcrumbs page1="Designer Pack" page2="CreatiVortex" page3="Payment" link1="/" link2="/"></Breadcrumbs>
       <div className="mx-10vw">
         <div className="row">
