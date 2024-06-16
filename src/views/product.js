@@ -10,7 +10,7 @@ export default function Product() {
     return (
         <div className="wrapper">
             <Helmet>
-                <title>CreatiVortex - CreatiVortex</title>
+                <title>CreatiVortex - LogicLeap</title>
             </Helmet>
             <Breadcrumbs page1="Designer Pack" page2="CreatiVortex" link1="/"></Breadcrumbs>
             <section className="mx-10vw mt-3">

@@ -7,7 +7,7 @@ export default function Support() {
     return (
         <div className="wrapper background-color d-flex flex-column align-items-center justify-content-center" style={{ height: '100vh' }}>
                   <Helmet>
-        <title>Support - CreatiVortex</title>
+        <title>Support - LogicLeap</title>
       </Helmet>
             <div className="col-md-6 bg-white p-4 rounded-3 form-container">
                 <h3 className='text-bold mb-0'>Contact Support</h3>

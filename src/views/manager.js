@@ -7,7 +7,7 @@ export default function Manager() {
     return (
         <div class="container mt-4">
                   <Helmet>
-        <title>Manager - CreatiVortex</title>
+        <title>Manager - LogicLeap</title>
       </Helmet>
             <div class="row">
 

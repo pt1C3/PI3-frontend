@@ -113,3 +113,17 @@ body {
     color:var(--black);
     text-decoration: none;
 }
+.filter-tab{
+    border-bottom: solid 0.1rem var(--gray-2);
+    width: 100%;
+    padding: 0 10vw 0 10vw;
+}
+.filter-tab button{
+    border:0;
+    border-radius: 0;
+    height: 100%;
+
+}
+.filter-tab button.active{
+    border-bottom: var(--black) 0.15rem solid;
+}

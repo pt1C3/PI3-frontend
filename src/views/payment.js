@@ -8,7 +8,7 @@ export default function Payment() {
   return (
     <div className="wrapper">
       <Helmet>
-        <title>Payment - CreatiVortex</title>
+        <title>Payment - LogicLeap</title>
       </Helmet>
       <Breadcrumbs page1="Designer Pack" page2="CreatiVortex" page3="Payment" link1="/" link2="/"></Breadcrumbs>
       <div className="mx-10vw">

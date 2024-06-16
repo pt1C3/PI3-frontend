@@ -12,6 +12,7 @@ import SignUp from "./views/SignUp";
 import Manager from './views/manager';
 import PaymentHistory from './views/paymenthistory';
 import Support from './views/support'; 
+import Search from './views/search'; 
 
 function App() {
   return (
@@ -49,6 +50,7 @@ function App() {
         <Route path="/manager" element={<Manager />} />
         <Route path="/paymenthistory" element={<PaymentHistory />} />
         <Route path="/support" element={<Support />} />
+        <Route path="/search/:searchvalue" element={<Search />} />
 
         {/* Define other routes as needed */}
       </Routes>

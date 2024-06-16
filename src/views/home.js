@@ -7,7 +7,7 @@ export default function Home() {
     return (
         <div className="wrapper">
             <Helmet>
-                <title>Home - CreatiVortex</title>
+                <title>Home - LogicLeap</title>
             </Helmet>
             <section className="landing-carousel mb-5 w-100 position-relative">
                 <img src={process.env.PUBLIC_URL + "/images/landingCarousel1.png"} className="landing-image" />
