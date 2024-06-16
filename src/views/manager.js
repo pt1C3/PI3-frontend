@@ -1,10 +1,14 @@
 import Breadcrumbs from "../components/breadcrumbs";
 import "./manager.css";
+import { Helmet } from 'react-helmet';
 
 
 export default function Manager() {
     return (
         <div class="container mt-4">
+                  <Helmet>
+        <title>Manager - CreatiVortex</title>
+      </Helmet>
             <div class="row">
 
                 <div class="col-md-4">

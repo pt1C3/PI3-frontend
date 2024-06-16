@@ -1,6 +1,7 @@
 import Breadcrumbs from "../components/breadcrumbs";
 import { useState, useEffect } from 'react';
 import "./product.css";
+import { Helmet } from 'react-helmet';
 
 export default function Product() {
     const [section, setSection] = useState('features');
@@ -8,6 +9,9 @@ export default function Product() {
 
     return (
         <div className="wrapper">
+            <Helmet>
+                <title>CreatiVortex - CreatiVortex</title>
+            </Helmet>
             <Breadcrumbs page1="Designer Pack" page2="CreatiVortex" link1="/"></Breadcrumbs>
             <section className="mx-10vw mt-3">
                 <div className="row g-4 align-items-center">
@@ -123,7 +127,7 @@ export default function Product() {
                     <div className="col-lg-4">
                         <div className={`plan rounded-3 py-3 px-5 ${selectedPlan === 0 ? 'active' : ''}`}>
                             <div className="d-flex align-items-center flex-column">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" checked={selectedPlan === 0} onChange={() =>setPlan(0)} />
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" checked={selectedPlan === 0} onChange={() => setPlan(0)} />
                                 <h3 className="fs-2 mt-4">10 users</h3>
                             </div>
                             <p className="fs-4 text-bold">€359.99/yr.</p>
@@ -133,7 +137,7 @@ export default function Product() {
                     <div className="col-lg-4">
                         <div className={`plan rounded-3 py-3 px-5 ${selectedPlan === 1 ? 'active' : ''}`}>
                             <div className="d-flex align-items-center flex-column">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" checked={selectedPlan === 1}   onChange={() =>setPlan(1)}/>
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" checked={selectedPlan === 1} onChange={() => setPlan(1)} />
                                 <h3 className="fs-2 mt-4">100 users</h3>
                             </div>
                             <p className="fs-4 text-bold">€649.99/yr.</p>

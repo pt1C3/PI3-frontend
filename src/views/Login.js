@@ -1,10 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './login.css';
+import { Helmet } from 'react-helmet';
 
 export default function Login(){
   return (
     <div className="wrapper background-color d-flex flex-column align-items-center justify-content-center" style={{ height: '100vh' }}>
+            <Helmet>
+        <title>Login - CreatiVortex</title>
+      </Helmet>
       <div className="col-md-3 bg-white p-4 rounded-3 form-container">
         <h3 className='text-bold mb-0'>Login</h3>
         <p className="text-secondary">New user? <Link to="/register">Sign up</Link></p>

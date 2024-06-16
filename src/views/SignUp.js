@@ -1,10 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './login.css';
+import { Helmet } from 'react-helmet';
 
 export default function SignUp() {
   return (
     <div className="wrapper background-color d-flex flex-column align-items-center justify-content-center" style={{ minHeight: '100vh' }}>
+            <Helmet>
+        <title>Sign up - CreatiVortex</title>
+      </Helmet>
       <div className="container mt-5">
         <div className="row justify-content-center">
           <div className="col-md-8">
