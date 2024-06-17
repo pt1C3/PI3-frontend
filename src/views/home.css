@@ -10,12 +10,31 @@
     height: 75vh;
 }
 .carousel-content {
-    padding: 0 15vw 0 15vw;
+    padding: 0 15vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 100%;
 }
 .carousel-content > .landing-product-icon{
-width: 50vh;
+height: 65%;
+}
+@media (max-width:1200px) {
+    .carousel-content{
+        padding: 0 5vw;
+
+    }
+}
+@media (max-width:768px) {
+    .carousel-content{
+        flex-direction: column;
+        justify-content: center;
+
+    }
+    .carousel-content  .carousel-title{
+        order:2;
+    }
+    .carousel-content > .landing-product-icon{
+        order:1;
+    }
 }

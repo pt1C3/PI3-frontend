@@ -12,53 +12,54 @@ import Login from './views/Login';
 import SignUp from "./views/SignUp";
 import Manager from './views/manager';
 import PaymentHistory from './views/paymenthistory';
-import Support from './views/support'; 
-import Search from './views/search'; 
+import Support from './views/support';
+import Search from './views/search';
+import ProfileDropdown from './components/profile-dropdown';
 
 function App() {
+  const searchSubmit = (event) => {
+    event.preventDefault();
+    // Handle search submission
+  };
+
   return (
     <Router>
       <div className="App">
         <nav className="navbar bg-white px-10vw">
-            <Link to="/" className="navbar-brand">
-              <img src={process.env.PUBLIC_URL +"/images/logicleap.png"} alt="Logo" height="40" />
-            </Link>
-            <span className="d-flex">
-              <form className="inline-form">
-                <div className="input-group rounded-2">
-                  <input type="text" className="form-control bg-transparent border-0" placeholder="Search" />
-                  <div className="input-group-btn">
-                    <button className="btn btn-default" type="submit">
-                      <FontAwesomeIcon icon={faMagnifyingGlass} />
-                    </button>
-                  </div>
+          <Link to="/" className="navbar-brand">
+            <img src={process.env.PUBLIC_URL + "/images/logicleap.png"} alt="Logo" height="40" />
+          </Link>
+          <span className="d-flex align-items-center">
+            <form className="inline-form" onSubmit={searchSubmit}>
+              <div className="input-group rounded-2">
+                <input type="text" className="form-control bg-transparent border-0" placeholder="Search" name="searchValue" />
+                <div className="input-group-btn">
+                  <button className="btn btn-default" type="submit">
+                    <FontAwesomeIcon icon={faMagnifyingGlass} />
+                  </button>
                 </div>
-              </form>
-              <button className="btn btn-default">
-                <FontAwesomeIcon icon={faBell} />
-              </button>
-              <button className="btn btn-default rounded-circle">
-                <img src={process.env.PUBLIC_URL + "/logo192.png"} height="20"></img>
-              </button>
-              </span>
-      </nav>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/payment" element={<Payment />} />
-        <Route path="/product/:id" element={<Product />} />
-        <Route path="/package/:id" element={<Package />} />
-
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/manager" element={<Manager />} />
-        <Route path="/paymenthistory" element={<PaymentHistory />} />
-        <Route path="/support" element={<Support />} />
-        <Route path="/search/:searchvalue" element={<Search />} />
-
-        {/* Define other routes as needed */}
-      </Routes>
-    </div>
-    </Router >
+              </div>
+            </form>
+            <button className="btn btn-default">
+              <FontAwesomeIcon icon={faBell} />
+            </button>
+            <ProfileDropdown />
+          </span>
+        </nav>
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route path="/payment" element={<Payment />} />
+          <Route path="/product/:id" element={<Product />} />
+          <Route path="/package/:id" element={<Package />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/manager" element={<Manager />} />
+          <Route path="/paymenthistory" element={<PaymentHistory />} />
+          <Route path="/support" element={<Support />} />
+          <Route path="/search/:searchvalue" element={<Search />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

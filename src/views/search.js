@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSortDown, faSortUp } from "@fortawesome/free-solid-svg-icons";
-import CardIcon from "../components/card-icon"
+import ListItem from "../components/list-item"
 
 
 export default function Search() {
@@ -45,10 +45,10 @@ export default function Search() {
                 </button>
             </section>
             <section className='row mx-10vw mt-3 g-3'>
-            <CardIcon title="CreatiVortex" category="Design" image="/Produto.png" price="€19.99/mo." />
-            <CardIcon title="CreatiVortex" category="Design" image="/Produto.png" price="€19.99/mo." />
-            <CardIcon title="CreatiVortex" category="Design" image="/Produto.png" price="€19.99/mo." />
-            <CardIcon title="CreatiVortex" category="Design" image="/Produto.png" price="€19.99/mo." />
+            <ListItem title="CreatiVortex" category="Design" image="/Produto.png" toLink="/produtos/1"/>
+            <ListItem title="CreatiVortex" category="Design" image="/Produto.png" toLink="/produtos/1"/>
+            <ListItem title="CreatiVortex" category="Design" image="/Produto.png" toLink="/produtos/1"/>
+            <ListItem title="CreatiVortex" category="Design" image="/Produto.png" toLink="/produtos/1"/>
 
 
             </section>

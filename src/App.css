@@ -3,17 +3,20 @@
     src: url('./font/Metropolis-Regular.otf') format('otf'),
         url('./font/Metropolis-Regular.woff') format('woff');
 }
+
 @font-face {
     font-family: 'Metropolis Bold';
     src: url('./font/Metropolis-Bold.otf') format('otf'),
         url('./font/Metropolis-Bold.woff') format('woff');
 }
+
 @font-face {
     font-family: 'Metropolis Medium';
     src: url('./font/Metropolis-Medium.otf') format('otf'),
         url('./font/Metropolis-Medium.woff') format('woff');
 }
-:root{
+
+:root {
     --white: #FFFFFF;
     --black: #26292E;
     --gray-3: #898D92;
@@ -25,32 +28,40 @@
     --orange: #FFA13A;
     --primary-blue: #1269E2;
 }
+
 body {
     font-family: 'Metropolis Regular', sans-serif;
     color: var(--black);
 
 }
+
 .wrapper {
     padding-top: 10vh;
 }
-.navbar{
+
+.navbar {
     position: fixed;
     z-index: 999;
     width: 100%;
 }
-.text-medium{
+
+.text-medium {
     font-family: 'Metropolis Medium';
 }
-.text-bold{
+
+.text-bold {
     font-family: 'Metropolis Bold';
 }
-.text-secondary{
+
+.text-secondary {
     font-family: 'Metropolis Regular';
     color: var(--gray-3)
 }
-.fs-6{
-    font-size: 0.8rem!important;
+
+.fs-6 {
+    font-size: 0.8rem !important;
 }
+
 /*Navbar*/
 .nav-link {
     height: 100%;
@@ -62,68 +73,90 @@ body {
 
 /*Utility*/
 .px-10vw {
-    padding-left: 10vw!important;
-    padding-right: 10vw!important;
+    padding-left: 10vw !important;
+    padding-right: 10vw !important;
 }
 
 .mx-10vw {
-    margin-left: 10vw!important;
-    margin-right: 10vw!important;
+    margin-left: 10vw !important;
+    margin-right: 10vw !important;
 }
 
 
-.w-100{
+.w-100 {
     width: 100%;
 }
 
 /*Buttons*/
 .btn-primary {
-    background-color: var(--primary-blue);  
-    border: none;               
-    color: white;              
-    padding: 10px 20px;         
-    text-align: center;         
-    text-decoration: none;      
-    display: inline-block;     
-    font-size: 16px;            
-    border-radius: 100px;         
-    cursor: pointer;            
-    transition: 0.3s; 
-  }
-.btn-primary:hover{
-    background-color: #1d6dc2;  
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2); 
+    background-color: var(--primary-blue);
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #1d6dc2;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 
 }
 
 
 /*Forms*/
-.input-group{
+.input-group {
     background-color: var(--gray-1);
     border: .1rem solid var(--gray-2)
 }
-.form-control{
+
+.form-control {
     background-color: var(--gray-1);
     border: .1rem solid var(--gray-2);
-  }
+}
 
 
-.linknormal{
+.linknormal {
     font-family: 'Metropolis Bold', sans-serif;
-    color:var(--black);
+    color: var(--black);
     text-decoration: none;
 }
-.filter-tab{
+
+.filter-tab {
     border-bottom: solid 0.1rem var(--gray-2);
     width: 100%;
     padding: 0 10vw 0 10vw;
 }
-.filter-tab button{
-    border:0;
+
+.filter-tab button {
+    border: 0;
     border-radius: 0;
     height: 100%;
 
 }
-.filter-tab button.active{
+
+.filter-tab button.active {
     border-bottom: var(--black) 0.15rem solid;
+}
+
+.clickable-card {
+    color: inherit;
+    text-decoration: none;
+    transition: 0.2s;
+    border: 0.05rem var(--gray-2) solid;
+
+}
+
+.clickable-card:hover {
+    background-color: var(--gray-1);
+}
+
+.card {
+    border-color: var(--gray-2);
+    border-width: .05rem;
 }
