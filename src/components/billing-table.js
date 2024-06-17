@@ -21,7 +21,7 @@ const BillingTable = ({ title, type, billingDate, paymentDate, status, maxUsers,
     ];
 
     return (
-        <div className="container mt-5">
+        <div className="container mt-5 billing-table">
             <table className="table table-bordered">
                 <thead>
                     <tr>

@@ -32,9 +32,9 @@ export default function Home() {
             <section className="mb-5 mx-10vw">
                 <h1 class="fs-4">Design Tools</h1>
                 <div className="row gx-5">
-                    <CardIcon title="CreatiVortex" category="Design" image="/Produto.png" price="€19.99/mo." />
-                    <CardIcon title="CreatiVortex" category="Design" image="/Produto.png" price="€19.99/mo." />
-                    <CardIcon title="CreatiVortex" category="Design" image="/Produto.png" price="€19.99/mo." description="Lorem ipsum dolor sit amet consectetur. Purus dictum tincidunt dictum quam at id est in. Diam proin consequat ipsum sed tempus id erat. " />
+                    <CardIcon title="CreatiVortex" category="Design" image="/Produto.png" price="€19.99/mo." square="true"/>
+                    <CardIcon title="CreatiVortex" category="Design" image="/Produto.png" price="€19.99/mo."  square="true"/>
+                    <CardIcon title="CreatiVortex" category="Design" image="/Produto.png" price="€19.99/mo." description="Lorem ipsum dolor sit amet consectetur. Purus dictum tincidunt dictum quam at id est in. Diam proin consequat ipsum sed tempus id erat. " square="true"/>
 
                 </div>
             </section>
