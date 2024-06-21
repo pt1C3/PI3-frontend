@@ -32,7 +32,7 @@ export default function Search() {
     };
 
     return (
-        <div className="wrapper">
+        <div className="wrapper bg-white">
             <Helmet>
                 <title>Search Results - LogicLeap</title>
             </Helmet>

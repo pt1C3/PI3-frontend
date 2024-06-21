@@ -1,24 +1,24 @@
-import Breadcrumbs from "../components/breadcrumbs";
+import Breadcrumbs from "../../components/breadcrumbs";
 import "./manager.css";
 import { Helmet } from 'react-helmet';
 
 
 export default function Manager() {
     return (
-        <div class="container mt-4">
-                  <Helmet>
-        <title>Manager - LogicLeap</title>
-      </Helmet>
-            <div class="row">
+        <div class="wrapper">
+            <Helmet>
+                <title>Manager - LogicLeap</title>
+            </Helmet>
+            <div class="row mx-10vw">
 
                 <div class="col-md-4">
                     <div class="card bg-light-gray">
                         <div class="card-body">
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Search"/>
-                                    <div class="input-group-append">
-                                        <span class="input-group-text"><i class="fas fa-search"></i></span>
-                                    </div>
+                                <input type="text" class="form-control" placeholder="Search" />
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fas fa-search"></i></span>
+                                </div>
                             </div>
                             <div class="list-group">
                                 <a href="#" class="list-group-item list-group-item-action mb-2">

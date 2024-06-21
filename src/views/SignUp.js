@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet';
 
 export default function SignUp() {
   return (
-    <div className="wrapper background-color d-flex flex-column align-items-center justify-content-center" style={{ minHeight: '100vh' }}>
+    <div className="wrapper d-flex flex-column align-items-center justify-content-center" style={{ minHeight: '100vh' }}>
             <Helmet>
         <title>Sign up - LogicLeap</title>
       </Helmet>

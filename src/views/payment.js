@@ -6,7 +6,7 @@ import {useEffect, useState } from 'react';
 
 export default function Payment() {
   return (
-    <div className="wrapper">
+    <div className="wrapper bg-white">
       <Helmet>
         <title>Payment - LogicLeap</title>
       </Helmet>

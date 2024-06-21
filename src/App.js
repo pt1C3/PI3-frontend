@@ -10,7 +10,7 @@ import Product from './views/product';
 import Package from './views/package';
 import Login from './views/Login';
 import SignUp from "./views/SignUp";
-import Manager from './views/manager';
+import Manager from './views/manager/manager';
 import PaymentHistory from './views/paymenthistory';
 import Support from './views/support';
 import Search from './views/search';

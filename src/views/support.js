@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet';
 
 export default function Support() {
     return (
-        <div className="wrapper background-color d-flex flex-column align-items-center justify-content-center" style={{ height: '100vh' }}>
+        <div className="wrapper d-flex flex-column align-items-center justify-content-center" style={{ height: '100vh' }}>
                   <Helmet>
         <title>Support - LogicLeap</title>
       </Helmet>

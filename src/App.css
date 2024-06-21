@@ -32,12 +32,14 @@
 body {
     font-family: 'Metropolis Regular', sans-serif;
     color: var(--black);
-
+    background-color: var(--gray-1);
 }
 
+.bg-white{
+    background-color: var(--white);
+}
 .wrapper {
-    padding-top: 10vh;
-}
+    padding-top: 10vh;}
 
 .navbar {
     position: fixed;
@@ -103,9 +105,8 @@ body {
 }
 
 .btn-primary:hover {
-    background-color: #1d6dc2;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-
+    filter: brightness(1.15);
 }
 
 

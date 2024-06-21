@@ -8,7 +8,7 @@ export default function Product() {
     const [selectedPlan, setPlan] = useState(0);
 
     return (
-        <div className="wrapper">
+        <div className="wrapper bg-white">
             <Helmet>
                 <title>CreatiVortex - LogicLeap</title>
             </Helmet>

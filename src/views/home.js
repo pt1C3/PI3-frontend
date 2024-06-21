@@ -5,7 +5,7 @@ import './home.css';
 
 export default function Home() {
     return (
-        <div className="wrapper">
+        <div className="wrapper bg-white">
             <Helmet>
                 <title>Home - LogicLeap</title>
             </Helmet>
