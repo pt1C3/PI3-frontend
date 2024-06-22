@@ -125,27 +125,27 @@ export default function Product() {
             <section id="plans" className="my-3" style={{ display: section === 'plans' ? 'block' : 'none' }}>
                 <div className="plans-wrapper mx-10vw row g-4">
                     <div className="col-lg-4">
-                        <div className={`plan rounded-3 py-3 px-5 ${selectedPlan === 0 ? 'active' : ''}`}>
+                        <button className={`plan rounded-3 py-3 px-5 ${selectedPlan === 0 ? 'active' : ''}`} onClick={() => setPlan(0)}>
                             <div className="d-flex align-items-center flex-column">
                                 <input class="form-check-input" type="radio" name="flexRadioDefault" checked={selectedPlan === 0} onChange={() => setPlan(0)} />
                                 <h3 className="fs-2 mt-4">10 users</h3>
                             </div>
                             <p className="fs-4 text-bold">€359.99/yr.</p>
                             <p>Auto renews annually</p>
-                        </div>
+                        </button>
                     </div>
                     <div className="col-lg-4">
-                        <div className={`plan rounded-3 py-3 px-5 ${selectedPlan === 1 ? 'active' : ''}`}>
+                        <button className={`plan rounded-3 py-3 px-5 ${selectedPlan === 1 ? 'active' : ''}`} onClick={() => setPlan(1)}>
                             <div className="d-flex align-items-center flex-column">
                                 <input class="form-check-input" type="radio" name="flexRadioDefault" checked={selectedPlan === 1} onChange={() => setPlan(1)} />
                                 <h3 className="fs-2 mt-4">100 users</h3>
                             </div>
                             <p className="fs-4 text-bold">€649.99/yr.</p>
                             <p>Auto renews annually</p>
-                        </div>
+                        </button>
                     </div>
                     <div className="col-lg-4">
-                        <div className={`plan rounded-3 py-3 px-5 ${selectedPlan === 2 ? 'active' : ''}`}>
+                        <button className={`plan rounded-3 py-3 px-5 ${selectedPlan === 2 ? 'active' : ''}`} onClick={() => setPlan(2)}>
                             <div className="d-flex align-items-center flex-column">
                                 <input class="form-check-input" type="radio" name="flexRadioDefault" checked={selectedPlan === 2} onChange={() => setPlan(2)} />
                                 <h3 className="fs-2 mt-4">Custom</h3>
@@ -153,7 +153,7 @@ export default function Product() {
                             <p>Ask for a budget, the price depends on the quantity of users.</p>
                             <p className="fs-4 text-bold">€-/yr.</p>
                             <p>Auto renews annually</p>
-                        </div>
+                        </button>
                     </div>
                 </div>
                 <div className="row justify-content-center mx-10vw mt-4">

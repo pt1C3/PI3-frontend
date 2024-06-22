@@ -14,7 +14,7 @@ export default function Product() {
             </Helmet>
             <Breadcrumbs page1="Designer Pack" page2="CreatiVortex" link1="/"></Breadcrumbs>
             <section className="mx-10vw mt-3">
-                <div className="row g-4 align-items-center">
+                <div className="row g-4 align-items-top">
                     <div className="col-12 col-xl-6">
                         <div className="d-flex mb-3">
                             <img src={process.env.PUBLIC_URL + "/images/Produto.png"} alt="CreatiVortex" height="150" className="me-4" />
@@ -25,12 +25,12 @@ export default function Product() {
                                 <div className="d-flex align-items-end flex-column mt-auto">
                                     <p className="fs-6 m-0">Starting at <span className="fs-5 text-bold">€19.99/mo.</span></p>
                                     <span>
-                                        <button className="btn btn-primary text-bold py-3 px-4">View Plans</button>
+                                        <button className="btn btn-primary text-bold py-3 px-4" onClick={() => setSection('plans')}>View Plans</button>
                                     </span>
                                 </div>
                             </div>
                         </div>
-                        <p className="">Dive into a whirlwind of innovative possibilities as you craft stunning visuals with ease. Whether you're designing graphics, logos, or layouts, CreatiVortex provides intuitive tools and a dynamic workspace to bring your ideas to life. Say hello to endless inspiration with CreatiVortex by your side.</p>
+                        <p>Dive into a whirlwind of innovative possibilities as you craft stunning visuals with ease. Whether you're designing graphics, logos, or layouts, CreatiVortex provides intuitive tools and a dynamic workspace to bring your ideas to life. Say hello to endless inspiration with CreatiVortex by your side.</p>
                     </div>
                     <div className="col-12 col-xl-6 ">
                         <div className="row justify-content-center">
@@ -63,6 +63,11 @@ export default function Product() {
                 </ul>
 
 
+            </section>
+            <section id="features" className="my-3" style={{ display: section === 'features' ? 'block' : 'none' }}>
+                <p>
+                'Unlock the full spectrum of your creativity with CreatiVortex – the ultimate toolkit for graphic design aficionados and visual storytellers alike. Step into a realm where imagination knows no bounds and unleash your artistic prowess with confidence. CreatiVortex offers a rich tapestry of features tailored to elevate your design journey to new heights.[p]At the heart of CreatiVortex lies a robust suite of intuitive tools meticulously crafted to empower you in every aspect of your creative process. From crafting eye-catching graphics and captivating logos to sculpting intricate layouts with precision, CreatiVortex is your trusted companion for bringing your boldest ideas to life.[p]Embrace a seamless workflow with our dynamic workspace, meticulously designed to adapt to your unique needs and preferences. Dive deep into a whirlwind of innovative possibilities as you explore a vast array of design elements, effortlessly blending colors, shapes, and textures to create visually stunning masterpieces.[p]Experience the freedom to express yourself like never before with CreatiVortex's versatile array of features. From advanced layering and masking capabilities to seamless integration with popular design formats, CreatiVortex empowers you to unleash your creativity with unparalleled flexibility and control.[p]But that's not all – CreatiVortex is more than just a design tool; it's a wellspring of inspiration waiting to be tapped. Immerse yourself in a world of endless creativity, where every stroke of your digital brush is infused with boundless potential.[p]Join the ranks of visionary creators and design aficionados who have made CreatiVortex their go-to platform for turning dreams into reality. Say hello to a new era of design innovation and let CreatiVortex be your guiding light on your creative journey. With CreatiVortex by your side, the possibilities are truly limitless.'
+                </p>
             </section>
             <section id="requirements" className="my-3" style={{ display: section === 'requirements' ? 'block' : 'none' }}>
                 <table class="table mx-10vw">
@@ -125,27 +130,27 @@ export default function Product() {
             <section id="plans" className="my-3" style={{ display: section === 'plans' ? 'block' : 'none' }}>
                 <div className="plans-wrapper mx-10vw row g-4">
                     <div className="col-lg-4">
-                        <div className={`plan rounded-3 py-3 px-5 ${selectedPlan === 0 ? 'active' : ''}`}>
+                        <button className={`plan rounded-3 py-3 px-5 ${selectedPlan === 0 ? 'active' : ''}`} onClick={() => setPlan(0)}>
                             <div className="d-flex align-items-center flex-column">
                                 <input class="form-check-input" type="radio" name="flexRadioDefault" checked={selectedPlan === 0} onChange={() => setPlan(0)} />
                                 <h3 className="fs-2 mt-4">10 users</h3>
                             </div>
                             <p className="fs-4 text-bold">€359.99/yr.</p>
                             <p>Auto renews annually</p>
-                        </div>
+                        </button>
                     </div>
                     <div className="col-lg-4">
-                        <div className={`plan rounded-3 py-3 px-5 ${selectedPlan === 1 ? 'active' : ''}`}>
+                        <button className={`plan rounded-3 py-3 px-5 ${selectedPlan === 1 ? 'active' : ''}`} onClick={() => setPlan(1)}>
                             <div className="d-flex align-items-center flex-column">
                                 <input class="form-check-input" type="radio" name="flexRadioDefault" checked={selectedPlan === 1} onChange={() => setPlan(1)} />
                                 <h3 className="fs-2 mt-4">100 users</h3>
                             </div>
                             <p className="fs-4 text-bold">€649.99/yr.</p>
                             <p>Auto renews annually</p>
-                        </div>
+                        </button>
                     </div>
                     <div className="col-lg-4">
-                        <div className={`plan rounded-3 py-3 px-5 ${selectedPlan === 2 ? 'active' : ''}`}>
+                        <button className={`plan rounded-3 py-3 px-5 ${selectedPlan === 2 ? 'active' : ''}`} onClick={() => setPlan(2)}>
                             <div className="d-flex align-items-center flex-column">
                                 <input class="form-check-input" type="radio" name="flexRadioDefault" checked={selectedPlan === 2} onChange={() => setPlan(2)} />
                                 <h3 className="fs-2 mt-4">Custom</h3>
@@ -153,7 +158,7 @@ export default function Product() {
                             <p>Ask for a budget, the price depends on the quantity of users.</p>
                             <p className="fs-4 text-bold">€-/yr.</p>
                             <p>Auto renews annually</p>
-                        </div>
+                        </button>
                     </div>
                 </div>
                 <div className="row justify-content-center mx-10vw mt-4">

@@ -23,7 +23,7 @@ export default function Home() {
             <section className="mb-5 mx-10vw">
                 <h1 class="fs-4">Popular</h1>
                 <div className="row gx-5">
-                    <CardBigImage title="CreatiVortex" category="Design" image="/Produto.png" price="€19.99/mo." />
+                    <CardBigImage title="CreatiVortex" category="Design" image="/Produto.png" price="€19.99/mo." toLink="/product/1"/>
                     <CardBigImage title="CreatiVortex" category="Design" image="/Produto.png" price="€19.99/mo." />
                     <CardBigImage title="CreatiVortex" category="Design" image="/Produto.png" price="€19.99/mo." />
 

@@ -1,0 +1,41 @@
+.manager-container {
+    height: 80vh;
+}
+@media (max-width: 1200px) {
+    .manager-container {
+        height: fit-content;
+    }
+    
+}
+.manager-col {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.manager-select {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow: hidden; /* Ensure no overflow */
+}
+
+.manager-group {
+    border-top: .1rem solid var(--gray-2);
+    flex: 1;
+    overflow-y: scroll; 
+}
+
+.manager-item > img {
+    height: 3rem;
+    aspect-ratio: 1/1;
+    background-color: var(--gray-3);
+}
+.manager-selected{
+    width: 100%;
+}
+.manager-selected > img{
+    height: 4rem;
+    aspect-ratio: 1/1;
+    background-color: var(--gray-3);
+}

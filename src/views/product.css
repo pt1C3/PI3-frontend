@@ -95,6 +95,7 @@ td {
 
 .accordion-button:not(.collapsed) {
     background-color: white;
+    color: var(--black);
 
 }
 
@@ -116,23 +117,27 @@ td {
     border-radius: 0;
 }
 
-.plans-wrapper{
+.plans-wrapper {
     display: flex;
 }
-.plan>*{
+
+.plan>* {
     text-align: center;
 }
+
 .plan {
     background-color: var(--gray-1);
     border: .1rem solid var(--gray-2);
     display: flex;
     align-items: center;
+    width: 100%;
     justify-content: space-between;
     flex-direction: column;
     min-height: 18rem;
     height: 100%;
 }
-.plan.active{
+
+.plan.active {
     background-color: var(--white);
 
 }
@@ -141,7 +146,8 @@ td {
     width: 2rem;
     height: 2rem;
 }
-.form-check-input:checked{
+
+.form-check-input:checked {
     background-color: var(--black);
     border-color: var(--black);
 }

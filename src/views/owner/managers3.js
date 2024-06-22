@@ -1,29 +1,34 @@
 import Breadcrumbs from "../../components/breadcrumbs";
-import "./manager.css";
+import "./managers.css";
 import { Helmet } from 'react-helmet';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
-
-export default function Manager() {
+export default function Managers() {
     return (
         <div class="wrapper">
             <Helmet>
-                <title>Manager - LogicLeap</title>
+                <title>Managers - LogicLeap</title>
             </Helmet>
-            <div class="row mx-10vw">
+            <div class="row mx-10vw bg-white ">
 
-                <div class="col-md-4">
-                    <div class="card bg-light-gray">
-                        <div class="card-body">
-                            <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Search" />
-                                <div class="input-group-append">
-                                    <span class="input-group-text"><i class="fas fa-search"></i></span>
+                <div class="col-md-4 bg-gray1">
+                    <div class="card">
+                        <div class="card-body p-0">
+                            <form className="inline-form">
+                                <div className="input-group rounded-2">
+                                    <input type="text" className="form-control bg-transparent border-0" placeholder="Search" name="searchValue" />
+                                    <div className="input-group-btn">
+                                        <button className="btn btn-default" type="submit">
+                                            <FontAwesomeIcon icon={faMagnifyingGlass} />
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="list-group">
-                                <a href="#" class="list-group-item list-group-item-action mb-2">
-                                    <div class="d-flex w-100 align-items-center">
-                                        <div class="image-placeholder rounded-circle mr-3"></div>
+                            </form>
+                            <div class="bg-transparent">
+                                <a href="#" class="mb-2 ">
+                                    <div class="d-flex w-100 align-items-center bg-transparent">
+                                        <div class="image-placeholder rounded-circle mr-3">p</div>
                                         <div>
                                             <h5 class="mb-1 font-weight-bold">António Mendes</h5>
                                             <p class="mb-1 text-small">antoniomendes@empresa.pt</p>

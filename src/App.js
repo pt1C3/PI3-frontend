@@ -10,7 +10,7 @@ import Product from './views/product';
 import Package from './views/package';
 import Login from './views/Login';
 import SignUp from "./views/SignUp";
-import Manager from './views/manager/manager';
+import Managers from './views/owner/managers';
 import PaymentHistory from './views/paymenthistory';
 import Support from './views/support';
 import Search from './views/search';
@@ -53,7 +53,7 @@ function App() {
           <Route path="/package/:id" element={<Package />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/manager" element={<Manager />} />
+          <Route path="/owner/managers" element={<Managers />} />
           <Route path="/paymenthistory" element={<PaymentHistory />} />
           <Route path="/support" element={<Support />} />
           <Route path="/search/:searchvalue" element={<Search />} />

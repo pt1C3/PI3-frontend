@@ -29,17 +29,43 @@
     --primary-blue: #1269E2;
 }
 
+::-webkit-scrollbar {
+    width: 0.4rem;
+
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    transition: .5s;
+    background: var(--gray-3);
+    border-radius: 1000px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #686d74;
+
+}
+
 body {
     font-family: 'Metropolis Regular', sans-serif;
     color: var(--black);
     background-color: var(--gray-1);
 }
 
-.bg-white{
+.bg-white {
     background-color: var(--white);
 }
+
+.bg-gray1 {
+    background-color: var(--gray-1);
+}
+
 .wrapper {
-    padding-top: 10vh;}
+    padding-top: 10vh;
+}
 
 .navbar {
     position: fixed;
@@ -57,7 +83,7 @@ body {
 
 .text-secondary {
     font-family: 'Metropolis Regular';
-    color: var(--gray-3)
+    color: var(--gray-3) !important;
 }
 
 .fs-6 {
@@ -93,22 +119,43 @@ body {
 .btn-primary {
     background-color: var(--primary-blue);
     border: none;
-    color: white;
+    color: var(--white);
     padding: 10px 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
     border-radius: 100px;
     cursor: pointer;
     transition: 0.3s;
+    font-family: 'Metropolis Medium';
 }
 
 .btn-primary:hover {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     filter: brightness(1.15);
 }
+.btn-secondary {
+    background-color: var(--white);
+    border: solid .2rem var(--black);
+    color: var(--black);
+    padding: .3rem .6rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-family: 'Metropolis Medium';
 
+}
+
+.btn-secondary:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border: solid .2rem var(--black);
+
+    color: var(--black);
+    background-color: var(--gray-1);
+}
 
 /*Forms*/
 .input-group {
@@ -149,7 +196,7 @@ body {
     color: inherit;
     text-decoration: none;
     transition: 0.2s;
-    border: 0.05rem var(--gray-2) solid;
+    border: 0.1rem var(--gray-2) solid;
 
 }
 
@@ -159,5 +206,11 @@ body {
 
 .card {
     border-color: var(--gray-2);
-    border-width: .05rem;
+    border-width: .1rem;
+}
+
+.regular-border {
+    border-color: var(--gray-2);
+    border-width: .1rem;
+    border-style: solid;
 }
