@@ -30,7 +30,7 @@ export default function Product() {
                                 </div>
                             </div>
                         </div>
-                        <p>Dive into a whirlwind of innovative possibilities as you craft stunning visuals with ease. Whether you're designing graphics, logos, or layouts, CreatiVortex provides intuitive tools and a dynamic workspace to bring your ideas to life. Say hello to endless inspiration with CreatiVortex by your side.</p>
+                        <p>Enjoy limitless entertainment with FunStream, the streaming platform that offers a vast library of movies, series, and music to suit all tastes. Whether you're in the mood for the latest blockbuster, a classic film, or a binge-worthy series, FunStream has it all. Plus, with a diverse range of music from various genres, you'll always find something to suit your mood. FunStream's intuitive interface and personalized recommendations make it easy to discover new favorites and enjoy your go-to content seamlessly.</p>
                     </div>
                     <div className="col-12 col-xl-6 ">
                         <div className="row justify-content-center">

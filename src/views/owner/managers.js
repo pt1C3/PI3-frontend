@@ -31,9 +31,9 @@ export default function Managers() {
                             </div>
                         </div>
                     </div>
-                    <button className="btn"><FontAwesomeIcon icon={faPlus} /></button>
+                    <button className="btn btn-secondary rounded-circle add-button mt-3"><FontAwesomeIcon icon={faPlus} /></button>
                 </div>
-                <div className="col-lg-6 col-xl-8">
+                <div className="col-lg-6 col-xl-8 ps-xl-3">
                     <div className="manager-selected d-flex align-items-center mb-3">
                         <img className="rounded-circle me-3" src={process.env.PUBLIC_URL + "/logo192.png"} />
                         <div>
@@ -42,7 +42,7 @@ export default function Managers() {
                         </div>
                         <button className="btn btn-secondary ms-auto">Remove Manager</button>
                     </div>
-                    <div className="row">
+                    <div className="row h-100 bg-primary">
                         <div className="regular-border rounded-2 p-3 mb-2">
                             <div className="d-flex align-items-center justify-content-between">
                                 <div className="d-flex align-items-center">
@@ -56,7 +56,7 @@ export default function Managers() {
                                 <span className="ml-auto text-right">100 licenses <b>(30 available)</b></span>
                             </div>
                             <div className="d-flex justify-content-end mt-2">
-                                <button className="btn btn-secondary">Remove Licenses</button>
+                                <button className="btn btn-secondary me-2">Remove Licenses</button>
                                 <button className="btn btn-secondary">Add Licenses</button>
                             </div>
                         </div>

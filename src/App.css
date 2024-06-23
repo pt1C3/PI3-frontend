@@ -64,13 +64,18 @@ body {
 }
 
 .wrapper {
-    padding-top: 10vh;
+    padding-top: 4.2rem;
 }
 
 .navbar {
     position: fixed;
     z-index: 999;
     width: 100%;
+    border-top: 0!important;
+    border-left: 0!important;
+    border-right: 0!important;
+
+
 }
 
 .text-medium {
@@ -134,6 +139,7 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     filter: brightness(1.15);
 }
+
 .btn-secondary {
     background-color: var(--white);
     border: solid .2rem var(--black);

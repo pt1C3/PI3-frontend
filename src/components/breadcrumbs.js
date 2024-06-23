@@ -7,7 +7,7 @@ import { faHouse } from "@fortawesome/free-solid-svg-icons";
 function Breadcrumbs({ page1, page2, page3, link1, link2 }) {
     return (
         <nav aria-label="breadcrumb" class="breadcrumb-wrapper px-10vw bg-white">
-            <ol className="breadcrumb">
+            <ol className="breadcrumb m-0 my-3">
                 <li className="breadcrumb-item"><Link to="/"><FontAwesomeIcon icon={faHouse} /></Link></li>
                 {link1 ?
                     <li className="breadcrumb-item"><Link to={link1}>{page1}</Link></li>
