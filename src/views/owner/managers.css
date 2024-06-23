@@ -1,5 +1,5 @@
 .manager-container {
-    height: 80vh;
+    height: 75vh;
 }
 @media (max-width: 1200px) {
     .manager-container {
@@ -7,7 +7,7 @@
     }
     
 }
-.manager-col {
+.manager-col,  .manager-selected-col{
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -42,4 +42,12 @@
 }
 .add-button{
     width:fit-content;
+}
+.manager-selected-col .right{
+    display: flex;
+    overflow-y: scroll; /* Ensure no overflow */
+    width: 100%;
+}
+.right>*{
+height: fit-content;
 }

@@ -15,6 +15,7 @@ import PaymentHistory from './views/paymenthistory';
 import Support from './views/support';
 import Search from './views/search';
 import ProfileDropdown from './components/profile-dropdown';
+import Plans from './views/owner/plans';
 
 function App() {
   const searchSubmit = (event) => {
@@ -53,10 +54,11 @@ function App() {
           <Route path="/package/:id" element={<Package />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/owner/managers" element={<Managers />} />
           <Route path="/paymenthistory" element={<PaymentHistory />} />
           <Route path="/support" element={<Support />} />
           <Route path="/search/:searchvalue" element={<Search />} />
+          <Route path="/owner/managers" element={<Managers />} />
+          <Route path="/owner/plans" element={<Plans />} />
         </Routes>
       </div>
     </Router>
