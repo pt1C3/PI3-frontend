@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+import { useState } from 'react';
+import { Route, Link, Routes, useNavigate } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
@@ -16,52 +17,107 @@ import Support from './views/support';
 import Search from './views/search';
 import ProfileDropdown from './components/profile-dropdown';
 import Plans from './views/owner/plans';
+import AdminHub from './views/admin/adminHub';
 
 function App() {
-  const searchSubmit = (event) => {
+  const [search, setSearch] = useState('');
+  var navigate = useNavigate();
+  const [isAdmin, setIsAdmin] = useState(true);
+
+  var searchSubmit = (event) => {
     event.preventDefault();
-    // Handle search submission
+    navigate(`/search/${search}`);
   };
 
   return (
-    <Router>
-      <div className="App">
-        <nav className="navbar bg-white px-10vw regular-border">
-          <Link to="/" className="navbar-brand">
-            <img src={process.env.PUBLIC_URL + "/images/logicleap.png"} alt="Logo" height="40" />
-          </Link>
-          <span className="d-flex align-items-center">
-            <form className="inline-form" onSubmit={searchSubmit}>
-              <div className="input-group rounded-2">
-                <input type="text" className="form-control bg-transparent border-0" placeholder="Search" name="searchValue" />
-                <div className="input-group-btn">
-                  <button className="btn btn-default" type="submit">
-                    <FontAwesomeIcon icon={faMagnifyingGlass} />
-                  </button>
+    <div className="App">
+      {isAdmin ? (
+        <>
+          <nav className="navbar bg-white px-10vw regular-border">
+            <Link to="/" className="navbar-brand">
+              <img src={process.env.PUBLIC_URL + "/images/logicleap.png"} alt="Logo" height="40" />
+            </Link>
+            <span className="d-flex align-items-center">
+              <form className="inline-form" onSubmit={searchSubmit}>
+                <div className="input-group rounded-2">
+                  <input
+                    type="text"
+                    className="form-control bg-transparent border-0"
+                    placeholder="Search"
+                    name="search"
+                    value={search}
+                    onChange={(event) => setSearch(event.target.value)}
+                  />
+                  <div className="input-group-btn">
+                    <button className="btn btn-default" type="submit">
+                      <FontAwesomeIcon icon={faMagnifyingGlass} />
+                    </button>
+                  </div>
                 </div>
-              </div>
-            </form>
-            <button className="btn btn-default">
-              <FontAwesomeIcon icon={faBell} />
-            </button>
+              </form>
+              <button className="btn btn-default">
+                <FontAwesomeIcon icon={faBell} />
+              </button>
+              <ProfileDropdown />
+            </span>
+          </nav> </>
+      ) : (
+        <>
+          <nav className="navbar navbar-admin bg-white px-10vw py-0 regular-border">
+            <Link to="/" className="navbar-brand">
+              <img src={process.env.PUBLIC_URL + "/images/logicleap.png"} alt="Logo" height="40" />
+            </Link>
+            <span className="d-flex align-items-center h-100 mx-3">
+              <Link to="/" className="nav-link active" >
+                <p className="mb-0 text-medium">Dashboard</p>
+              </Link>
+              <Link to="/" className="nav-link ms-2" >
+                <p className="mb-0 text-medium">Sales</p>
+              </Link>
+              <Link to="/" className="nav-link ms-2" >
+                <p className="mb-0 text-medium">Costumers</p>
+              </Link>
+              <Link to="/" className="nav-link ms-2" >
+                <p className="mb-0 text-medium">Packages</p>
+              </Link>
+              <Link to="/" className="nav-link ms-2" >
+                <p className="mb-0 text-medium">Products</p>
+              </Link>
+              <Link to="/" className="nav-link ms-2" >
+                <p className="mb-0 text-medium">Custom Plans</p>
+              </Link>
+              <Link to="/" className="nav-link ms-2" >
+                <p className="mb-0 text-medium">Support</p>
+              </Link>
+            </span>
             <ProfileDropdown />
-          </span>
-        </nav>
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route path="/payment" element={<Payment />} />
-          <Route path="/product/:id" element={<Product />} />
-          <Route path="/package/:id" element={<Package />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/paymenthistory" element={<PaymentHistory />} />
-          <Route path="/support" element={<Support />} />
-          <Route path="/search/:searchvalue" element={<Search />} />
-          <Route path="/owner/managers" element={<Managers />} />
-          <Route path="/owner/plans" element={<Plans />} />
-        </Routes>
-      </div>
-    </Router>
+          </nav>
+        </>)}
+
+      <Routes>
+        {isAdmin ? (
+          <>
+            <Route path="/" element={<AdminHub />} />
+            {/*<Route path="/admin/users" element={<AdminUsers />} />
+              <Route path="/admin/settings" element={<AdminSettings />} /> */}
+          </>
+        ) : (
+          <>
+            <Route exact path="/" element={<Home />} />
+            <Route path="/payment" element={<Payment />} />
+            <Route path="/product/:id" element={<Product />} />
+            <Route path="/package/:id" element={<Package />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/paymenthistory" element={<PaymentHistory />} />
+            <Route path="/support" element={<Support />} />
+            <Route path="/search/:searchvalue" element={<Search />} />
+            <Route path="/owner/managers" element={<Managers />} />
+            <Route path="/owner/plans" element={<Plans />} />
+          </>
+        )}
+      </Routes>
+    </div>
   );
 }
 

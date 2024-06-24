@@ -34,7 +34,7 @@ export default function Home() {
                 <div className="row gx-5">
                     <CardIcon title="CreatiVortex" category="Design" image="/Produto.png" price="€19.99/mo." square="true" />
                     <CardIcon title="CreatiVortex" category="Design" image="/Produto.png" price="€19.99/mo." square="true" />
-                    <CardIcon title="CreatiVortex" category="Design" image="/Produto.png" price="€19.99/mo." description="Lorem ipsum dolor sit amet consectetur. Purus dictum tincidunt dictum quam at id est in. Diam proin consequat ipsum sed tempus id erat. " square="true" />
+                    <CardIcon title="CreatiVortex" category="Design" image="/Produto.png" price="€19.99/mo." description="Enjoy limitless entertainment with FunStream, the streaming platform that offers a vast library of movies, series, and music to suit all tastes. Whether you're in the mood for the latest blockbuster, a classic film, or a binge-worthy series, FunStream has it all. Plus, with a diverse range of music from various genres, you'll always find something to suit your mood." square="true" />
 
                 </div>
             </section>

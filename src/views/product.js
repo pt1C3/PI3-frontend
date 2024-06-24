@@ -6,7 +6,18 @@ import { Helmet } from 'react-helmet';
 export default function Product() {
     const [section, setSection] = useState('features');
     const [selectedPlan, setPlan] = useState(0);
+    var features = (features) => {
+        // Split the text on the "[p]" delimiter
+        const parts = features.split('[p]');
 
+        return (
+            <div>
+                {parts.map((part, index) => (
+                    <p key={index}>{part}</p>
+                ))}
+            </div>
+        );
+    }
     return (
         <div className="wrapper bg-white">
             <Helmet>
@@ -65,9 +76,11 @@ export default function Product() {
 
             </section>
             <section id="features" className="my-3" style={{ display: section === 'features' ? 'block' : 'none' }}>
-                <p>
-                'Unlock the full spectrum of your creativity with CreatiVortex – the ultimate toolkit for graphic design aficionados and visual storytellers alike. Step into a realm where imagination knows no bounds and unleash your artistic prowess with confidence. CreatiVortex offers a rich tapestry of features tailored to elevate your design journey to new heights.[p]At the heart of CreatiVortex lies a robust suite of intuitive tools meticulously crafted to empower you in every aspect of your creative process. From crafting eye-catching graphics and captivating logos to sculpting intricate layouts with precision, CreatiVortex is your trusted companion for bringing your boldest ideas to life.[p]Embrace a seamless workflow with our dynamic workspace, meticulously designed to adapt to your unique needs and preferences. Dive deep into a whirlwind of innovative possibilities as you explore a vast array of design elements, effortlessly blending colors, shapes, and textures to create visually stunning masterpieces.[p]Experience the freedom to express yourself like never before with CreatiVortex's versatile array of features. From advanced layering and masking capabilities to seamless integration with popular design formats, CreatiVortex empowers you to unleash your creativity with unparalleled flexibility and control.[p]But that's not all – CreatiVortex is more than just a design tool; it's a wellspring of inspiration waiting to be tapped. Immerse yourself in a world of endless creativity, where every stroke of your digital brush is infused with boundless potential.[p]Join the ranks of visionary creators and design aficionados who have made CreatiVortex their go-to platform for turning dreams into reality. Say hello to a new era of design innovation and let CreatiVortex be your guiding light on your creative journey. With CreatiVortex by your side, the possibilities are truly limitless.'
-                </p>
+                <div className="mx-10vw">
+
+                {features('Unlock the full spectrum of your creativity with CreatiVortex – the ultimate toolkit for graphic design aficionados and visual storytellers alike. Step into a realm where imagination knows no bounds and unleash your artistic prowess with confidence. CreatiVortex offers a rich tapestry of features tailored to elevate your design journey to new heights.[p]At the heart of CreatiVortex lies a robust suite of intuitive tools meticulously crafted to empower you in every aspect of your creative process. From crafting eye-catching graphics and captivating logos to sculpting intricate layouts with precision, CreatiVortex is your trusted companion for bringing your boldest ideas to life.[p]Embrace a seamless workflow with our dynamic workspace, meticulously designed to adapt to your unique needs and preferences. Dive deep into a whirlwind of innovative possibilities as you explore a vast array of design elements, effortlessly blending colors, shapes, and textures to create visually stunning masterpieces.[p]Experience the freedom to express yourself like never before with CreatiVortex\'s versatile array of features. From advanced layering and masking capabilities to seamless integration with popular design formats, CreatiVortex empowers you to unleash your creativity with unparalleled flexibility and control.[p]But that\'s not all – CreatiVortex is more than just a design tool; it\'s a wellspring of inspiration waiting to be tapped. Immerse yourself in a world of endless creativity, where every stroke of your digital brush is infused with boundless potential.[p]Join the ranks of visionary creators and design aficionados who have made CreatiVortex their go-to platform for turning dreams into reality. Say hello to a new era of design innovation and let CreatiVortex be your guiding light on your creative journey. With CreatiVortex by your side, the possibilities are truly limitless.')}
+                </div>
+
             </section>
             <section id="requirements" className="my-3" style={{ display: section === 'requirements' ? 'block' : 'none' }}>
                 <table class="table mx-10vw">

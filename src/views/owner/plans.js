@@ -5,14 +5,15 @@ import Breadcrumbs from "../../components/breadcrumbs";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 
-const SubscriptionItem = ({ name, type, status, nextBillDate, price }) => {
+const SubscriptionItem = ({ image, name, type, status, nextBillDate, price }) => {
     const [isExpanded, setIsExpanded] = useState(false);
 
     return (
         <div className="card mb-3">
             <div className="card-body d-flex justify-content-between align-items-center">
-                <div className='d-flex align-items-center'>
-                    <p className="text-medium mb-0 me-2">{name}</p>
+                <div className='plan-product-info d-flex align-items-center'>
+                    <img src={image} className='rounded-1'/>
+                    <p className="text-medium mb-0 mx-2">{name}</p>
                     <p className="text-secondary mb-0 fs-6">{type}</p>
                 </div>
                 <div className='d-flex'>
@@ -58,11 +59,13 @@ export default function Plans() {
             <div className="bg-gray1">
                 <div className="mx-10vw pt-3">
                     <SubscriptionItem
+                        image={process.env.PUBLIC_URL + "/images/Produto.png"}
                         name="Product Name"
                         type="Addon"
                         status="paused"
                     />
                     <SubscriptionItem
+
                         name="Product Name"
                         type="Software"
                         nextBillDate="2023-03-12"
