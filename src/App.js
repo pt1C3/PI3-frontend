@@ -17,6 +17,7 @@ import Support from './views/support';
 import Search from './views/search';
 import ProfileDropdown from './components/profile-dropdown';
 import Plans from './views/owner/plans';
+import AuthService from './views/auth.service'
 import AdminDashboard from './views/admin/adminDashboard';
 import AdminBusiness from './views/admin/business';
 import AdminVersions from './views/admin/adminversions';
