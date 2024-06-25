@@ -117,6 +117,7 @@ function App() {
             <Route path="/search/:searchvalue" element={<Search />} />
             <Route path="/owner/managers" element={<Managers />} />
             <Route path="/owner/plans" element={<Plans />} />
+            <Route path="/admin/adminversions" element={<Adminversions />} />
           </>
         )}
       </Routes>
