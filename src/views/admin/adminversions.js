@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-
+import './adminversions.css';
 export default function adminversions() {
   return (
     <div className="container d-flex flex-column align-items-center justify-content-center" style={{ height: '100vh' }}>
