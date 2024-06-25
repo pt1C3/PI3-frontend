@@ -6,6 +6,7 @@ import './adminversions.css';
 
 export default function adminversions() {
     return (
+        <div className="wrapper bg-white">
         <div className="container d-flex flex-column align-items-center justify-content-center" style={{ height: '100vh' }}>
             <Helmet>
                 <title>Versions - LogicLeap</title>
@@ -42,6 +43,7 @@ export default function adminversions() {
                     <button type="submit" className="btn btn-primary mt-3 w-100">Save</button>
                 </form>
             </div>
+        </div>
         </div>
     );
 };
