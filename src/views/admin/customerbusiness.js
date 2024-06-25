@@ -6,13 +6,6 @@ import 'i18n-iso-countries/langs/pt.json';
 
 export default function Costumers() {
   const [formData, setFormData] = useState({
-    firstname: "",
-    lastname: "",
-    email: "",
-    password: "",
-    country: "",
-    phone_number: "",
-    image: null,
     business: {
       name: "",
       website: ""
