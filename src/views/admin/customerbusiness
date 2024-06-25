@@ -54,10 +54,6 @@ export default function Costumers() {
                       <input type="email" className="form-control" id="email" />
                     </div>
                     <div className="col-sm-6">
-                      <label htmlFor="phoneNumber" className="form-label">Phone number</label>
-                      <input type="text" className="form-control" id="phoneNumber" placeholder="+351 999999999" />
-                    </div>
-                    <div className="col-sm-6">
                       <label htmlFor="id" className="form-label">ID</label>
                       <input type="text" className="form-control" id="id" />
                     </div>
