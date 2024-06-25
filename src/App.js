@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Route, Link, Routes, useNavigate, useLocation } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -19,29 +19,25 @@ import ProfileDropdown from './components/profile-dropdown';
 import Plans from './views/owner/plans';
 import AdminDashboard from './views/admin/adminDashboard';
 import AdminBusiness from './views/admin/business';
-import AuthService from "./views/auth.service";
+import AdminVersions from './views/admin/adminversions';
+import AdminCostumers from './views/admin/costumers';
+
 
 function App() {
   var navigate = useNavigate();
   const location = useLocation();
   const [search, setSearch] = useState('');
   const [isAdmin, setIsAdmin] = useState(false);
-  const [currentUser, setCurrentUser] = useState();
+  const [currentUser, setCurrentUser] = useState("");
 
   useEffect(() => {
-    setCurrentUser(AuthService.getCurrentUser());
-  }, [])
+    const user = AuthService.getCurrentUser();
+    if (user) {
+      setCurrentUser({ currentUser: user });
+    }
+  }, []);
 
-  const handleLogin = (userData) => {
-    setCurrentUser(userData);
-    navigate('/');
-  };
-
-  const handleLogout = () => {
-    AuthService.logout();
-    setCurrentUser(null); // Clear current user in state
-  };
-
+ 
 
   const searchSubmit = (event) => {
     event.preventDefault();
@@ -136,6 +132,8 @@ function App() {
           <>
             <Route path="/" element={<AdminDashboard />} />
             <Route path="/business" element={<AdminBusiness />} />
+            <Route path="/adminversions" element={<AdminVersions />} />
+            <Route path="/costumers" element={<AdminCostumers />} />
             {/*<Route path="/admin/users" element={<AdminUsers />} />
               <Route path="/admin/settings" element={<AdminSettings />} /> */}
           </>

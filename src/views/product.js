@@ -16,6 +16,7 @@ export default function Product() {
         axios.get(baseURL + '/product/' + id)
             .then(res => {
                 setData(res.data);
+                console.log(res.data);
             })
             .catch(error => {
                 console.log('Error fetching data:', error);

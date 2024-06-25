@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faCog, faSignOutAlt, faLifeRing } from '@fortawesome/free-solid-svg-icons';
 import AuthService from "../views/auth.service";
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function ProfileDropdown({ image, name, onLogout }) {
   const handleLogout = () => {
