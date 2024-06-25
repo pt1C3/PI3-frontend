@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Route, Link, Routes, useNavigate, useLocation } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -21,25 +21,28 @@ import AdminDashboard from './views/admin/adminDashboard';
 import AdminBusiness from './views/admin/business';
 import AdminVersions from './views/admin/adminversions';
 import AdminCostumers from './views/admin/costumers';
-import AdminCostumerbusiness from './views/admin/costumerbusiness';
-
-
+import AdminCostumerBusiness from './views/admin/costumerbusiness';
 
 function App() {
   var navigate = useNavigate();
   const location = useLocation();
   const [search, setSearch] = useState('');
   const [isAdmin, setIsAdmin] = useState(false);
-  const [currentUser, setCurrentUser] = useState("");
+  const [currentUser, setCurrentUser] = useState();
 
   useEffect(() => {
-    const user = AuthService.getCurrentUser();
-    if (user) {
-      setCurrentUser({ currentUser: user });
-    }
-  }, []);
+    setCurrentUser(AuthService.getCurrentUser());
+  }, [])
 
- 
+  const handleLogin = (userData) => {
+    setCurrentUser(userData);
+    navigate('/');
+  };
+
+  const handleLogout = () => {
+    AuthService.logout();
+    setCurrentUser(null); // Clear current user in state
+  };
 
   const searchSubmit = (event) => {
     event.preventDefault();
@@ -136,7 +139,7 @@ function App() {
             <Route path="/business" element={<AdminBusiness />} />
             <Route path="/adminversions" element={<AdminVersions />} />
             <Route path="/costumers" element={<AdminCostumers />} />
-            <Route path="/costumerbusiness" element={<AdminCostumerbusiness />} />
+            <Route path="/costumers/business" element={<AdminCostumerBusiness />} />
 
             {/*<Route path="/admin/users" element={<AdminUsers />} />
               <Route path="/admin/settings" element={<AdminSettings />} /> */}
