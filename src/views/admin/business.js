@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+import './business.css';
 
-export default function SignUp() {
+export default function Business() {
   return (
     <div className="wrapper d-flex flex-column align-items-center justify-content-center" style={{ minHeight: '100vh' }}>
-            <Helmet>
+      <Helmet>
         <title>Sign up - LogicLeap</title>
       </Helmet>
       <div className="container mt-5">
@@ -13,23 +14,28 @@ export default function SignUp() {
           <div className="col-md-8">
             <div className="card">
               <div className="card-body">
-                <h3 className="card-title text-left"><strong>Sign up</strong></h3>
-                <p className="text-left">Already have an account? <a className="linknormal" href="#">Login</a></p>
+                <h3 className="card-title text-left"><strong>Nome da empresa</strong></h3>
+                <p className="text-left">Plano</p>
                 <form>
+                  <div className="col-sm-12 mb-3">
+                    <label htmlFor="businessWebsite" className="form-label">
+                      Website
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="businessWebsite"
+                      placeholder="empresa.pt"
+                    />
+                  </div>
                   <div className="row g-3">
                     <div className="col-sm-6">
                       <label htmlFor="firstName" className="form-label">
-                        First Name
+                        Owner
                       </label>
-                      <input type="text" className="form-control" id="firstName" placeholder="António" />
+                      <input type="text" className="form-control" id="firstName" placeholder="António Mendes" />
                     </div>
                     <div className="col-sm-6">
-                      <label htmlFor="lastName" className="form-label">
-                        Last Name
-                      </label>
-                      <input type="text" className="form-control" id="lastName" placeholder="Mendes" />
-                    </div>
-                    <div className="col-sm-12">
                       <label htmlFor="email" className="form-label">
                         Email
                       </label>
@@ -38,26 +44,6 @@ export default function SignUp() {
                         className="form-control"
                         id="email"
                         placeholder="antoniomendes@empresa.pt"
-                      />
-                    </div>
-                    <div className="col-sm-12">
-                      <label htmlFor="password" className="form-label">
-                        Password
-                      </label>
-                      <input
-                        type="password"
-                        className="form-control"
-                        id="password"
-                      />
-                    </div>
-                    <div className="col-sm-12">
-                      <label htmlFor="confirmPassword" className="form-label">
-                        Confirm Password
-                      </label>
-                      <input
-                        type="password"
-                        className="form-control"
-                        id="confirmPassword"
                       />
                     </div>
                     <div className="col-sm-6">
@@ -79,49 +65,18 @@ export default function SignUp() {
                         placeholder="+351 999999999"
                       />
                     </div>
-                    <div className="form-group">
-                      <div className="form-check form-check-inline" style={{ display: 'inline-block', alignItems: 'center' }}>
-                        <input className="form-check-input" type="radio" name="role" id="business" value="business" defaultChecked />
-                        <label className="form-check-label" htmlFor="business" style={{ marginTop: '9px', marginLeft: '9px' }}>Business</label>
-                      </div>
-                      <div className="form-check form-check-inline">
-                        <input className="form-check-input" type="radio" name="role" id="manager" value="manager" />
-                        <label className="form-check-label" htmlFor="manager" style={{ marginTop: '9px', marginLeft: '9px' }}>Manager</label>
-                      </div>
-                    </div>
-                    <div className="col-sm-12">
-                      <label htmlFor="businessName" className="form-label">
-                        Business' name
-                      </label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="businessName"
-                        placeholder="Inteligência Lda."
-                      />
-                    </div>
-                    <div className="col-sm-12 mb-5">
-                      <label htmlFor="businessWebsite" className="form-label">
-                        Business' website
-                      </label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="businessWebsite"
-                        placeholder="inteligencialda.pt"
-                      />
-                    </div>
                   </div>
-                  <button type="submit" className="btn-primary w-100 mt-1">
-                    Sign up
-                  </button>
                 </form>
               </div>
+            </div>
+            <div className="d-flex justify-content-center mt-4">
+              <button type="submit" className="btn btn-primary w-50">
+                Save
+              </button>
             </div>
           </div>
         </div>
       </div>
-    </div >
+    </div>
   );
-};
-
+}
