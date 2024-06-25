@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Route, Link, Routes, useNavigate } from "react-router-dom";
+import { Route, Link, Routes, useNavigate, useLocation } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
@@ -22,13 +22,25 @@ import AdminBusiness from './views/admin/business';
 
 
 function App() {
-  const [search, setSearch] = useState('');
   var navigate = useNavigate();
+  const location = useLocation();
+  const [search, setSearch] = useState('');
   const [isAdmin, setIsAdmin] = useState(false);
 
-  var searchSubmit = (event) => {
+  const searchSubmit = (event) => {
     event.preventDefault();
-    navigate(`/search/${search}`);
+
+    // Construct the new search path
+    const newPath = `/search/${search}`;
+
+    // Check if already on the search page
+    if (location.pathname === newPath) {
+      // Force update by setting the same path with a different key
+      navigate(newPath, { replace: true });
+    } else {
+      // Navigate to the new search path
+      navigate(newPath);
+    }
   };
 
   return (

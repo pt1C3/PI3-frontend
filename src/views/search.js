@@ -24,7 +24,7 @@ export default function Search() {
                 console.log('Error fetching data:', error);
             });
 
-    }, []);
+    }, [searchvalue]);
 
 
 
