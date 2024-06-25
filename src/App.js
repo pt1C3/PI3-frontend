@@ -20,6 +20,7 @@ import Plans from './views/owner/plans';
 import AdminDashboard from './views/admin/adminDashboard';
 import AdminBusiness from './views/admin/business';
 import AdminVersions from './views/admin/adminversions';
+import AdminCostumers from './views/admin/costumers';
 
 
 function App() {
@@ -116,6 +117,7 @@ function App() {
             <Route path="/" element={<AdminDashboard />} />
             <Route path="/business" element={<AdminBusiness />} />
             <Route path="/adminversions" element={<AdminVersions />} />
+            <Route path="/costumers" element={<AdminCostumers />} />
             {/*<Route path="/admin/users" element={<AdminUsers />} />
               <Route path="/admin/settings" element={<AdminSettings />} /> */}
           </>
