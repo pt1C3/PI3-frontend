@@ -18,7 +18,8 @@ import Search from './views/search';
 import ProfileDropdown from './components/profile-dropdown';
 import Plans from './views/owner/plans';
 import AdminHub from './views/admin/adminHub';
-import Adminversions from './views/admin/adminversions';
+import Adminversions from './admin/adminversions';
+import Bussiness from './admin/bussiness';
 
 
 function App() {
@@ -117,6 +118,7 @@ function App() {
             <Route path="/search/:searchvalue" element={<Search />} />
             <Route path="/owner/managers" element={<Managers />} />
             <Route path="/owner/plans" element={<Plans />} />
+            <Route path="/admin/bussiness" element={<Bussiness />} />
           </>
         )}
       </Routes>
