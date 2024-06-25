@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Route, Link, Routes, useNavigate, useLocation } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -20,12 +21,27 @@ import Plans from './views/owner/plans';
 import AdminDashboard from './views/admin/adminDashboard';
 import AdminBusiness from './views/admin/business';
 
+import AuthService from "./views/auth.service";
 
 function App() {
   var navigate = useNavigate();
   const location = useLocation();
   const [search, setSearch] = useState('');
+<<<<<<< Updated upstream
   const [isAdmin, setIsAdmin] = useState(true);
+=======
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [currentUser, setCurrentUser] = useState("");
+
+  useEffect(() => {
+    const user = AuthService.getCurrentUser();
+    if (user) {
+      setCurrentUser({ currentUser: user });
+    }
+  }, []);
+
+ 
+>>>>>>> Stashed changes
 
   const searchSubmit = (event) => {
     event.preventDefault();

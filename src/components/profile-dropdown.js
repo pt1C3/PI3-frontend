@@ -2,9 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faCog, faSignOutAlt, faLifeRing } from '@fortawesome/free-solid-svg-icons';
+import AuthService from "../views/auth.service";
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function ProfileDropdown() {
+  const logout = () => {
+    AuthService.logout();
+  }
   return (
     <div className="dropdown">
       <button className="btn btn-link p-0 border-0 custom-dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
@@ -22,7 +27,8 @@ function ProfileDropdown() {
           <FontAwesomeIcon icon={faLifeRing} className="me-2" /> Support
         </li>
         <li className="dropdown-item">
-          <FontAwesomeIcon icon={faSignOutAlt} className="me-2" /> Log out
+          <button className='btn' onClick={logout}><FontAwesomeIcon icon={faSignOutAlt} className="me-2" /> Log out</button>
+
         </li>
       </ul>
     </div>
