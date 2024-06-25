@@ -18,6 +18,8 @@ import Search from './views/search';
 import ProfileDropdown from './components/profile-dropdown';
 import Plans from './views/owner/plans';
 import AdminHub from './views/admin/adminHub';
+import Adminversions from './views/admin/adminversions';
+
 
 function App() {
   const [search, setSearch] = useState('');
