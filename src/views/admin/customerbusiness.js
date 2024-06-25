@@ -49,26 +49,6 @@ export default function Costumers() {
                 <form>
                   <div className="row g-3">
                     <div className="col-sm-6">
-                      <label htmlFor="email" className="form-label">Email</label>
-                      <input type="email" className="form-control" id="email" />
-                    </div>
-                    <div className="col-sm-6">
-                      <label htmlFor="phoneNumber" className="form-label">Phone number</label>
-                      <input type="text" className="form-control" id="phoneNumber" placeholder="+351 999999999" />
-                    </div>
-                    <div className="col-sm-6">
-                      <label htmlFor="id" className="form-label">ID</label>
-                      <input type="text" className="form-control" id="id" />
-                    </div>
-                    <div className="col-sm-6">
-                      <label htmlFor="country" className="form-label">Country</label>
-                      <select className="form-select form-control" name="country">
-                        {Object.entries(countryList).map(([code, name]) => (
-                          <option key={code} value={code}>{name}</option>
-                        ))}
-                      </select>
-                    </div>
-                    <div className="col-sm-6">
                       <label htmlFor="businessName" className="form-label">Empresa</label>
                       <input type="text" className="form-control" id="businessName" placeholder="Nome da Empresa" />
                     </div>
