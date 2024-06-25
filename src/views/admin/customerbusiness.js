@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import './costumerbusiness.css';
 import { Helmet } from 'react-helmet';
 import countries from 'i18n-iso-countries';
 import 'i18n-iso-countries/langs/pt.json';
