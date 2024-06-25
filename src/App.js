@@ -22,7 +22,7 @@ import AdminDashboard from './views/admin/adminDashboard';
 import AdminBusiness from './views/admin/business';
 import AdminVersions from './views/admin/adminversions';
 import AdminCostumers from './views/admin/costumers';
-import AdminCostumerBusiness from './views/admin/costumerbusiness';
+import AdminCostumerBusiness from './views/admin/customerbusiness';
 
 function App() {
   var navigate = useNavigate();
