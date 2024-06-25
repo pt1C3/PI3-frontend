@@ -1,9 +1,32 @@
 import CardBigImage from "../components/card-big-img"
 import CardIcon from "../components/card-icon"
 import { Helmet } from 'react-helmet';
+import axios from 'axios';
+import { useEffect, useState } from "react";
+import {Link} from 'react-router-dom';
 import './home.css';
 
 export default function Home() {
+    const baseURL = 'http://localhost:3000';
+    const [data, setData] = useState();
+    useEffect(() => {
+        axios.get(baseURL + '/product')
+            .then(res => {
+                setData(res.data);
+                console.log(res.data);
+            })
+            .catch(error => {
+                console.log('Error fetching data:', error);
+            });
+
+    }, []);
+
+
+
+    if (!data) {
+        return <div className="wrapper">Loading...</div>;
+
+    }
     return (
         <div className="wrapper bg-white">
             <Helmet>
@@ -14,27 +37,32 @@ export default function Home() {
                 <div className="carousel-content">
                     <div className="w-50">
                         <p class="carousel-title display-4 text-medium text-white mb-3 lh-1">Enter the Creative Vortex</p>
-                        <button className="btn btn-primary fs-5">Buy now</button>
+                        <Link className="btn btn-primary fs-5" to="product/1">Buy now</Link>
                     </div>
-                    <img src={process.env.PUBLIC_URL + "/images/Produto.png"} className="landing-product-icon" />
+                    <img src={data[0].icon} className="landing-product-icon rounded-2" />
 
                 </div>
             </section>
             <section className="mb-5 mx-10vw">
                 <h1 class="fs-4">Popular</h1>
                 <div className="row gx-5">
-                    <CardBigImage title="CreatiVortex" category="Design" image="/Produto.png" price="€19.99/mo." toLink="/product/1"/>
-                    <CardBigImage title="CreatiVortex" category="Design" image="/Produto.png" price="€19.99/mo." />
-                    <CardBigImage title="CreatiVortex" category="Design" image="/Produto.png" price="€19.99/mo." />
+                    {data.slice(0, 3).map((item, index) => (
+                    <CardBigImage title={item.name} category={item.category.designation} image={item.icon} price={item.prices[0].price} toLink={"/product/" + item.productid} discount={item.prices[0].discount_percentage ? item.prices[0].discount_percentage : null}
+                    />
+                    ))}
 
                 </div>
             </section>
             <section className="mb-5 mx-10vw">
                 <h1 class="fs-4">Design Tools</h1>
                 <div className="row gx-5">
-                    <CardIcon title="CreatiVortex" category="Design" image="/Produto.png" price="€19.99/mo." square="true" />
-                    <CardIcon title="CreatiVortex" category="Design" image="/Produto.png" price="€19.99/mo." square="true" />
-                    <CardIcon title="CreatiVortex" category="Design" image="/Produto.png" price="€19.99/mo." description="Enjoy limitless entertainment with FunStream, the streaming platform that offers a vast library of movies, series, and music to suit all tastes. Whether you're in the mood for the latest blockbuster, a classic film, or a binge-worthy series, FunStream has it all. Plus, with a diverse range of music from various genres, you'll always find something to suit your mood." square="true" />
+                {data
+                        .filter(item => item.category.designation === 'Design')
+                        .slice(0, 3).map((item, index) => (
+                            <CardIcon title={item.name} category={item.category.designation} image={item.icon} price={item.prices[0].price} description={item.description} discount={item.prices[0].discount_percentage ? item.prices[0].discount_percentage : null} square="true" />
+                        ))}
+                    
+
 
                 </div>
             </section>

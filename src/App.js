@@ -22,7 +22,7 @@ import AdminHub from './views/admin/adminHub';
 function App() {
   const [search, setSearch] = useState('');
   var navigate = useNavigate();
-  const [isAdmin, setIsAdmin] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   var searchSubmit = (event) => {
     event.preventDefault();
@@ -32,36 +32,6 @@ function App() {
   return (
     <div className="App">
       {isAdmin ? (
-        <>
-          <nav className="navbar bg-white px-10vw regular-border">
-            <Link to="/" className="navbar-brand">
-              <img src={process.env.PUBLIC_URL + "/images/logicleap.png"} alt="Logo" height="40" />
-            </Link>
-            <span className="d-flex align-items-center">
-              <form className="inline-form" onSubmit={searchSubmit}>
-                <div className="input-group rounded-2">
-                  <input
-                    type="text"
-                    className="form-control bg-transparent border-0"
-                    placeholder="Search"
-                    name="search"
-                    value={search}
-                    onChange={(event) => setSearch(event.target.value)}
-                  />
-                  <div className="input-group-btn">
-                    <button className="btn btn-default" type="submit">
-                      <FontAwesomeIcon icon={faMagnifyingGlass} />
-                    </button>
-                  </div>
-                </div>
-              </form>
-              <button className="btn btn-default">
-                <FontAwesomeIcon icon={faBell} />
-              </button>
-              <ProfileDropdown />
-            </span>
-          </nav> </>
-      ) : (
         <>
           <nav className="navbar navbar-admin bg-white px-10vw py-0 regular-border">
             <Link to="/" className="navbar-brand">
@@ -92,7 +62,38 @@ function App() {
             </span>
             <ProfileDropdown />
           </nav>
-        </>)}
+        </>
+      ) : (
+
+        <>
+          <nav className="navbar bg-white px-10vw regular-border">
+            <Link to="/" className="navbar-brand">
+              <img src={process.env.PUBLIC_URL + "/images/logicleap.png"} alt="Logo" height="40" />
+            </Link>
+            <span className="d-flex align-items-center">
+              <form className="inline-form" onSubmit={searchSubmit}>
+                <div className="input-group rounded-2">
+                  <input
+                    type="text"
+                    className="form-control bg-transparent border-0"
+                    placeholder="Search"
+                    name="search"
+                    value={search}
+                    onChange={(event) => setSearch(event.target.value)}
+                  />
+                  <div className="input-group-btn">
+                    <button className="btn btn-default" type="submit">
+                      <FontAwesomeIcon icon={faMagnifyingGlass} />
+                    </button>
+                  </div>
+                </div>
+              </form>
+              <button className="btn btn-default">
+                <FontAwesomeIcon icon={faBell} />
+              </button>
+              <ProfileDropdown />
+            </span>
+          </nav> </>)}
 
       <Routes>
         {isAdmin ? (
