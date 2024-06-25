@@ -1,6 +1,6 @@
 
 
-import './adminHub.css'
+import './adminDashboard.css'
 export default function AdminHub() {
     return (
         <div>

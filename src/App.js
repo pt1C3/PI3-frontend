@@ -17,8 +17,8 @@ import Support from './views/support';
 import Search from './views/search';
 import ProfileDropdown from './components/profile-dropdown';
 import Plans from './views/owner/plans';
-import AdminHub from './views/admin/adminHub';
-import Bussiness from './admin/bussiness';
+import AdminDashboard from './views/admin/adminDashboard';
+import AdminBusiness from './views/admin/business';
 
 
 function App() {
@@ -100,7 +100,8 @@ function App() {
       <Routes>
         {isAdmin ? (
           <>
-            <Route path="/" element={<AdminHub />} />
+            <Route path="/" element={<AdminDashboard />} />
+            <Route path="/business" element={<AdminBusiness />} />
             {/*<Route path="/admin/users" element={<AdminUsers />} />
               <Route path="/admin/settings" element={<AdminSettings />} /> */}
           </>

@@ -1,7 +1,8 @@
 import './search.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+import axios from 'axios';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSortDown, faSortUp } from "@fortawesome/free-solid-svg-icons";
 import ListItem from "../components/list-item"
@@ -9,7 +10,28 @@ import ListItem from "../components/list-item"
 
 export default function Search() {
     const { searchvalue } = useParams();
+    const baseURL = 'http://localhost:3000';
+    const [data, setData] = useState();
     const [searchFilter, setSearchFilter] = useState('pop-');
+
+    useEffect(() => {
+        axios.get(baseURL + '/product/search/' + searchvalue)
+            .then(res => {
+                setData(res.data);
+                console.log(res.data);
+            })
+            .catch(error => {
+                console.log('Error fetching data:', error);
+            });
+
+    }, []);
+
+
+
+    if (!data) {
+        return <div className="wrapper">Loading...</div>;
+
+    }
 
     const changeFilter = (isPop) => {
         switch (searchFilter) {
@@ -45,10 +67,11 @@ export default function Search() {
                 </button>
             </section>
             <section className='row mx-10vw mt-3 g-3'>
-            <ListItem title="CreatiVortex" category="Design" image="/Produto.png" toLink="/produtos/1"/>
-            <ListItem title="CreatiVortex" category="Design" image="/Produto.png" toLink="/produtos/1"/>
-            <ListItem title="CreatiVortex" category="Design" image="/Produto.png" toLink="/produtos/1"/>
-            <ListItem title="CreatiVortex" category="Design" image="/Produto.png" toLink="/produtos/1"/>
+                {data.map((item, index) => (
+                    <ListItem title={item.name} category={item.category.designation} image={item.icon} toLink={"/product/" + item.productid} />
+
+                ))}
+
 
 
             </section>
