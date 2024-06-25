@@ -21,7 +21,7 @@ import AdminDashboard from './views/admin/adminDashboard';
 import AdminBusiness from './views/admin/business';
 import AdminVersions from './views/admin/adminversions';
 import AdminCostumers from './views/admin/costumers';
-import AdminCostumers from './views/admin/costumerbusiness';
+import AdminCostumerbusiness from './views/admin/costumerbusiness';
 
 
 

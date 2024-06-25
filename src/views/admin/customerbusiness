@@ -39,33 +39,6 @@ export default function Costumers() {
         <title>Sign up - LogicLeap</title>
       </Helmet>
       
-      {/* Primeiro Container */}
-      <div className="container my-5">
-        <div className="row justify-content-center">
-          <div className="col-md-8">
-            <div className="card">
-              <div className="card-body">
-                <h3 className='text-bold mb-0'>António Mendes</h3>
-                <p className="text-left text-secondary">Role</p>
-                <form>
-                  <div className="row g-3">
-                    <div className="col-sm-6">
-                      <label htmlFor="businessName" className="form-label">Empresa</label>
-                      <input type="text" className="form-control" id="businessName" placeholder="Nome da Empresa" />
-                    </div>
-                    <div className="col-sm-6">
-                      <label htmlFor="businessWebsite" className="form-label">Website</label>
-                      <input type="text" className="form-control" id="businessWebsite" placeholder="empresa.pt" />
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Segundo Container */}
       <div className="container my-1">
         <div className="row justify-content-center">
           <div className="col-md-8">
