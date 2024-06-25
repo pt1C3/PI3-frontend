@@ -142,12 +142,8 @@ td {
 
 }
 
-.form-check-input {
+.plans-wrapper .form-check-input {
     width: 2rem;
     height: 2rem;
 }
 
-.form-check-input:checked {
-    background-color: var(--black);
-    border-color: var(--black);
-}

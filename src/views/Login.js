@@ -11,7 +11,7 @@ export default function Login(){
       </Helmet>
       <div className="col-md-3 bg-white p-4 rounded-3 form-container">
         <h3 className='text-bold mb-0'>Login</h3>
-        <p className="text-secondary">New user? <Link to="/register">Sign up</Link></p>
+        <p className="text-secondary">New user? <Link className="linknormal" to="/signup">Sign up</Link></p>
         <form action="login.php" method="post">
           <div className="form-group">
             <label htmlFor="email">Email</label>

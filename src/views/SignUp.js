@@ -1,34 +1,65 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import './login.css';
 import { Helmet } from 'react-helmet';
+import countries from 'i18n-iso-countries';
+import 'i18n-iso-countries/langs/pt.json';
 
 export default function SignUp() {
+  const [formData, setFormData] = useState(
+    {
+      firstname: "",
+      lastname: "",
+      email: "",
+      password: "",
+      country: "",
+      phone_number: "",
+      image: null,
+      business: 
+      {
+        name: "",
+        website: ""
+      }
+    }
+  )
+  const [isOwner, setisOwner] = useState(false);
+  const [countryList, setCountryList] = useState({});
+
+  useEffect(() => {
+    // Register the Portuguese locale
+    countries.registerLocale(require('i18n-iso-countries/langs/pt.json'));
+
+    // Get the country names in Portuguese
+    const countryNames = countries.getNames('pt', { select: 'official' });
+
+    // Set the country names to state
+    setCountryList(countryNames);
+  }, []);
   return (
-    <div className="wrapper d-flex flex-column align-items-center justify-content-center" style={{ minHeight: '100vh' }}>
-            <Helmet>
+    <div className="wrapper d-flex flex-column align-items-center justify-content-center">
+      <Helmet>
         <title>Sign up - LogicLeap</title>
       </Helmet>
-      <div className="container mt-5">
+      <div className="container my-5">
         <div className="row justify-content-center">
           <div className="col-md-8">
             <div className="card">
               <div className="card-body">
-                <h3 className="card-title text-left"><strong>Sign up</strong></h3>
-                <p className="text-left">Already have an account? <a className="linknormal" href="#">Login</a></p>
+                <h3 className='text-bold mb-0'>Sign up</h3>
+                <p className="text-left text-secondary">Already have an account? <Link className="linknormal" to="/login">Login</Link></p>
                 <form>
                   <div className="row g-3">
                     <div className="col-sm-6">
                       <label htmlFor="firstName" className="form-label">
                         First Name
                       </label>
-                      <input type="text" className="form-control" id="firstName" placeholder="António" />
+                      <input type="text" className="form-control" id="firstName" />
                     </div>
                     <div className="col-sm-6">
                       <label htmlFor="lastName" className="form-label">
                         Last Name
                       </label>
-                      <input type="text" className="form-control" id="lastName" placeholder="Mendes" />
+                      <input type="text" className="form-control" id="lastName" />
                     </div>
                     <div className="col-sm-12">
                       <label htmlFor="email" className="form-label">
@@ -38,7 +69,6 @@ export default function SignUp() {
                         type="email"
                         className="form-control"
                         id="email"
-                        placeholder="antoniomendes@empresa.pt"
                       />
                     </div>
                     <div className="col-sm-12">
@@ -65,8 +95,12 @@ export default function SignUp() {
                       <label htmlFor="country" className="form-label">
                         Country
                       </label>
-                      <select className="form-select form-control" id="country">
-                        <option selected>Portugal</option>
+                      <select className="form-select form-control" name="country">
+                        {Object.entries(countryList).map(([code, name]) => (
+                          <option key={code} value={code}>
+                            {name}
+                          </option>
+                        ))}
                       </select>
                     </div>
                     <div className="col-sm-6">
@@ -80,40 +114,39 @@ export default function SignUp() {
                         placeholder="+351 999999999"
                       />
                     </div>
-                    <div className="form-group">
-                      <div className="form-check form-check-inline" style={{ display: 'inline-block', alignItems: 'center' }}>
-                        <input className="form-check-input" type="radio" name="role" id="business" value="business" defaultChecked />
-                        <label className="form-check-label" htmlFor="business" style={{ marginTop: '9px', marginLeft: '9px' }}>Business</label>
-                      </div>
-                      <div className="form-check form-check-inline">
-                        <input className="form-check-input" type="radio" name="role" id="manager" value="manager" />
-                        <label className="form-check-label" htmlFor="manager" style={{ marginTop: '9px', marginLeft: '9px' }}>Manager</label>
+                    <div className="d-flex align-items-center">
+                      <div className="d-flex align-items-center">
+                        <input className="form-check-input" type="checkbox" name="owner" value={isOwner} onChange={() => setisOwner(!isOwner)} />
+                        <label className="form-check-label ms-2" htmlFor="owner">Owner of a Business?</label>
                       </div>
                     </div>
-                    <div className="col-sm-12">
-                      <label htmlFor="businessName" className="form-label">
-                        Business' name
-                      </label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="businessName"
-                        placeholder="Inteligência Lda."
-                      />
-                    </div>
-                    <div className="col-sm-12 mb-5">
-                      <label htmlFor="businessWebsite" className="form-label">
-                        Business' website
-                      </label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="businessWebsite"
-                        placeholder="inteligencialda.pt"
-                      />
-                    </div>
+                    {isOwner ? <>
+                      <div className="col-sm-12">
+                        <label htmlFor="businessName" className="form-label">
+                          Business' name
+                        </label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="businessName"
+                          placeholder="Inteligência Lda."
+                        />
+                      </div>
+                      <div className="col-sm-12">
+                        <label htmlFor="businessWebsite" className="form-label">
+                          Business' website
+                        </label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="businessWebsite"
+                          placeholder="inteligencialda.pt"
+                        />
+                      </div>
+                    </> : null}
+
                   </div>
-                  <button type="submit" className="btn-primary w-100 mt-1">
+                  <button type="submit" className="btn-primary w-100 mt-3">
                     Sign up
                   </button>
                 </form>
