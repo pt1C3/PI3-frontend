@@ -147,7 +147,7 @@ function App() {
         ) : (
           <>
             <Route path="/" element={<Home />} />
-            <Route path="/payment" element={<Payment />} />
+            <Route path="/payment/:price/:productid" element={<Payment />} />
             <Route path="/product/:id" element={<Product />} />
             <Route path="/package/:id" element={<Package />} />
             <Route path="/login" element={<Login onLogin={handleLogin} />} />

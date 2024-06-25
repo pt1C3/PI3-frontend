@@ -1,13 +1,13 @@
 import Breadcrumbs from "../components/breadcrumbs";
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import "./product.css";
 import { Helmet } from 'react-helmet';
 
 export default function Product() {
     const baseURL = 'http://localhost:3000';
-
+    const navigate = useNavigate();
     let { id } = useParams();
     const [section, setSection] = useState('plans');
     const [selectedPlan, setPlan] = useState(1);
@@ -37,6 +37,12 @@ export default function Product() {
             );
         }
     }
+
+
+    const buyPlan = ()=>{
+        navigate('/payment/' + selectedPlan + '/' + data.productid)
+    }
+    
     if (!data) {
         return <div className="wrapper">Loading...</div>;
 
@@ -210,7 +216,7 @@ export default function Product() {
                 </div>
                 <div className="row justify-content-center mx-10vw mt-4">
                     <div className="col-lg-4">
-                        <button className="btn btn-primary w-100">Buy now</button>
+                        <button className="btn btn-primary w-100" onClick={buyPlan}>Buy now</button>
                     </div>
                 </div>
             </section >

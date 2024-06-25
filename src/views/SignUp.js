@@ -97,7 +97,7 @@ export default function SignUp() {
                       </label>
                       <select className="form-select form-control" name="country">
                         {Object.entries(countryList).map(([code, name]) => (
-                          <option key={code} value={code}>
+                          <option key={code} value={name}>
                             {name}
                           </option>
                         ))}
