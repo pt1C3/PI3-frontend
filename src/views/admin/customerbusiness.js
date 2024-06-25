@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import countries from 'i18n-iso-countries';
 import 'i18n-iso-countries/langs/pt.json';
+import './costumerbusiness.css';
+
 
 export default function Costumers() {
   const [formData, setFormData] = useState({
