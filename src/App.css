@@ -185,7 +185,7 @@ body {
 /*Forms*/
 .input-group {
     background-color: var(--gray-1);
-    border: .1rem solid var(--gray-2)
+    border: .1rem solid var(--gray-2);
 }
 
 .form-control {
@@ -193,7 +193,10 @@ body {
     border: .1rem solid var(--gray-2);
 }
 
-
+.form-check-input:checked {
+    background-color: var(--black);
+    border-color: var(--black);
+}
 .linknormal {
     font-family: 'Metropolis Bold', sans-serif;
     color: var(--black);
