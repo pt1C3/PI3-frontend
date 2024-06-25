@@ -1,66 +1,71 @@
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import AuthService from '../views/auth.service';
 
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from 'react-router-dom';
-import './login.css';
-import { Helmet } from 'react-helmet';
-import AuthService from "./auth.service";
-
-const required = (value) => {
-  if (!value) {
-    return (
-      <div className="alert alert-danger" role="alert">
-        Este campo é de preenchimento obrigatório!
-      </div>
-    );
-  }
-};
-export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+export default function Login({ onLogin }) {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState("");
-  const navigate = useNavigate();
+  const [message, setMessage] = useState('');
 
-  async function HandleLogin(event) {
+  const handleLogin = (event) => {
     event.preventDefault();
-    setMessage("");
+    setMessage('');
     setLoading(true);
+
     AuthService.login(email, password)
       .then((res) => {
-        if (res === "" || res === false) {
-          setMessage("Autenticação falhou.");
-          setLoading(false);
+        if (res && res.token) {
+          onLogin(res.data); // Pass user data to App component
+        } else {
+          setMessage('Authentication failed.');
         }
-        else {
-          navigate("/");
-        }
+        setLoading(false);
       })
       .catch((error) => {
-        setMessage("Autenticação falhou.");
+        setMessage('Authentication failed.');
         setLoading(false);
       });
-  }
+  };
+
   return (
     <div className="wrapper d-flex flex-column align-items-center justify-content-center" style={{ height: '100vh' }}>
-      <Helmet>
-        <title>Login - LogicLeap</title>
-      </Helmet>
       <div className="col-md-3 bg-white p-4 rounded-3 form-container">
-        <h3 className='text-bold mb-0'>Login</h3>
-        <p className="text-secondary">New user? <Link className="linknormal" to="/signup">Sign up</Link></p>
-        <form onSubmit={HandleLogin}>
+        <h3 className="text-bold mb-0">Login</h3>
+        <p className="text-secondary">
+          New user? <Link className="linknormal" to="/signup">Sign up</Link>
+        </p>
+        <form onSubmit={handleLogin}>
           <div className="form-group">
             <label htmlFor="email">Email</label>
-            <input type="email" className="form-control" id="email" name="email" required value={email}
-              onChange={(value) => setEmail(value.target.value)} />
+            <input
+              type="email"
+              className="form-control"
+              id="email"
+              name="email"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </div>
           <div className="form-group mt-3">
             <label htmlFor="password">Password</label>
-            <input type="password" className="form-control" id="password" name="password" required value={password}
-              onChange={(value) => setPassword(value.target.value)} />
-            <Link to="/reset" className="fs-6">Forgot your password?</Link>
+            <input
+              type="password"
+              className="form-control"
+              id="password"
+              name="password"
+              required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <Link to="/reset" className="fs-6">
+              Forgot your password?
+            </Link>
           </div>
-          <button type="submit" className="btn btn-primary mt-3 w-100">Log in</button>
+          <button type="submit" className="btn btn-primary mt-3 w-100">
+            {loading ? 'Logging in...' : 'Log in'}
+          </button>
           {message && (
             <div className="form-group">
               <div className="alert alert-danger" role="alert">
@@ -70,8 +75,6 @@ export default function Login() {
           )}
         </form>
       </div>
-
     </div>
   );
-};
-
+}

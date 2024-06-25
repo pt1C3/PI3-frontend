@@ -26,16 +26,22 @@ function App() {
   const location = useLocation();
   const [search, setSearch] = useState('');
   const [isAdmin, setIsAdmin] = useState(false);
-  const [currentUser, setCurrentUser] = useState("");
+  const [currentUser, setCurrentUser] = useState();
 
   useEffect(() => {
-    const user = AuthService.getCurrentUser();
-    if (user) {
-      setCurrentUser({ currentUser: user });
-    }
-  }, []);
+    setCurrentUser(AuthService.getCurrentUser());
+  }, [])
 
- 
+  const handleLogin = (userData) => {
+    setCurrentUser(userData);
+    navigate('/');
+  };
+
+  const handleLogout = () => {
+    AuthService.logout();
+    setCurrentUser(null); // Clear current user in state
+  };
+
 
   const searchSubmit = (event) => {
     event.preventDefault();
@@ -84,7 +90,10 @@ function App() {
                 <p className="mb-0 text-medium">Support</p>
               </Link>
             </span>
-            <ProfileDropdown />
+            {
+              currentUser ? <ProfileDropdown name={`${currentUser.firstname} ${currentUser.lastname}`} image={currentUser.image} onLogout={handleLogout} /> : <ProfileDropdown />
+
+            }
           </nav>
         </>
       ) : (
@@ -115,7 +124,10 @@ function App() {
               <button className="btn btn-default">
                 <FontAwesomeIcon icon={faBell} />
               </button>
-              <ProfileDropdown />
+              {
+                currentUser ? <ProfileDropdown name={`${currentUser.firstname} ${currentUser.lastname}`} image={currentUser.image} onLogout={handleLogout} /> : <ProfileDropdown />
+
+              }
             </span>
           </nav> </>)}
 
@@ -129,11 +141,11 @@ function App() {
           </>
         ) : (
           <>
-            <Route exact path="/" element={<Home />} />
+            <Route path="/" element={<Home />} />
             <Route path="/payment" element={<Payment />} />
             <Route path="/product/:id" element={<Product />} />
             <Route path="/package/:id" element={<Package />} />
-            <Route path="/login" element={<Login />} />
+            <Route path="/login" element={<Login onLogin={handleLogin} />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/paymenthistory" element={<PaymentHistory />} />
             <Route path="/support" element={<Support />} />
