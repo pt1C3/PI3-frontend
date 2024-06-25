@@ -53,7 +53,7 @@ export default function Home() {
 
                 </div>
             </section>
-            <section className="mb-5 mx-10vw">
+            <section className="pb-5 mx-10vw">
                 <h1 class="fs-4">Design Tools</h1>
                 <div className="row gx-5">
                 {data
