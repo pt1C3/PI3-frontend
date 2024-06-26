@@ -1,167 +1,199 @@
-import Breadcrumbs from "../components/breadcrumbs";
-import ListItem from "../components/list-item";
-import { useState, useEffect } from 'react';
-import "./product.css";
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 import { Helmet } from 'react-helmet';
+import Breadcrumbs from '../components/breadcrumbs';
+import countries from 'i18n-iso-countries';
+import 'i18n-iso-countries/langs/pt.json';
+import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 
-export default function Product() {
-    const [section, setSection] = useState('features');
-    const [selectedPlan, setPlan] = useState(0);
+const Payment = () => {
+  const baseURL = 'http://localhost:3000';
+  const { price, productid } = useParams();
+  const [data, setData] = useState(null);
+  const [countryList, setCountryList] = useState({});
 
-    return (
-        <div className="wrapper bg-white">
-            <Helmet>
-                <title>Designer Pack - LogicLeap</title>
-            </Helmet>
-            <Breadcrumbs page1="Designer Pack"></Breadcrumbs>
-            <section className="mx-10vw mt-3">
-                <div className="row g-4 align-items-center">
-                    <div className="col-12 col-xl-6">
-                        <div className="d-flex mb-3">
-                            <img src={process.env.PUBLIC_URL + "/images/Produto.png"} alt="Designer Pack" height="150" className="me-4" />
-                            <div className=" d-flex justify-content-between flex-fill">
-                                <div>
-                                    <p className="text-medium fs-3 m-0">Designer Pack</p>
-                                    <p className="text-secondary m-0">Design</p></div>
-                                <div className="d-flex align-items-end flex-column mt-auto">
-                                    <p className="fs-6 m-0">Starting at <span className="fs-5 text-bold">€19.99/mo.</span></p>
-                                    <span>
-                                        <button className="btn btn-primary text-bold py-3 px-4">View Plans</button>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <p className="">Dive into a whirlwind of innovative possibilities as you craft stunning visuals with ease. Whether you're designing graphics, logos, or layouts, CreatiVortex provides intuitive tools and a dynamic workspace to bring your ideas to life. Say hello to endless inspiration with CreatiVortex by your side.</p>
-                    </div>
-                    <div className="col-12 col-xl-6 ">
-                        <div className="row justify-content-center">
-                            <div className="col-12 col-md-8 col-xl-12">
-                                <div className="bg-primary ratio ratio-16x9">
+  useEffect(() => {
+    countries.registerLocale(require('i18n-iso-countries/langs/pt.json'));
+    const countryNames = countries.getNames('pt', { select: 'official' });
+    setCountryList(countryNames);
 
-                                    a</div>
-                            </div>
-                        </div>
-                    </div>
+    axios.get(`${baseURL}/product/${productid}`)
+      .then(res => {
+        setData(res.data);
+      })
+      .catch(error => {
+        console.log('Error fetching data:', error);
+      });
+  }, [productid]);
+
+  const stripe = useStripe();
+  const elements = useElements();
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (!stripe || !elements) {
+      return;
+    }
+
+    const cardElement = elements.getElement(CardElement);
+
+    try {
+      const { error, paymentMethod } = await stripe.createPaymentMethod({
+        type: 'card',
+        card: cardElement,
+        billing_details: {
+          email: document.getElementById('email').value,
+          name: document.getElementById('cardholder').value,
+          address: {
+            country: document.getElementById('country').value,
+            postal_code: document.getElementById('postal-code').value,
+          },
+        },
+      });
+
+      if (error) {
+        console.error('Error:', error);
+      } else {
+        console.log('PaymentMethod:', paymentMethod);
+        // Handle successful payment
+        // You can send paymentMethod.id to your server to complete the payment
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
+  if (!data) {
+    return <div className="wrapper">Loading...</div>;
+  }
+
+  return (
+    <div className="wrapper bg-white">
+      <Helmet>
+        <title>Payment - LogicLeap</title>
+      </Helmet>
+      <Breadcrumbs page1="Designer Pack" page2={data.name} page3="Payment" link1="/" link2={`/product/${data.productid}`} />
+      <div className="mx-10vw">
+        <div className="row">
+          <div className="col-md-6 mt-4">
+            <div>
+              <div className="d-flex align-items-center mb-5">
+                <img src={data.icon} alt={data.name} height="70" />
+                <span className="ms-3"><h4>{data.name}</h4></span>
+              </div>
+              <div className="d-flex align-items-end justify-content-between mb-2">
+                <div>
+                  <p className="product-info">Up to {data.prices[price].number_of_licenses} users - Initial Payment<br />€{data.prices[price].price} a month</p>
                 </div>
-            </section>
-            <section className="mt-5">
-                <ul className="nav nav-underline justify-content-center">
-                    <li className="nav-item">
-                        <button className={`nav-link btn btn-link ${section === 'features' ? 'active' : ''}`} onClick={() => setSection('features')}>Features</button>
-                    </li>
-                    <li className="nav-item">
-                        <button className={`nav-link btn btn-link ${section === 'products' ? 'active' : ''}`} onClick={() => setSection('products')}>Products</button>
-                    </li>
-                    <li className="nav-item">
-                        <button className={`nav-link btn btn-link ${section === 'plans' ? 'active' : ''}`} onClick={() => setSection('plans')}>Plans</button>
-                    </li>
-                    <li className="nav-item">
-                        <button className={`nav-link btn btn-link ${section === 'requirements' ? 'active' : ''}`} onClick={() => setSection('requirements')}>Requirements</button>
-                    </li>
-                    <li className="nav-item">
-                        <button className={`nav-link btn btn-link ${section === 'faq' ? 'active' : ''}`} onClick={() => setSection('faq')}>FAQ</button>
-                    </li>
+                <p className="product-price">€{data.prices[price].price}</p>
+              </div>
+              <hr></hr>
+              <div className="payment-total d-flex justify-content-between">
+                <p>Total</p>
+                <p>€{data.prices[price].price}</p>
+              </div>
+            </div>
+          </div>
 
-                </ul>
+          <div className="col-md-6 mt-4">
+            <form onSubmit={handleSubmit}>
+              <div className="mb-3">
+                <label htmlFor="email" className="form-label">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  className="form-control"
+                  id="email"
+                  required
+                />
+              </div>
+              <div className="mb-3">
+                <label htmlFor="cardholder" className="form-label">
+                  Cardholder name
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="cardholder"
+                  required
+                />
+              </div>
+              <div className="mb-3">
+                <label htmlFor="cardnumber" className="form-label">
+                  Card number
+                </label>
+                <CardElement
+                  options={{
+                    style: {
+                      base: {
+                        fontSize: '16px',
+                        color: '#424770',
+                        '::placeholder': {
+                          color: '#aab7c4',
+                        },
+                      },
+                      invalid: {
+                        color: '#9e2146',
+                      },
+                    },
+                  }}
+                />
+              </div>
+              <div className="row g-3">
+                <div className="col-sm-6">
+                  <label htmlFor="expiry" className="form-label">
+                    Expiration date
+                  </label>
+                  <input type="text" className="form-control" id="expiry" required />
+                </div>
+                <div className="col-sm-6">
+                  <label htmlFor="cvc" className="form-label">
+                    CVC
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="cvc"
+                    required
+                  />
+                </div>
+                <div className="col-sm-6">
+                  <label htmlFor="country" className="form-label">
+                    Country
+                  </label>
+                  <select className="form-select form-control" id="country" required>
+                    {Object.entries(countryList).map(([code, name]) => (
+                      <option key={code} value={code}>
+                        {name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div className="col-sm-6">
+                  <label htmlFor="postal-code" className="form-label">
+                    Postal code
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="postal-code"
+                    required
+                  />
+                </div>
+              </div>
+              <span className="stripe-info mt-3 d-flex justify-content-center">Powered by <img src={`${process.env.PUBLIC_URL}/images/stripe.png`} height={25} alt="Stripe" /></span>
+              <button type="submit" className="btn-primary w-100 mt-1">
+                Finish payment
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
-
-            </section>
-            <section id="requirements" className="my-3" style={{ display: section === 'requirements' ? 'block' : 'none' }}>
-                <table class="table mx-10vw">
-                    <thead>
-                        <th></th>
-                        <th>Minimum</th>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Operating System</td>
-                            <td>Windows 10 64bits</td>
-                        </tr>
-                        <tr>
-                            <td>Processor</td>
-                            <td>Multicore Intel or AMD processor</td>
-                        </tr>
-                        <tr>
-                            <td>RAM</td>
-                            <td>8GB</td>
-                        </tr>
-                        <tr>
-                            <td>Graphics Card</td>
-                            <td><ul><li>1 GB of GPU memory</li><li>GPU with DirectX12</li></ul></td>
-                        </tr>
-                        <tr>
-                            <td>Hard disk space</td>
-                            <td>15 GB of available hard disk space</td>
-                        </tr>
-                        <tr>
-                            <td>Internet</td>
-                            <td>Internet conectivity is required to activate the software </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
-            <section id="products" className="my-3" style={{ display: section === 'products' ? 'block' : 'none' }}>
-                <div className="row mx-10vw pt-3">
-                    <ListItem title="CreatiVortex" category="Design" image="/Produto.png" />
-                </div>
-            </section>
-            <section id="faq" className="my-3" style={{ display: section === 'faq' ? 'block' : 'none' }}>
-                <div class="accordion mx-10vw" id="accordionExample">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header text-bold">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                Can I access CreatiVortex offline?
-                            </button>
-                        </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                Yes, you can access CreatiVortex offline. However, internet is required for the installation and to access certain features and receive updates.
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </section>
-            <section id="plans" className="my-3" style={{ display: section === 'plans' ? 'block' : 'none' }}>
-                <div className="plans-wrapper mx-10vw row g-4">
-                    <div className="col-lg-4">
-                        <button className={`plan rounded-3 py-3 px-5 ${selectedPlan === 0 ? 'active' : ''}`} onClick={() => setPlan(0)}>
-                            <div className="d-flex align-items-center flex-column">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" checked={selectedPlan === 0} onChange={() => setPlan(0)} />
-                                <h3 className="fs-2 mt-4">10 users</h3>
-                            </div>
-                            <p className="fs-4 text-bold">€359.99/yr.</p>
-                            <p>Auto renews annually</p>
-                        </button>
-                    </div>
-                    <div className="col-lg-4">
-                        <button className={`plan rounded-3 py-3 px-5 ${selectedPlan === 1 ? 'active' : ''}`} onClick={() => setPlan(1)}>
-                            <div className="d-flex align-items-center flex-column">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" checked={selectedPlan === 1} onChange={() => setPlan(1)} />
-                                <h3 className="fs-2 mt-4">100 users</h3>
-                            </div>
-                            <p className="fs-4 text-bold">€649.99/yr.</p>
-                            <p>Auto renews annually</p>
-                        </button>
-                    </div>
-                    <div className="col-lg-4">
-                        <button className={`plan rounded-3 py-3 px-5 ${selectedPlan === 2 ? 'active' : ''}`} onClick={() => setPlan(2)}>
-                            <div className="d-flex align-items-center flex-column">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" checked={selectedPlan === 2} onChange={() => setPlan(2)} />
-                                <h3 className="fs-2 mt-4">Custom</h3>
-                            </div>
-                            <p>Ask for a budget, the price depends on the quantity of users.</p>
-                            <p className="fs-4 text-bold">€-/yr.</p>
-                            <p>Auto renews annually</p>
-                        </button>
-                    </div>
-                </div>
-                <div className="row justify-content-center mx-10vw mt-4">
-                    <div className="col-lg-4">
-                        <button className="btn btn-primary w-100">Buy now</button>
-                    </div>
-                </div>
-            </section >
-        </div >
-    )
-}
+export default Payment;

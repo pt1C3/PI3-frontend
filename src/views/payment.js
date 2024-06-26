@@ -1,50 +1,222 @@
-import "./payment.css";
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import Breadcrumbs from "../components/breadcrumbs";
+import { Helmet } from 'react-helmet';
+import Breadcrumbs from '../components/breadcrumbs';
 import countries from 'i18n-iso-countries';
 import 'i18n-iso-countries/langs/pt.json';
-import { Helmet } from 'react-helmet';
-import { useEffect, useState } from 'react';
-import { useParams } from "react-router-dom";
+import { loadStripe } from '@stripe/stripe-js';
+import { CardElement, Elements, useElements, useStripe } from '@stripe/react-stripe-js';
 
-
-export default function Payment() {
-  const baseURL = 'http://localhost:3000';
-  var { price, productid } = useParams();
-  const [data, setData] = useState();
+const PaymentForm = ({ stripePromise, data, price }) => {
   const [countryList, setCountryList] = useState({});
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [showErrorModal, setShowErrorModal] = useState(false);
+  const stripe = useStripe();
+  const elements = useElements();
+
+  const baseURL = 'http://localhost:3000';
 
   useEffect(() => {
-    // Register the Portuguese locale
     countries.registerLocale(require('i18n-iso-countries/langs/pt.json'));
-
-    // Get the country names in Portuguese
     const countryNames = countries.getNames('pt', { select: 'official' });
-
-    // Set the country names to state
     setCountryList(countryNames);
+  }, []);
 
-    axios.get(baseURL + '/product/' + productid)
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (!stripe || !elements) {
+      console.error('Stripe.js has not loaded yet.');
+      return;
+    }
+
+    const cardElement = elements.getElement('card');
+
+    const paymentDetails = {
+      email: event.target.email.value,
+      name: event.target.cardholder.value,
+      address: {
+        country: event.target.country.value,
+      },
+    };
+
+    try {
+      // Make a POST request to backend to create Payment Intent
+      const response = await axios.post(baseURL + '/create-payment-intent', {
+        amount: data.prices[price].price * 100, // Stripe expects amount in cents
+        currency: 'eur', // Currency code (EUR in this case)
+      });
+
+      const { clientSecret } = response.data;
+
+      // Confirm the payment with the clientSecret
+      const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
+        payment_method: {
+          card: cardElement,
+          billing_details: paymentDetails,
+        },
+      });
+
+      if (error) {
+        console.error('[Error]', error);
+        setShowErrorModal(true); // Show error modal
+      } else {
+        //AQUI FALTA ADICIONAR O PAGAMENTO À DB
+        setShowSuccessModal(true); // Show success modal
+      }
+    } catch (error) {
+      console.error('Error creating Payment Intent:', error);
+      setShowErrorModal(true); // Show error modal
+    }
+  };
+
+  const handleCloseSuccessModal = () => setShowSuccessModal(false);
+  const handleCloseErrorModal = () => setShowErrorModal(false);
+
+  if (!data) {
+    return <div className="wrapper">Loading...</div>;
+  }
+
+  return (
+    <>
+      <form onSubmit={handleSubmit}>
+        <div className="mb-3">
+          <label htmlFor="email" className="form-label">
+            Email
+          </label>
+          <input
+            type="email"
+            className="form-control"
+            id="email"
+            name="email"
+            required
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="cardholder" className="form-label">
+            Cardholder name
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            id="cardholder"
+            name="cardholder"
+            required
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="cardnumber" className="form-label">
+            Card number
+          </label>
+          <CardElement
+            id="card"
+            options={{
+              style: {
+                base: {
+                  fontSize: '16px',
+                  color: '#424770',
+                  '::placeholder': {
+                    color: '#aab7c4',
+                  },
+                },
+                invalid: {
+                  color: '#9e2146',
+                },
+              },
+            }}
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="country" className="form-label">
+            Country
+          </label>
+          <select className="form-select form-control" id="country" name="country" required>
+            {Object.entries(countryList).map(([code, name]) => (
+              <option key={code} value={code}>
+                {name}
+              </option>
+            ))}
+          </select>
+        </div>
+        <span className="stripe-info mt-3 d-flex justify-content-center">
+          Powered by <img src={`${process.env.PUBLIC_URL}/images/stripe.png`} height={25} alt="Stripe" />
+        </span>
+        <button type="submit" className="btn-primary w-100 mt-1">
+          Finish payment
+        </button>
+      </form>
+
+      {/* Success Modal */}
+      {showSuccessModal && (
+        <div className="modal show" tabIndex="-1" role="dialog" style={{ display: 'block' }}>
+          <div className="modal-dialog modal-dialog-centered" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">Payment Successful!</h5>
+                <button type="button" className="btn-close" onClick={handleCloseSuccessModal}></button>
+              </div>
+              <div className="modal-body">Your payment has been successfully processed.</div>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-primary" onClick={handleCloseSuccessModal}>
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Error Modal */}
+      {showErrorModal && (
+        <div className="modal show" tabIndex="-1" role="dialog" style={{ display: 'block' }}>
+          <div className="modal-dialog modal-dialog-centered" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">Error Processing Payment</h5>
+                <button type="button" className="btn-close" onClick={handleCloseErrorModal}></button>
+              </div>
+              <div className="modal-body">There was an error processing your payment. Please try again.</div>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-danger" onClick={handleCloseErrorModal}>
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
+};
+
+const Payment = () => {
+  const baseURL = 'http://localhost:3000';
+  const { productid, price } = useParams();
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    axios.get(`${baseURL}/product/${productid}`)
       .then(res => {
         setData(res.data);
-        console.log(price);
       })
       .catch(error => {
         console.log('Error fetching data:', error);
       });
+  }, [productid]);
 
-  }, []);
+  const stripePromise = loadStripe('pk_test_51PVjYGAJPMUjqPpZSTVhiOBBLKrevztR8K9MBnm4tibPvb8BtM4vWiBYFmB0DjZQYB5o16QP1W4RwKzK8fDIQ7ZB00Im3xRwVk');
 
   if (!data) {
     return <div className="wrapper">Loading...</div>;
-
   }
+
   return (
     <div className="wrapper bg-white">
       <Helmet>
         <title>Payment - LogicLeap</title>
       </Helmet>
-      <Breadcrumbs page1="Designer Pack" page2={data.name} page3="Payment" link1="/" link2={"/product/" + data.productid}></Breadcrumbs>
+      <Breadcrumbs page1="Designer Pack" page2={data.name} page3="Payment" link1="/" link2={`/product/${data.productid}`} />
       <div className="mx-10vw">
         <div className="row">
           <div className="col-md-6 mt-4">
@@ -55,11 +227,13 @@ export default function Payment() {
               </div>
               <div className="d-flex align-items-end justify-content-between mb-2">
                 <div>
-                  <p className="product-info">Up to {data.prices[price].number_of_licenses} users - Initial Payment<br />€{data.prices[price].price} a month</p>
+                  <p className="product-info">
+                    Up to {data.prices[price].number_of_licenses} users - Initial Payment<br />€{data.prices[price].price} a month
+                  </p>
                 </div>
                 <p className="product-price">€{data.prices[price].price}</p>
               </div>
-              <hr></hr>
+              <hr />
               <div className="payment-total d-flex justify-content-between">
                 <p>Total</p>
                 <p>€{data.prices[price].price}</p>
@@ -68,85 +242,14 @@ export default function Payment() {
           </div>
 
           <div className="col-md-6 mt-4">
-            <form>
-              <div className="mb-3">
-                <label htmlFor="email" className="form-label">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  className="form-control"
-                  id="email"
-                />
-              </div>
-              <div className="mb-3">
-                <label htmlFor="cardholder" className="form-label">
-                  Cardholder name
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="cardholder"
-                />
-              </div>
-              <div className="mb-3">
-                <label htmlFor="cardnumber" className="form-label">
-                  Card number
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="cardnumber"
-                />
-              </div>
-              <div className="row g-3">
-                <div className="col-sm-6">
-                  <label htmlFor="expiry" className="form-label">
-                    Expiration date
-                  </label>
-                  <input type="date" className="form-control" id="expiry" />
-                </div>
-                <div className="col-sm-6">
-                  <label htmlFor="cvc" className="form-label">
-                    CVC
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="cvc"
-                  />
-                </div>
-                <div className="col-sm-6">
-                  <label htmlFor="country" className="form-label">
-                    Country
-                  </label>
-                  <select className="form-select form-control" id="country">
-                  {Object.entries(countryList).map(([code, name]) => (
-                          <option key={code} value={name}>
-                            {name}
-                          </option>
-                        ))}                  </select>
-                </div>
-                <div className="col-sm-6">
-                  <label htmlFor="postal-code" className="form-label">
-                    Postal code
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="postal-code"
-                  />
-                </div>
-              </div>
-              <span class="stripe-info mt-3 d-flex justify-content-center">Powered by <img src={process.env.PUBLIC_URL + '/images/stripe.png'} height={25} /></span>
-              <button type="submit" className="btn-primary w-100 mt-1">
-                Finish payment
-              </button>
-            </form>
-
+            <Elements stripe={stripePromise}>
+              <PaymentForm stripePromise={stripePromise} data={data} price={price} />
+            </Elements>
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default Payment;
