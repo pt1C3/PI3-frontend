@@ -24,6 +24,7 @@ import AdminVersions from './views/admin/adminversions';
 import AdminCostumers from './views/admin/costumers';
 import AdminCostumerBusiness from './views/admin/customerbusiness';
 import AdminCostumerEdit from './views/admin/customeredit';
+import AdminProducts from './views/admin/products';
 
 function App() {
   var navigate = useNavigate();
@@ -153,6 +154,7 @@ function App() {
             <Route path="/costumers" element={<AdminCostumers />} />
             <Route path="/costumers/business" element={<AdminCostumerBusiness />} />
             <Route path="/costumeredit" element={<AdminCostumerEdit />} />
+            <Route path="/Products" element={<AdminProducts />} />
 
 
           </>
