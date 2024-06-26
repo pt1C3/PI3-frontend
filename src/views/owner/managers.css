@@ -52,3 +52,7 @@
 .right>*{
 height: fit-content;
 }
+.add-manager-modal .user-list{
+    height: 60vh;
+    overflow-y: scroll;
+}
