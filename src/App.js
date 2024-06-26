@@ -27,6 +27,7 @@ import AdminCostumerEdit from './views/admin/customeredit';
 import AdminProducts from './views/admin/products';
 import AdminInbox from './views/admin/inbox';
 
+
 function App() {
   var navigate = useNavigate();
   const location = useLocation();
@@ -157,6 +158,8 @@ function App() {
             <Route path="/costumeredit" element={<AdminCostumerEdit />} />
             <Route path="/Products" element={<AdminProducts />} />
             <Route path="/inbox" element={<AdminInbox />} />
+
+
 
           </>
         ) : (
