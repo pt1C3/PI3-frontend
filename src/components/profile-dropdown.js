@@ -1,9 +1,8 @@
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faCog, faSignOutAlt, faLifeRing } from '@fortawesome/free-solid-svg-icons';
-import AuthService from "../views/auth.service";
 
-export default function ProfileDropdown({ image, name, onLogout }) {
+export default function ProfileDropdown({ image, name, onLogout, admin, owner }) {
   const handleLogout = () => {
     onLogout(); // Trigger parent component's logout handler
 };
@@ -19,15 +18,18 @@ export default function ProfileDropdown({ image, name, onLogout }) {
       </button>
       <div className="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
         {name && (
-          <span className="dropdown-item">{name}</span>
+          <span className="mx-3">{name}</span>
         )}
         <li><hr className="dropdown-divider" /></li>
-        <button className="dropdown-item">
-          <FontAwesomeIcon icon={faUser} className="me-2" /> Manage Account
-        </button>
-        <button className="dropdown-item">
+        <Link className="dropdown-item" to="/owner/managers">
+           Managers
+        </Link>
+        <Link className="dropdown-item" to="/owner/plans">
+           Plans
+        </Link>
+        <Link className="dropdown-item" to="/support">
           <FontAwesomeIcon icon={faLifeRing} className="me-2" /> Support
-        </button>
+        </Link>
         <button className="dropdown-item" onClick={handleLogout}>
           <FontAwesomeIcon icon={faSignOutAlt} className="me-2" /> Log out</button>
       </div>

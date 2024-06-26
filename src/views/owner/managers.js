@@ -6,12 +6,12 @@ import { faMagnifyingGlass, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 export default function Managers() {
     return (
-        <div className="wrapper bg-white">
+        <div className="wrapper">
             <Helmet>
                 <title>Managers - LogicLeap</title>
             </Helmet>
             <Breadcrumbs page1="Managers"></Breadcrumbs>
-            <div className="bg-gray1 pt-4">
+            <div className="pt-4">
                 <div className="manager-container row regular-border bg-white rounded-2 p-3 mx-10vw">
                     <div className="manager-col col-lg-6 col-xl-4 h-100">
                         <div className="manager-select regular-border bg-gray1 rounded-2">
