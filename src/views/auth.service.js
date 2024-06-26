@@ -9,6 +9,7 @@ class AuthService {
             .then(res => {
                 if (res.data.token) {
                     localStorage.setItem("user", JSON.stringify(res.data));
+
                 }
                 return res.data;
             }, reason => { throw new Error('Invalid User'); });

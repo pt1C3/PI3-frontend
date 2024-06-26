@@ -29,15 +29,31 @@ function App() {
   var navigate = useNavigate();
   const location = useLocation();
   const [search, setSearch] = useState('');
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [isOwner, setIsOwner] = useState(true);
+  const [isAdmin, setIsAdmin] = useState();
+  const [isOwner, setIsOwner] = useState();
 
   const [currentUser, setCurrentUser] = useState();
 
   useEffect(() => {
     setCurrentUser(AuthService.getCurrentUser());
-  }, [])
+    if (AuthService.getCurrentUser()) {
+      if (AuthService.getCurrentUser().utypeid === 4) { setIsAdmin(true); setIsOwner(false); }
+      if (AuthService.getCurrentUser().utypeid === 3) { setIsOwner(true); setIsAdmin(false); }
+      console.log(AuthService.getCurrentUser().utypeid);
+    }
 
+  }, [])
+  useEffect(() => {
+    if (currentUser) {
+      if (currentUser.utypeid === 4) { setIsAdmin(true); setIsOwner(false); }
+      if (currentUser.utypeid === 3) { setIsOwner(true); setIsAdmin(false); }
+      console.log(currentUser.utypeid)
+    }
+
+  }, [currentUser])
+  useEffect(() => {
+    console.log(isAdmin)
+  }, [isAdmin])
   const handleLogin = (userData) => {
     setCurrentUser(userData);
     navigate('/');
@@ -96,15 +112,13 @@ function App() {
               </Link>
             </span>
             {
-              currentUser ? <ProfileDropdown name={`${currentUser.firstname} ${currentUser.lastname}`} image={currentUser.image} onLogout={handleLogout} isAdmin={isAdmin} isOwner={isOwner}/> : <ProfileDropdown />
+              currentUser ? <ProfileDropdown name={`${currentUser.firstname} ${currentUser.lastname}`} image={currentUser.image} onLogout={handleLogout} isAdmin={isAdmin} isOwner={isOwner} /> : <ProfileDropdown />
 
             }
           </nav>
         </>
       ) : (
-
         <>
-
           <nav className="navbar bg-white px-10vw regular-border">
             <Link to="/" className="navbar-brand">
               <img src={process.env.PUBLIC_URL + "/images/logicleap.png"} alt="Logo" height="40" />
@@ -139,6 +153,8 @@ function App() {
           </nav> </>)}
 
       <Routes>
+        <Route path="/login" element={<Login onLogin={handleLogin} />} />
+        <Route path="/signup" element={<SignUp />} />
         {isAdmin ? (
           <>
             <Route path="/" element={<AdminDashboard />} />
@@ -156,8 +172,6 @@ function App() {
             <Route path="/payment/:price/:productid" element={<Payment />} />
             <Route path="/product/:id" element={<Product />} />
             <Route path="/package/:id" element={<Package />} />
-            <Route path="/login" element={<Login onLogin={handleLogin} />} />
-            <Route path="/signup" element={<SignUp />} />
             <Route path="/paymenthistory" element={<PaymentHistory />} />
             <Route path="/support" element={<Support />} />
             <Route path="/search/:searchvalue" element={<Search />} />
