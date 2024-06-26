@@ -1,10 +1,15 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './Modais.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Helmet } from 'react-helmet';
+import "./Modais.css";
 
-export default function App() {
+export default function Modais() {
   return (
-    <div className="container wrapper mt-4">
+    <>
+      <Helmet>
+        <title>Sign up - LogicLeap</title>
+      </Helmet>
+      <div className="wrapper d-flex flex-column align-items-center justify-content-center">
       <div className="row">
         <div className="col-md-4">
           <div className="card">
@@ -76,5 +81,6 @@ export default function App() {
         </div>
       </div>
     </div>
+    </>
   );
 }
