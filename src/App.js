@@ -26,7 +26,8 @@ import AdminCostumerBusiness from './views/admin/customerbusiness';
 import AdminCostumerEdit from './views/admin/customeredit';
 import AdminProducts from './views/admin/products';
 import AdminInbox from './views/admin/inbox';
-import AdminModais from './views/admin/Modais';
+import AdminProductVersions from './views/admin/productVersions';
+
 
 
 function App() {
@@ -159,10 +160,7 @@ function App() {
             <Route path="/costumeredit" element={<AdminCostumerEdit />} />
             <Route path="/Products" element={<AdminProducts />} />
             <Route path="/inbox" element={<AdminInbox />} />
-            <Route path="/Modais" element={<AdminModais />} />
-
-
-
+            <Route path="/productversions" element={<AdminProductVersions />} />
           </>
         ) : (
           <>
