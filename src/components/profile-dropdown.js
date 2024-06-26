@@ -1,12 +1,25 @@
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faCog, faSignOutAlt, faLifeRing } from '@fortawesome/free-solid-svg-icons';
+import './profile-dropdown.css';
 
-export default function ProfileDropdown({ image, name, onLogout, admin, owner }) {
+export default function ProfileDropdown({ onLogout }) {
   const handleLogout = () => {
     onLogout(); // Trigger parent component's logout handler
-};
-  if (!name || name=== "undefined undefined") {
+  };
+  var user;
+  if(localStorage.getItem('user')){
+     user= JSON.parse(localStorage.getItem('user')).data;
+  }
+  var isOwner;
+  var isAdmin;
+  if(user){
+    isAdmin= user.utypeid===4;
+    isOwner = user.utypeid===3;
+  }
+
+
+  if (!user) {
     return (
       <Link className='btn btn-secondary' to="/login" >Login</Link>
     )
@@ -14,19 +27,23 @@ export default function ProfileDropdown({ image, name, onLogout, admin, owner })
   return (
     <div className="dropdown">
       <button className="btn btn-link p-0 border-0 custom-dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-        <img src={image} height="25" alt="Profile" className="rounded-circle" />
+        <img src={user.image} height="25" alt="Profile" className="rounded-circle" />
       </button>
       <div className="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
-        {name && (
-          <span className="mx-3">{name}</span>
+        {user.firstname && (
+          <span className="mx-3">{user.firstname + " " + user.lastname}</span>
         )}
         <li><hr className="dropdown-divider" /></li>
-        <Link className="dropdown-item" to="/owner/managers">
-           Managers
-        </Link>
-        <Link className="dropdown-item" to="/owner/plans">
-           Plans
-        </Link>
+        {isOwner && (
+          <>
+            <Link className="dropdown-item" to="/owner/managers">
+              Managers
+            </Link>
+            <Link className="dropdown-item" to="/owner/plans">
+              Plans
+            </Link>
+          </>
+        )}
         <Link className="dropdown-item" to="/support">
           <FontAwesomeIcon icon={faLifeRing} className="me-2" /> Support
         </Link>
