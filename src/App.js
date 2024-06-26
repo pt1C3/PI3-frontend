@@ -19,9 +19,9 @@ import ProfileDropdown from './components/profile-dropdown';
 import Plans from './views/owner/plans';
 import AuthService from './views/auth.service'
 import AdminDashboard from './views/admin/adminDashboard';
-import AdminBusiness from './views/admin/business';
+import AdminBusiness from './views/admin/createBusiness';
 import AdminVersions from './views/admin/adminversions';
-import AdminCostumers from './views/admin/costumers';
+import AdminCostumers from './views/admin/createCostumer';
 import AdminCostumerBusiness from './views/admin/customerbusiness';
 import AdminCostumerEdit from './views/admin/customeredit';
 import AdminProducts from './views/admin/products';
@@ -34,8 +34,8 @@ function App() {
   var navigate = useNavigate();
   const location = useLocation();
   const [search, setSearch] = useState('');
-  const [isAdmin, setIsAdmin] = useState(true);
-  const [isOwner, setIsOwner] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [isOwner, setIsOwner] = useState(false);
 
   const [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser());
 
@@ -83,7 +83,7 @@ function App() {
               <img src={process.env.PUBLIC_URL + "/images/logicleap.png"} alt="Logo" height="40" />
             </Link>
             <span className="d-flex align-items-center h-100 mx-3">
-              <Link to="/" className="nav-link active" >
+              <Link to="/" className="nav-link" >
                 <p className="mb-0 text-medium">Dashboard</p>
               </Link>
               <Link to="/" className="nav-link ms-2" >
@@ -153,7 +153,7 @@ function App() {
           <>
             <Route path="/" element={<AdminDashboard />} />
             <Route path="/business" element={<AdminBusiness />} />
-            <Route path="/adminversions" element={<AdminVersions />} />
+            <Route path="/versions" element={<AdminVersions />} />
             <Route path="/costumers" element={<AdminCostumers />} />
             <Route path="/costumerbusiness" element={<AdminCostumerBusiness />} />
             <Route path="/costumeredit" element={<AdminCostumerEdit />} />
