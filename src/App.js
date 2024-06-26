@@ -31,8 +31,8 @@ function App() {
   var navigate = useNavigate();
   const location = useLocation();
   const [search, setSearch] = useState('');
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [isOwner, setIsOwner] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(true);
+  const [isOwner, setIsOwner] = useState(true);
 
   const [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser());
 
@@ -151,9 +151,9 @@ function App() {
           <>
             <Route path="/" element={<AdminDashboard />} />
             <Route path="/business" element={<AdminBusiness />} />
-            <Route path="/versions" element={<AdminVersions />} />
+            <Route path="/adminversions" element={<AdminVersions />} />
             <Route path="/costumers" element={<AdminCostumers />} />
-            <Route path="/costumers/business" element={<AdminCostumerBusiness />} />
+            <Route path="/costumerbusiness" element={<AdminCostumerBusiness />} />
             <Route path="/costumeredit" element={<AdminCostumerEdit />} />
             <Route path="/Products" element={<AdminProducts />} />
             <Route path="/inbox" element={<AdminInbox />} />

@@ -5,7 +5,7 @@ import countries from 'i18n-iso-countries';
 import 'i18n-iso-countries/langs/pt.json';
 
 
-export default function Costumers() {
+export default function Costumerbusiness() {
   const [formData, setFormData] = useState({
     business: {
       name: "",
