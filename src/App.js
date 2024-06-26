@@ -23,6 +23,7 @@ import AdminBusiness from './views/admin/business';
 import AdminVersions from './views/admin/adminversions';
 import AdminCostumers from './views/admin/costumers';
 import AdminCostumerBusiness from './views/admin/customerbusiness';
+import AdminCostumerEdit from './views/admin/customeredit';
 
 function App() {
   var navigate = useNavigate();
@@ -141,6 +142,7 @@ function App() {
             <Route path="/adminversions" element={<AdminVersions />} />
             <Route path="/costumers" element={<AdminCostumers />} />
             <Route path="/costumers/business" element={<AdminCostumerBusiness />} />
+            <Route path="/costumeredit" element={<AdminCostumerEdit />} />
 
             {/*<Route path="/admin/users" element={<AdminUsers />} />
               <Route path="/admin/settings" element={<AdminSettings />} /> */}
