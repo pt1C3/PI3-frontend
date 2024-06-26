@@ -62,7 +62,7 @@ const PaymentForm = ({ stripePromise, data, price }) => {
         console.error('[Error]', error);
         setShowErrorModal(true); // Show error modal
       } else {
-        axios.post(baseURL + '/user/addplanpayment', {
+        axios.post(baseURL + '/owner/addplanpayment', {
           priceid: data.prices[price].priceid,
           businessid: JSON.parse(localStorage.getItem('user')).data.businessid,
         }).then(response => {

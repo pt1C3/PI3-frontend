@@ -43,7 +43,6 @@ function App() {
     if (currentUser) {
       if (currentUser.utypeid === 4) { setIsAdmin(true); setIsOwner(false); }
       if (currentUser.utypeid === 3) { setIsOwner(true); setIsAdmin(false); }
-      console.log(currentUser.utypeid)
     }
   }, [currentUser])
 
