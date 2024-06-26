@@ -96,7 +96,7 @@ function App() {
               </Link>
             </span>
             {
-              currentUser ? <ProfileDropdown name={`${currentUser.firstname} ${currentUser.lastname}`} image={currentUser.image} onLogout={handleLogout} /> : <ProfileDropdown />
+              currentUser ? <ProfileDropdown name={`${currentUser.firstname} ${currentUser.lastname}`} image={currentUser.image} onLogout={handleLogout} isAdmin={isAdmin} isOwner={isOwner}/> : <ProfileDropdown />
 
             }
           </nav>
@@ -104,29 +104,30 @@ function App() {
       ) : (
 
         <>
-          {is}
+
           <nav className="navbar bg-white px-10vw regular-border">
             <Link to="/" className="navbar-brand">
               <img src={process.env.PUBLIC_URL + "/images/logicleap.png"} alt="Logo" height="40" />
             </Link>
             <span className="d-flex align-items-center">
-              <form className="inline-form" onSubmit={searchSubmit}>
-                <div className="input-group rounded-2">
-                  <input
-                    type="text"
-                    className="form-control bg-transparent border-0"
-                    placeholder="Search"
-                    name="search"
-                    value={search}
-                    onChange={(event) => setSearch(event.target.value)}
-                  />
-                  <div className="input-group-btn">
-                    <button className="btn btn-default" type="submit">
-                      <FontAwesomeIcon icon={faMagnifyingGlass} />
-                    </button>
+              {isOwner ?
+                <form className="inline-form" onSubmit={searchSubmit}>
+                  <div className="input-group rounded-2">
+                    <input
+                      type="text"
+                      className="form-control bg-transparent border-0"
+                      placeholder="Search"
+                      name="search"
+                      value={search}
+                      onChange={(event) => setSearch(event.target.value)}
+                    />
+                    <div className="input-group-btn">
+                      <button className="btn btn-default" type="submit">
+                        <FontAwesomeIcon icon={faMagnifyingGlass} />
+                      </button>
+                    </div>
                   </div>
-                </div>
-              </form>
+                </form> : null}
               <button className="btn btn-default">
                 <FontAwesomeIcon icon={faBell} />
               </button>
@@ -147,7 +148,7 @@ function App() {
             <Route path="/costumers/business" element={<AdminCostumerBusiness />} />
             <Route path="/costumeredit" element={<AdminCostumerEdit />} />
 
-           
+
           </>
         ) : (
           <>

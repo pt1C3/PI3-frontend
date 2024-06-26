@@ -59,7 +59,7 @@ export default function Home() {
                 {data
                         .filter(item => item.category.designation === 'Design')
                         .slice(0, 3).map((item, index) => (
-                            <CardIcon title={item.name} category={item.category.designation} image={item.icon} price={item.prices[0].price} description={item.description} discount={item.prices[0].discount_percentage ? item.prices[0].discount_percentage : null} square="true" />
+                            <CardIcon title={item.name} category={item.category.designation} image={item.icon} price={item.prices[0].price} description={item.description} discount={item.prices[0].discount_percentage ? item.prices[0].discount_percentage : null} toLink={'/product/' + item.productid} square="true" />
                         ))}
                     
 
