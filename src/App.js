@@ -25,6 +25,7 @@ import AdminCostumers from './views/admin/costumers';
 import AdminCostumerBusiness from './views/admin/customerbusiness';
 import AdminCostumerEdit from './views/admin/customeredit';
 import AdminProducts from './views/admin/products';
+import AdminInbox from './views/admin/inbox';
 
 function App() {
   var navigate = useNavigate();
@@ -155,7 +156,7 @@ function App() {
             <Route path="/costumerbusiness" element={<AdminCostumerBusiness />} />
             <Route path="/costumeredit" element={<AdminCostumerEdit />} />
             <Route path="/Products" element={<AdminProducts />} />
-
+            <Route path="/inbox" element={<AdminInbox />} />
 
           </>
         ) : (
