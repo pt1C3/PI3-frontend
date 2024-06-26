@@ -30,6 +30,8 @@ function App() {
   const location = useLocation();
   const [search, setSearch] = useState('');
   const [isAdmin, setIsAdmin] = useState(false);
+  const [isOwner, setIsOwner] = useState(false);
+
   const [currentUser, setCurrentUser] = useState();
 
   useEffect(() => {
@@ -102,6 +104,7 @@ function App() {
       ) : (
 
         <>
+          {is}
           <nav className="navbar bg-white px-10vw regular-border">
             <Link to="/" className="navbar-brand">
               <img src={process.env.PUBLIC_URL + "/images/logicleap.png"} alt="Logo" height="40" />
@@ -139,13 +142,12 @@ function App() {
           <>
             <Route path="/" element={<AdminDashboard />} />
             <Route path="/business" element={<AdminBusiness />} />
-            <Route path="/adminversions" element={<AdminVersions />} />
+            <Route path="/versions" element={<AdminVersions />} />
             <Route path="/costumers" element={<AdminCostumers />} />
             <Route path="/costumers/business" element={<AdminCostumerBusiness />} />
             <Route path="/costumeredit" element={<AdminCostumerEdit />} />
 
-            {/*<Route path="/admin/users" element={<AdminUsers />} />
-              <Route path="/admin/settings" element={<AdminSettings />} /> */}
+           
           </>
         ) : (
           <>

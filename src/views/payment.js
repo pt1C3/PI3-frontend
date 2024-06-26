@@ -62,7 +62,7 @@ const PaymentForm = ({ stripePromise, data, price }) => {
         console.error('[Error]', error);
         setShowErrorModal(true); // Show error modal
       } else {
-        //AQUI FALTA ADICIONAR O PAGAMENTO À DB
+        //AQUI FALTA ADICIONAR O PAGAMENTO E O PLANO À DB
         setShowSuccessModal(true); // Show success modal
       }
     } catch (error) {
