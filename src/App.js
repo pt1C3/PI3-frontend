@@ -25,37 +25,24 @@ import AdminCostumers from './views/admin/costumers';
 import AdminCostumerBusiness from './views/admin/customerbusiness';
 import AdminCostumerEdit from './views/admin/customeredit';
 import AdminProducts from './views/admin/products';
-import AdminModais from './views/admin/Modais';
 
 function App() {
   var navigate = useNavigate();
   const location = useLocation();
   const [search, setSearch] = useState('');
-  const [isAdmin, setIsAdmin] = useState(true);
-  const [isOwner, setIsOwner] = useState();
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [isOwner, setIsOwner] = useState(false);
 
-  const [currentUser, setCurrentUser] = useState();
+  const [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser());
 
-  useEffect(() => {
-    setCurrentUser(AuthService.getCurrentUser());
-    if (AuthService.getCurrentUser()) {
-      if (AuthService.getCurrentUser().utypeid === 4) { setIsAdmin(true); setIsOwner(false); }
-      if (AuthService.getCurrentUser().utypeid === 3) { setIsOwner(true); setIsAdmin(false); }
-      console.log(AuthService.getCurrentUser().utypeid);
-    }
-
-  }, [])
   useEffect(() => {
     if (currentUser) {
       if (currentUser.utypeid === 4) { setIsAdmin(true); setIsOwner(false); }
       if (currentUser.utypeid === 3) { setIsOwner(true); setIsAdmin(false); }
       console.log(currentUser.utypeid)
     }
-
   }, [currentUser])
-  useEffect(() => {
-    console.log(isAdmin)
-  }, [isAdmin])
+
   const handleLogin = (userData) => {
     setCurrentUser(userData);
     navigate('/');
@@ -64,6 +51,8 @@ function App() {
   const handleLogout = () => {
     AuthService.logout();
     setCurrentUser(null); // Clear current user in state
+    setIsOwner(false);
+    setIsAdmin(false);
   };
 
   const searchSubmit = (event) => {
@@ -114,7 +103,7 @@ function App() {
               </Link>
             </span>
             {
-              currentUser ? <ProfileDropdown name={`${currentUser.firstname} ${currentUser.lastname}`} image={currentUser.image} onLogout={handleLogout} isAdmin={isAdmin} isOwner={isOwner} /> : <ProfileDropdown />
+              currentUser ? <ProfileDropdown onLogout={handleLogout} /> : <ProfileDropdown />
 
             }
           </nav>
@@ -148,7 +137,7 @@ function App() {
                 <FontAwesomeIcon icon={faBell} />
               </button>
               {
-                currentUser ? <ProfileDropdown name={`${currentUser.firstname} ${currentUser.lastname}`} image={currentUser.image} onLogout={handleLogout} /> : <ProfileDropdown />
+                currentUser ? <ProfileDropdown onLogout={handleLogout} /> : <ProfileDropdown />
 
               }
             </span>
@@ -166,7 +155,6 @@ function App() {
             <Route path="/costumers/business" element={<AdminCostumerBusiness />} />
             <Route path="/costumeredit" element={<AdminCostumerEdit />} />
             <Route path="/Products" element={<AdminProducts />} />
-            <Route path="/Modais" element={<AdminModais />} />
 
 
           </>

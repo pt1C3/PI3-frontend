@@ -1,12 +1,9 @@
 .custom-dropdown-toggle::after {
     content: none !important;
   }
-  
+.dropdown-menu{
+    width: 20rem;
 
-.dropdown-menu {
-    width: 200px;
-    padding: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .dropdown-item {
@@ -23,7 +20,7 @@
 }
 
 .dropdown-item:hover {
-    background-color: #f8f9fa;
+    background-color: var(--white);
 }
 
 .dropdown-divider {
