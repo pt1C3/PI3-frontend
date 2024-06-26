@@ -39,7 +39,7 @@ const SubscriptionItem = ({ id, image, name, status, nextBillDate, price, saleDa
                     }
                 </div>
             </div>
-            {isExpanded && (
+            {isExpanded && status !== 1 && (
                 <div className="card-body border-top">
                     <p className="mb-2">Subscription started in <span className='text-bold'>{saleDate}</span></p>
                     <div className='d-flex justify-content-end'>

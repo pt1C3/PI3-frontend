@@ -44,7 +44,7 @@ const PaymentForm = ({ stripePromise, data, price }) => {
     try {
       // Make a POST request to backend to create Payment Intent
       const response = await axios.post(baseURL + '/create-payment-intent', {
-        amount: data.prices[price].price * 100, // Stripe expects amount in cents
+        amount: Math.round(data.prices[price].price * 100), // Stripe expects amount in cents
         currency: 'eur', // Currency code (EUR in this case)
       });
 
