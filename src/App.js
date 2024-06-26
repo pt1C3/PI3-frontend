@@ -30,7 +30,7 @@ function App() {
   const location = useLocation();
   const [search, setSearch] = useState('');
   const [isAdmin, setIsAdmin] = useState(false);
-  const [isOwner, setIsOwner] = useState(false);
+  const [isOwner, setIsOwner] = useState(true);
 
   const [currentUser, setCurrentUser] = useState();
 

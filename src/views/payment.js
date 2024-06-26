@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Helmet } from 'react-helmet';
 import Breadcrumbs from '../components/breadcrumbs';
@@ -14,7 +14,7 @@ const PaymentForm = ({ stripePromise, data, price }) => {
   const [showErrorModal, setShowErrorModal] = useState(false);
   const stripe = useStripe();
   const elements = useElements();
-
+  const navigate = useNavigate();
   const baseURL = 'http://localhost:3000';
 
   useEffect(() => {
@@ -62,7 +62,18 @@ const PaymentForm = ({ stripePromise, data, price }) => {
         console.error('[Error]', error);
         setShowErrorModal(true); // Show error modal
       } else {
-        //AQUI FALTA ADICIONAR O PAGAMENTO E O PLANO À DB
+        axios.post(baseURL + '/user/addplanpayment', {
+          priceid: data.prices[price].priceid,
+          businessid: JSON.parse(localStorage.getItem('user')).data.businessid,
+        }).then(response => {
+          if (!response.data.success) {
+            console.error('Error creating payment plan:', response.data.message);
+          }
+        })
+          .catch(error => {
+            console.error('Error creating payment plan:', error.message);
+            // Handle network or other errors
+          } );
         setShowSuccessModal(true); // Show success modal
       }
     } catch (error) {
@@ -71,7 +82,7 @@ const PaymentForm = ({ stripePromise, data, price }) => {
     }
   };
 
-  const handleCloseSuccessModal = () => setShowSuccessModal(false);
+  const handleCloseSuccessModal = () => {setShowSuccessModal(false); navigate('/owner/plans')};
   const handleCloseErrorModal = () => setShowErrorModal(false);
 
   if (!data) {
