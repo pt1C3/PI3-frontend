@@ -89,6 +89,48 @@ export default function Modais() {
               </div>
               <div className="card mb-3">
                 <div className="card-body">
+                  <div className="custom-title">Individual Plans</div>
+                  <div className="divider"></div>
+                  <div className="row">
+                    <div className="col-md-6">
+                      <div className="form-group">
+                        <label htmlFor="plan1Users">Up to 100 users</label>
+                        <input type="text" className="form-control" id="plan1Users" placeholder="€649.99" />
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="plan1Discount">Discount Percentage</label>
+                        <input type="text" className="form-control" id="plan1Discount" placeholder="20" />
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="plan1PreviousPrice">Previous Price</label>
+                        <input type="text" className="form-control" id="plan1PreviousPrice" placeholder="€799.99" />
+                      </div>
+                      <div className="form-group">
+                        <span className="discounted-price">-20% €799.99/yr. €649.99/yr.</span>
+                      </div>
+                    </div>
+                    <div className="col-md-6">
+                      <div className="form-group">
+                        <label htmlFor="plan2Users">Up to 30 users</label>
+                        <input type="text" className="form-control" id="plan2Users" placeholder="€359.99" />
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="plan2Discount">Discount Percentage</label>
+                        <input type="text" className="form-control" id="plan2Discount" placeholder="0" />
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="plan2PreviousPrice">Previous Price</label>
+                        <input type="text" className="form-control" id="plan2PreviousPrice" placeholder="-" />
+                      </div>
+                      <div className="form-group">
+                        <span className="discounted-price">€359.99/yr.</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="card mb-3">
+                <div className="card-body">
                   <div className="custom-title">Business Plans</div>
                   <div className="divider"></div>
                   <div className="row">
