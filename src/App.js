@@ -27,7 +27,13 @@ import AdminCostumerEdit from './views/admin/customeredit';
 import AdminProducts from './views/admin/products';
 import AdminInbox from './views/admin/inbox';
 import AdminProductVersions from './views/admin/productVersions';
+<<<<<<< Updated upstream
 import AdminManagerPackage from './views/admin/managerPackage';
+=======
+import AdminModais from './views/admin/Modais';
+import AdminFaq from './views/admin/createFaq';
+import ManagerProduct from './views/manager/product';
+>>>>>>> Stashed changes
 
 
 
@@ -175,6 +181,7 @@ function App() {
             <Route path="/search/:searchvalue" element={<Search />} />
             <Route path="/owner/managers" element={<Managers />} />
             <Route path="/owner/plans" element={<Plans />} />
+            <Route path="/views/manager/product" element={<Product/>} />
 
 
           </>
