@@ -20,7 +20,7 @@ import Plans from './views/owner/plans';
 import AuthService from './views/auth.service'
 import AdminDashboard from './views/admin/adminDashboard';
 import AdminBusiness from './views/admin/createBusiness';
-import AdminVersions from './views/admin/adminversions';
+import AdminVersions from './views/admin/createVersion';
 import AdminCostumers from './views/admin/createCostumer';
 import AdminCostumerBusiness from './views/admin/customerbusiness';
 import AdminCostumerEdit from './views/admin/customeredit';
@@ -153,7 +153,7 @@ function App() {
           <>
             <Route path="/" element={<AdminDashboard />} />
             <Route path="/business" element={<AdminBusiness />} />
-            <Route path="/versions" element={<AdminVersions />} />
+            <Route path="/versions/:productid" element={<AdminVersions />} />
             <Route path="/costumers" element={<AdminCostumers />} />
             <Route path="/costumerbusiness" element={<AdminCostumerBusiness />} />
             <Route path="/costumeredit" element={<AdminCostumerEdit />} />

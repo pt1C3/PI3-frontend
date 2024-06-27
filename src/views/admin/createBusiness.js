@@ -27,9 +27,13 @@ export default function Business() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!name || !website || !ownerId ) alert("All fields are required. Please fill in all inputs.")
-    else axios.post(baseURL + "/business/create",{ name: name, website: website, userid: ownerId })
-
+    if (!name || !website || !ownerId) alert("All fields are required. Please fill in all inputs.")
+    else {
+      axios.post(baseURL + "/business/create", { name: name, website: website, userid: ownerId })
+        .then(res => {
+          alert(res.data.message);
+        })
+    }
   }
 
   if (!freeUsers) {
