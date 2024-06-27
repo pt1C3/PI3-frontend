@@ -2,7 +2,6 @@
 .divider {
   border-bottom: 1px solid #ccc;
   margin-bottom: 15px;
-  padding-bottom: 10px;
 }
 
 /* Placeholder styling */
@@ -12,3 +11,15 @@
   background-color: #e0e0e0;
   border: 1px solid #ccc;
 }
+
+.custom-title {
+  font-size: 15px; /* Adjust the font size as needed */
+  font-weight: bold; /* Adjust the font weight as needed */
+  margin-bottom: 10px;
+}
+
+.custom-save-button {
+  width: 100%; /* Adjust the width as needed */
+  margin: 0 auto; /* Center the button */
+}
+
