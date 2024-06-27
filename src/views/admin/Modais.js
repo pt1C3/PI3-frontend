@@ -13,10 +13,11 @@ export default function Modais() {
       <div className="content mt-5">
         <div className="row">
           <div className="col-md-4">
-            <div className="card">
+            <div className="card mb-3">
               <div className="card-body">
+                <h5 className="card-title">Image</h5>
+                <div className="divider"></div>
                 <div className="form-group">
-                  <label htmlFor="productImage">Image</label>
                   <div className="mb-3">
                     <div className="image-placeholder"></div>
                     <input type="file" className="form-control-file mt-2" id="productImage" />
@@ -30,6 +31,7 @@ export default function Modais() {
             <div className="card mb-3">
               <div className="card-body">
                 <h5 className="card-title">General Information</h5>
+                <div className="divider"></div>
                 <div className="form-group">
                   <label htmlFor="productName">Name</label>
                   <input type="text" className="form-control" id="productName" placeholder="Product" />
@@ -46,9 +48,10 @@ export default function Modais() {
                 </div>
               </div>
             </div>
-            <div className="card">
+            <div className="card mb-3">
               <div className="card-body">
                 <h5 className="card-title">Requirements</h5>
+                <div className="divider"></div>
                 <div className="form-group">
                   <label htmlFor="os">Operating System</label>
                   <input type="text" className="form-control" id="os" placeholder="Windows 10 64 bits" />
@@ -79,6 +82,7 @@ export default function Modais() {
                 </div>
               </div>
             </div>
+            <button className="btn btn-primary btn-block">Save all</button>
           </div>
         </div>
       </div>
