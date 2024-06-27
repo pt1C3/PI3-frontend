@@ -1,0 +1,148 @@
+.nav-underline {
+    border-bottom: solid 0.1rem var(--gray-2);
+}
+
+.nav-item .nav-link {
+    border-radius: 0;
+    width: 10rem;
+    text-align: center;
+    font-family: 'Metropolis Medium', sans-serif;
+}
+
+.nav-item button {
+    color: var(--black) !important;
+}
+.table {
+    width: 80vw;
+    background-color: red;
+}
+
+table,
+th,
+td {
+    border: .1rem solid var(--gray-3) !important;
+    border-collapse: collapse;
+}
+
+.table thead {
+    background-color: var(--gray-1);
+}
+
+.table>thead>th:first-child {
+    width: 40%
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+.table td ul {
+    margin: 0;
+    padding: 0;
+    list-style-position: inside;
+
+}
+
+.table td,
+.table th {
+    box-sizing: border-box;
+    padding: 1rem 1.5rem;
+}
+
+#releaseNotes>div {
+    border: .1rem solid var(--gray-2);
+}
+
+/* Change border for the accordion container (top border only) */
+.accordion {
+    border-top: .1rem solid var(--gray-3);
+    /* Adjust as needed */
+}
+
+/* Change border for each accordion item (bottom border only) */
+.accordion-item {
+    border-bottom: .1rem solid var(--gray-3);
+    /* Adjust as needed */
+    border-top: none;
+    /* Ensure no top border */
+    border-left: none;
+    /* Remove left border */
+    border-right: none;
+    /* Remove right border */
+    box-shadow: none;
+    /* Remove any box shadow */
+    background-color: white;
+    /* Set background color to white */
+}
+
+/* Change border for the accordion button (remove borders and background color) */
+.accordion-button {
+    border: none;
+    border-radius: 0;
+    /* Remove rounded corners */
+    box-shadow: none;
+    /* Remove any box shadow */
+    background-color: white;
+    /* Set background color to white */
+}
+
+.accordion-item.collapsed {
+    border-radius: 0;
+    /* Remove rounded corners */
+
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: white;
+    color: var(--black);
+
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+
+}
+
+/* Ensure no additional borders or shadows on the accordion body */
+.accordion-body {
+    border: none;
+    box-shadow: none;
+    /* Remove any box shadow */
+    background-color: white;
+    /* Set background color to white */
+}
+
+.accordion-item:last-of-type>.accordion-header .accordion-button.collapsed {
+    border-radius: 0;
+}
+
+.plans-wrapper {
+    display: flex;
+}
+
+.plan>* {
+    text-align: center;
+}
+
+.plan {
+    background-color: var(--gray-1);
+    border: .1rem solid var(--gray-2);
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    flex-direction: column;
+    min-height: 18rem;
+    height: 100%;
+}
+
+.plan.active {
+    background-color: var(--white);
+
+}
+
+.plans-wrapper .form-check-input {
+    width: 2rem;
+    height: 2rem;
+}
+
