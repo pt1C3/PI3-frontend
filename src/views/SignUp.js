@@ -149,7 +149,7 @@ export default function SignUp() {
                     </div>
                     <div className="d-flex align-items-center">
                       <div className="d-flex align-items-center">
-                        <input className="form-check-input" type="checkbox" name="owner" value={isOwner} onChange={() => setisOwner(!isOwner)} />
+                        <input className="form-check-input" type="checkbox" name="owner" checked={isOwner} onChange={() => setisOwner(!isOwner)} />
                         <label className="form-check-label ms-2" htmlFor="owner">Owner of a Business?</label>
                       </div>
                     </div>

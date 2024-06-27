@@ -19,9 +19,9 @@ import ProfileDropdown from './components/profile-dropdown';
 import Plans from './views/owner/plans';
 import AuthService from './views/auth.service'
 import AdminDashboard from './views/admin/adminDashboard';
-import AdminBusiness from './views/admin/business';
-import AdminVersions from './views/admin/adminversions';
-import AdminCostumers from './views/admin/costumers';
+import AdminBusiness from './views/admin/createBusiness';
+import AdminVersions from './views/admin/createVersion';
+import AdminCostumers from './views/admin/createCostumer';
 import AdminCostumerBusiness from './views/admin/customerbusiness';
 import AdminCostumerEdit from './views/admin/customeredit';
 import AdminProducts from './views/admin/products';
@@ -30,12 +30,13 @@ import AdminProductVersions from './views/admin/productVersions';
 import AdminManagerPackage from './views/admin/managerPackage';
 
 
+
 function App() {
   var navigate = useNavigate();
   const location = useLocation();
   const [search, setSearch] = useState('');
-  const [isAdmin, setIsAdmin] = useState(true);
-  const [isOwner, setIsOwner] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [isOwner, setIsOwner] = useState(false);
 
   const [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser());
 
@@ -43,7 +44,6 @@ function App() {
     if (currentUser) {
       if (currentUser.utypeid === 4) { setIsAdmin(true); setIsOwner(false); }
       if (currentUser.utypeid === 3) { setIsOwner(true); setIsAdmin(false); }
-      console.log(currentUser.utypeid)
     }
   }, [currentUser])
 
@@ -84,7 +84,7 @@ function App() {
               <img src={process.env.PUBLIC_URL + "/images/logicleap.png"} alt="Logo" height="40" />
             </Link>
             <span className="d-flex align-items-center h-100 mx-3">
-              <Link to="/" className="nav-link active" >
+              <Link to="/" className="nav-link" >
                 <p className="mb-0 text-medium">Dashboard</p>
               </Link>
               <Link to="/" className="nav-link ms-2" >
@@ -154,7 +154,8 @@ function App() {
           <>
             <Route path="/" element={<AdminDashboard />} />
             <Route path="/business" element={<AdminBusiness />} />
-            <Route path="/adminversions" element={<AdminVersions />} />
+            <Route path="/versions/:productid" element={<AdminVersions />} />
+            <Route path="/faq/:productid" element={<AdminFaq />} />
             <Route path="/costumers" element={<AdminCostumers />} />
             <Route path="/costumerbusiness" element={<AdminCostumerBusiness />} />
             <Route path="/costumeredit" element={<AdminCostumerEdit />} />
@@ -162,7 +163,7 @@ function App() {
             <Route path="/inbox" element={<AdminInbox />} />
             <Route path="/productversions" element={<AdminProductVersions />} />
             <Route path="/managerPackage" element={<AdminManagerPackage/>} />
-          </>
+
         ) : (
           <>
             <Route path="/" element={<Home />} />

@@ -70,7 +70,7 @@ const Plans = () => {
     };
 
     const cancelPlan = (id) => {
-        axios.delete(baseURL + '/user/cancelplan/' + id)
+        axios.delete(baseURL + '/owner/cancelplan/' + id)
             .then(res => {
                 if (res.data.success) {
                     fetchData(); // Refresh data after successful cancellation
