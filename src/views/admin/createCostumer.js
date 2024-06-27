@@ -51,7 +51,7 @@ export default function Costumers() {
   return (
     <div className="wrapper">
       <Helmet>
-        <title>Sign up - LogicLeap</title>
+        <title>Create Customer - LogicLeap</title>
       </Helmet>
       <div className='d-flex flex-column align-items-center justify-content-center pt-4'>
         {/* Primeiro Container */}
