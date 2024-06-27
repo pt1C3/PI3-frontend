@@ -183,7 +183,6 @@ function App() {
             <Route path="/owner/plans" element={<Plans />} />
             <Route path="/views/manager/product" element={<Product/>} />
 
-
           </>
         )}
       </Routes>
