@@ -43,7 +43,7 @@ export default function Business() {
   return (
     <div className="wrapper" style={{ minHeight: '100vh' }}>
       <Helmet>
-        <title>Admin Business - LogicLeap</title>
+        <title>Create Business - LogicLeap</title>
       </Helmet>
       <div className="d-flex align-items-center justify-content-center w-100">
         <div className='p-4 rounded-3 bg-white regular-border mx-10vw col-6'>

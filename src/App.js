@@ -28,6 +28,7 @@ import AdminProducts from './views/admin/products';
 import AdminInbox from './views/admin/inbox';
 import AdminProductVersions from './views/admin/productVersions';
 import AdminModais from './views/admin/Modais';
+import AdminFaq from './views/admin/createFaq';
 
 
 function App() {
@@ -154,6 +155,7 @@ function App() {
             <Route path="/" element={<AdminDashboard />} />
             <Route path="/business" element={<AdminBusiness />} />
             <Route path="/versions/:productid" element={<AdminVersions />} />
+            <Route path="/faq/:productid" element={<AdminFaq />} />
             <Route path="/costumers" element={<AdminCostumers />} />
             <Route path="/costumerbusiness" element={<AdminCostumerBusiness />} />
             <Route path="/costumeredit" element={<AdminCostumerEdit />} />
