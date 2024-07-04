@@ -63,3 +63,64 @@
   color: #0056b3;
   text-decoration: underline;
 }
+
+/* billing-table-addons.css */
+.container {
+  padding: 20px;
+}
+
+.search-bar-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 5px 10px;
+  width: 300px;
+  background-color: transparent; /* Barra de pesquisa transparente */
+}
+
+.search-icon {
+  margin-right: 10px;
+  color: #888;
+}
+
+.search-input {
+  border: none;
+  outline: none;
+  flex: 1;
+  background-color: transparent; /* Input transparente */
+  color: #000; /* Texto do input */
+}
+
+.add-product-text {
+  margin-left: 10px;
+  color: #000000;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.add-product-text:hover {
+  text-decoration: underline;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.table th {
+  background-color: #f2f2f2;
+  text-align: left;
+}
