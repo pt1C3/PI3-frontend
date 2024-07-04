@@ -9,7 +9,7 @@ export default function salessupport() {
       <Helmet>
         <title>Sales - Support</title>
       </Helmet>
-      <BillingTable title="Product Name" status="Pending" replydate="2023-03-12" billingAmount="€19.99" paymentDate="2023-03-12" startDate="2023-03-12" action="view" />
+      <BillingTable title="Product Name" status="Pending" replydate="2023-03-12" billingAmount="€19.99" paymentDate="2023-03-12" startDate="2023-03-12" actions="view" />
     </div>
   );
 }

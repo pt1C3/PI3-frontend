@@ -3,17 +3,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import './billing-table-salessupport.css';
 
-const BillingTable = ({ title, type, billingDate, paymentDate, status, maxUsers, billingAmount, startDate, action }) => { 
+const BillingTable = ({ title, type, billingDate, paymentDate, status, maxUsers, billingAmount, startDate, actions }) => { 
 
     const data = [
-        { id: '1', name: 'António Mendes', billingDate: '2023-03-12', status: 'Payed', reponsestatus: 'Replied', replydate: '2023-03-15', product: 'Product Name', action: 'View' },
-        { id: '2', name: 'António Mendes', billingDate: '2023-03-13', status: 'Didnt buy', reponsestatus: 'Replied', replydate: '2023-03-16', product: 'Another Product', action: 'View' },
-        { id: '3', name: 'António Mendes', billingDate: '2023-03-14', status: 'Pending', reponsestatus: 'Pending', replydate: '-', product: 'Product Name', action: 'View' },
-        { id: '4', name: 'António Mendes', billingDate: '2023-03-12', status: 'Pending', reponsestatus: 'Pending', replydate: '-', product: 'Another Product', action: 'View' },
+        { id: '1', name: 'António Mendes', billingDate: '2023-03-12', status: 'Payed', reponsestatus: 'Replied', replydate: '2023-03-15', product: 'Product Name', actions: 'View' },
+        { id: '2', name: 'António Mendes', billingDate: '2023-03-13', status: 'Didnt buy', reponsestatus: 'Replied', replydate: '2023-03-16', product: 'Another Product', actions: 'View' },
+        { id: '3', name: 'António Mendes', billingDate: '2023-03-14', status: 'Pending', reponsestatus: 'Pending', replydate: '-', product: 'Product Name', actions: 'View' },
+        { id: '4', name: 'António Mendes', billingDate: '2023-03-12', status: 'Pending', reponsestatus: 'Pending', replydate: '-', product: 'Another Product', actions: 'View' },
     ];
 
     return (
-        <div className="container mt-5 billing-table">
+        <div className="container mt-7 billing-table">
             <table className="table table-bordered">
                 <thead>
                     <tr>
@@ -45,6 +45,9 @@ const BillingTable = ({ title, type, billingDate, paymentDate, status, maxUsers,
                             </td>
                             <td>{item.replydate}</td>
                             <td>{item.product}</td>
+                            <td>
+                                {item.actions && <a className="linknormal" href="#">{item.actions}</a>}
+                            </td>
                         </tr>
                     ))}
                 </tbody>
