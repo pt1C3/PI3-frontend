@@ -4,7 +4,7 @@ import './inbox.css'; // Certifique-se de criar e ajustar este arquivo CSS confo
 
 export default function EmailSystemDesign() {
   return (
-    <div className="wrapper d-flex flex-column align-items-center justify-content-center" style={{ minHeight: '100vh' }}>
+    <div className="inbox wrapper d-flex flex-column align-items-center justify-content-center" style={{ minHeight: '100vh' }}>
       <Helmet>
         <title>Email System Design - LogicLeap</title>
       </Helmet>
