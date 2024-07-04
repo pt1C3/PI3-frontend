@@ -24,8 +24,9 @@ const BillingTable = ({ title, type, billingDate, paymentDate, status, maxUsers,
             <table className="table table-bordered">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
+                        <th scope="col">ID</th>
                         <th scope="col">Business</th>
+                        <th scope="col">Date</th>
                         <th scope="col">Status</th>
                         <th scope="col">Versions</th>
                         <th scope="col">Active Costumers</th>
