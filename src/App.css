@@ -56,6 +56,12 @@ body {
     overflow-x: hidden;
 }
 
+hr{
+    border-color: var(--gray-2);
+    border-width: .01rem;
+    border-style: solid;
+    opacity: 1;
+}
 .bg-white {
     background-color: var(--white);
 }

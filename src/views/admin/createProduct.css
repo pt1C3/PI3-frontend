@@ -1,0 +1,12 @@
+.btn.submit{
+    position: fixed;
+    bottom: 5vh;
+    left: 10vw;
+    width: 80vw;
+}
+.add-product .description{
+    min-height: 8rem!important;
+}
+.add-product .features{
+    min-height: 15rem!important;
+}

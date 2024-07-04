@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import './business.css';
+import './createProduct.css';
 import axios from 'axios';
 import Breadcrumbs from "../../components/breadcrumbs";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAdd, faSubtract } from "@fortawesome/free-solid-svg-icons";
 
 export default function Product() {
     const baseURL = 'http://localhost:3000';
@@ -19,12 +21,6 @@ export default function Product() {
     const [oldPrice2, setOldPrice2] = useState(0);
     const [price2, setPrice2] = useState(0);
 
-    const [question, setQuestion] = useState("");
-    const [answer, setAnswer] = useState("");
-
-    useEffect(() => {
-
-    }, []);
 
     const changePrice = (isCurrent, isFirst, value) => {
         if (isCurrent) {
@@ -70,6 +66,28 @@ export default function Product() {
 
         }
     }
+
+    //FAQ
+    const [faqs, setFaqs] = useState([{ question: '', answer: '' }]);
+
+    const handleFaqChange = (index, event) => {
+        const { name, value } = event.target;
+        const newFaqs = [...faqs];
+        newFaqs[index][name] = value;
+        setFaqs(newFaqs);
+    };
+
+    const   addFaq = () => {
+        setFaqs([...faqs, { question: '', answer: '' }]);
+    };
+
+    const removeFaq = (index) => {
+        const newFaqs = faqs.filter((_, i) => i !== index);
+        setFaqs(newFaqs);
+    };
+
+
+
     const handleSubmit = (e) => {
         e.preventDefault();
         /*if (!question || !answer) alert("All fields are required. Please fill in all inputs.")
@@ -88,10 +106,10 @@ export default function Product() {
     return (
         <div className="wrapper" style={{ minHeight: '100vh' }}>
             <Helmet>
-                <title>Create FAQ - LogicLeap</title>
+                <title>Create Product - LogicLeap</title>
             </Helmet>
             <Breadcrumbs page1="Products" page2="Create" link1="/"></Breadcrumbs>
-            <form className='row mx-10vw gx-3 my-3'>
+            <form className='row mx-10vw gx-3 mt-3 add-product' style={{ marginBottom: "10vh" }}>
                 <div className="col-4">
                     <div className='bg-white regular-border rounded-3 px-4 py-3'>
                         a
@@ -111,7 +129,9 @@ export default function Product() {
                                 </option>
                             </select>
                             <label htmlFor="description">Description</label>
-                            <textarea type="text" className='form-control mb-3' name="description" />
+                            <textarea type="text" className='form-control mb-3 description' name="description" />
+                            <label htmlFor="features">Features</label>
+                            <textarea type="text" className='form-control mb-3 features' name="features" />
 
                         </div>
                     </div>
@@ -125,7 +145,7 @@ export default function Product() {
                                 <label htmlFor="price1">Final Price</label>
                                 <input type="number" className='form-control mb-3' name="price1" value={price1} onChange={(e) => { changePrice(true, true, e.target.value) }}></input>
                                 <label htmlFor="discount1">Discount Percentage</label>
-                                <input type="number" className='form-control mb-3' name="discount1" value={discount1} onChange={(e) => { changeDiscount(true,(e.target.value)) }}></input>
+                                <input type="number" className='form-control mb-3' name="discount1" value={discount1} onChange={(e) => { changeDiscount(true, (e.target.value)) }}></input>
                                 <label htmlFor="oldprice1">Previous Price</label>
                                 <input type="number" className='form-control mb-3' name="oldprice1" value={oldPrice1} onChange={(e) => { changePrice(false, true, e.target.value) }}></input>
                                 <div className='d-flex align-items-center'>
@@ -147,7 +167,7 @@ export default function Product() {
                                 <label htmlFor="price2">Final Price</label>
                                 <input type="number" className='form-control mb-3' name="price2" value={price2} onChange={(e) => { changePrice(true, false, e.target.value) }}></input>
                                 <label htmlFor="discount2">Discount Percentage</label>
-                                <input type="number" className='form-control mb-3' name="discount2" value={discount2} onChange={(e) => { changeDiscount(false,(e.target.value)) }}></input>
+                                <input type="number" className='form-control mb-3' name="discount2" value={discount2} onChange={(e) => { changeDiscount(false, (e.target.value)) }}></input>
                                 <label htmlFor="oldprice2">Previous Price</label>
                                 <input type="number" className='form-control mb-3' name="oldprice2" value={oldPrice2} onChange={(e) => { changePrice(false, false, e.target.value) }}></input>
                                 <div className='d-flex align-items-center'>
@@ -166,7 +186,38 @@ export default function Product() {
 
                         </div>
                     </div>
+                    <div className='bg-white regular-border rounded-3 mb-4'>
+                        <p className='m-0 px-4 py-3 text-medium'>FAQ</p>
+                        <hr className='m-0' />
+                        <div className='px-4 py-3'>
+                            {faqs.map((faq, index) => (
+                                <div key={index}>
+                                    <p>Question number: {index}</p>
+                                    <label htmlFor={`question-${index}`}>Question</label>
+                                    <input
+                                        type="text"
+                                        className='form-control mb-3'
+                                        name="question"
+                                        value={faq.question}
+                                        onChange={(e) => handleFaqChange(index, e)}
+                                    />
+                                    <label htmlFor={`answer-${index}`}>Answer</label>
+                                    <input
+                                        type="text"
+                                        className='form-control mb-3'
+                                        name="answer"
+                                        value={faq.answer}
+                                        onChange={(e) => handleFaqChange(index, e)}
+                                    />
+                                    <button className='btn btn-secondary rounded-circle'type="button" onClick={() => removeFaq(index)}><FontAwesomeIcon icon={faSubtract} /></button>
+                                </div>
+                            ))}
+                            <button className='btn btn-secondary rounded-circle' type="button" onClick={addFaq}><FontAwesomeIcon icon={faAdd} /></button>
+                        </div>
+                    </div>
+
                 </div>
+                <input type="submit" className="btn btn-primary submit" value="Submit" />
             </form>
 
 

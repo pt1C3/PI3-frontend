@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet';
 import './business.css';
 import axios from 'axios';
 
-export default function createBusiness() {
+export default function CreateBusiness() {
   const [name, setName] = useState(null);
   const [website, setWebsite] = useState(null);
   const [ownerId, setOwnerId] = useState(null);
