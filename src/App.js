@@ -33,7 +33,7 @@ import AdminProduct from './views/admin/createProduct';
 import ManagerProduct from './views/manager/product';
 import AdminProductAddons from './views/admin/productAddons';
 import AdminProductAddonsVersions from './views/admin/productAddonsVersions';
-import CostumPlan from './views/admin/costumplan';
+import AdminCostumPlan from './views/admin/costumplan';
 
 
 function App() {
@@ -151,9 +151,7 @@ function App() {
           <>
             <Route path="/" element={<AdminDashboard />} />
             <Route path="/business" element={<AdminBusiness />} />
-            <Route path="/versions/:productid" element={<AdminVersions />} />
             <Route path="/products/create" element={<AdminProduct />} />
-            <Route path="/costumers" element={<AdminCostumers />} />
             <Route path="/costumer/business" element={<AdminCostumerBusiness />} />
             <Route path="/costumer/edit" element={<AdminCostumerEdit />} />
             <Route path="/products" element={<AdminProducts />} />
