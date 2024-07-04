@@ -17,7 +17,7 @@ import Support from './views/support';
 import Search from './views/search';
 import ProfileDropdown from './components/profile-dropdown';
 import Plans from './views/owner/plans';
-import AuthService from './views/auth.service'
+import AuthService from './views/auth.service';
 import AdminDashboard from './views/admin/adminDashboard';
 import AdminBusiness from './views/admin/createBusiness';
 import AdminVersions from './views/admin/createVersion';
@@ -27,31 +27,31 @@ import AdminCostumerEdit from './views/admin/customeredit';
 import AdminProducts from './views/admin/products';
 import AdminInbox from './views/admin/inbox';
 import AdminProductVersions from './views/admin/productVersions';
-<<<<<<< Updated upstream
 import AdminManagerPackage from './views/admin/managerPackage';
-=======
 import AdminModais from './views/admin/Modais';
 import AdminFaq from './views/admin/createFaq';
 import ManagerProduct from './views/manager/product';
->>>>>>> Stashed changes
-
-
 
 function App() {
-  var navigate = useNavigate();
+  const navigate = useNavigate();
   const location = useLocation();
   const [search, setSearch] = useState('');
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [isOwner, setIsOwner] = useState(false);
-
+  const [isAdmin, setIsAdmin] = useState(true);
+  const [isOwner, setIsOwner] = useState(true);
   const [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser());
 
   useEffect(() => {
     if (currentUser) {
-      if (currentUser.utypeid === 4) { setIsAdmin(true); setIsOwner(false); }
-      if (currentUser.utypeid === 3) { setIsOwner(true); setIsAdmin(false); }
+      if (currentUser.utypeid === 4) { 
+        setIsAdmin(true); 
+        setIsOwner(false); 
+      }
+      if (currentUser.utypeid === 3) { 
+        setIsOwner(true); 
+        setIsAdmin(false); 
+      }
     }
-  }, [currentUser])
+  }, [currentUser]);
 
   const handleLogin = (userData) => {
     setCurrentUser(userData);
@@ -60,23 +60,17 @@ function App() {
 
   const handleLogout = () => {
     AuthService.logout();
-    setCurrentUser(null); // Clear current user in state
+    setCurrentUser(null);
     setIsOwner(false);
     setIsAdmin(false);
   };
 
   const searchSubmit = (event) => {
     event.preventDefault();
-
-    // Construct the new search path
     const newPath = `/search/${search}`;
-
-    // Check if already on the search page
     if (location.pathname === newPath) {
-      // Force update by setting the same path with a different key
       navigate(newPath, { replace: true });
     } else {
-      // Navigate to the new search path
       navigate(newPath);
     }
   };
@@ -84,74 +78,67 @@ function App() {
   return (
     <div className="App">
       {isAdmin ? (
-        <>
-          <nav className="navbar navbar-admin bg-white px-10vw py-0 regular-border">
-            <Link to="/" className="navbar-brand">
-              <img src={process.env.PUBLIC_URL + "/images/logicleap.png"} alt="Logo" height="40" />
+        <nav className="navbar navbar-admin bg-white px-10vw py-0 regular-border">
+          <Link to="/" className="navbar-brand">
+            <img src={process.env.PUBLIC_URL + "/images/logicleap.png"} alt="Logo" height="40" />
+          </Link>
+          <span className="d-flex align-items-center h-100 mx-3">
+            <Link to="/" className="nav-link">
+              <p className="mb-0 text-medium">Dashboard</p>
             </Link>
-            <span className="d-flex align-items-center h-100 mx-3">
-              <Link to="/" className="nav-link" >
-                <p className="mb-0 text-medium">Dashboard</p>
-              </Link>
-              <Link to="/" className="nav-link ms-2" >
-                <p className="mb-0 text-medium">Sales</p>
-              </Link>
-              <Link to="/" className="nav-link ms-2" >
-                <p className="mb-0 text-medium">Costumers</p>
-              </Link>
-              <Link to="/" className="nav-link ms-2" >
-                <p className="mb-0 text-medium">Packages</p>
-              </Link>
-              <Link to="/" className="nav-link ms-2" >
-                <p className="mb-0 text-medium">Products</p>
-              </Link>
-              <Link to="/" className="nav-link ms-2" >
-                <p className="mb-0 text-medium">Custom Plans</p>
-              </Link>
-              <Link to="/" className="nav-link ms-2" >
-                <p className="mb-0 text-medium">Support</p>
-              </Link>
-            </span>
-            {
-              currentUser ? <ProfileDropdown onLogout={handleLogout} /> : <ProfileDropdown />
-
-            }
-          </nav>
-        </>
+            <Link to="/" className="nav-link ms-2">
+              <p className="mb-0 text-medium">Sales</p>
+            </Link>
+            <Link to="/" className="nav-link ms-2">
+              <p className="mb-0 text-medium">Customers</p>
+            </Link>
+            <Link to="/" className="nav-link ms-2">
+              <p className="mb-0 text-medium">Packages</p>
+            </Link>
+            <Link to="/" className="nav-link ms-2">
+              <p className="mb-0 text-medium">Products</p>
+            </Link>
+            <Link to="/" className="nav-link ms-2">
+              <p className="mb-0 text-medium">Custom Plans</p>
+            </Link>
+            <Link to="/" className="nav-link ms-2">
+              <p className="mb-0 text-medium">Support</p>
+            </Link>
+          </span>
+          {currentUser ? <ProfileDropdown onLogout={handleLogout} /> : <ProfileDropdown />}
+        </nav>
       ) : (
-        <>
-          <nav className="navbar bg-white px-10vw regular-border">
-            <Link to="/" className="navbar-brand">
-              <img src={process.env.PUBLIC_URL + "/images/logicleap.png"} alt="Logo" height="40" />
-            </Link>
-            <span className="d-flex align-items-center">
-              {isOwner ?
-                <form className="inline-form" onSubmit={searchSubmit}>
-                  <div className="input-group rounded-2">
-                    <input
-                      type="text"
-                      className="form-control bg-transparent border-0"
-                      placeholder="Search"
-                      name="search"
-                      value={search}
-                      onChange={(event) => setSearch(event.target.value)}
-                    />
-                    <div className="input-group-btn">
-                      <button className="btn btn-default" type="submit">
-                        <FontAwesomeIcon icon={faMagnifyingGlass} />
-                      </button>
-                    </div>
+        <nav className="navbar bg-white px-10vw regular-border">
+          <Link to="/" className="navbar-brand">
+            <img src={process.env.PUBLIC_URL + "/images/logicleap.png"} alt="Logo" height="40" />
+          </Link>
+          <span className="d-flex align-items-center">
+            {isOwner && (
+              <form className="inline-form" onSubmit={searchSubmit}>
+                <div className="input-group rounded-2">
+                  <input
+                    type="text"
+                    className="form-control bg-transparent border-0"
+                    placeholder="Search"
+                    name="search"
+                    value={search}
+                    onChange={(event) => setSearch(event.target.value)}
+                  />
+                  <div className="input-group-btn">
+                    <button className="btn btn-default" type="submit">
+                      <FontAwesomeIcon icon={faMagnifyingGlass} />
+                    </button>
                   </div>
-                </form> : null}
-              <button className="btn btn-default">
-                <FontAwesomeIcon icon={faBell} />
-              </button>
-              {
-                currentUser ? <ProfileDropdown onLogout={handleLogout} /> : <ProfileDropdown />
-
-              }
-            </span>
-          </nav> </>)}
+                </div>
+              </form>
+            )}
+            <button className="btn btn-default">
+              <FontAwesomeIcon icon={faBell} />
+            </button>
+            {currentUser ? <ProfileDropdown onLogout={handleLogout} /> : <ProfileDropdown />}
+          </span>
+        </nav>
+      )}
 
       <Routes>
         <Route path="/login" element={<Login onLogin={handleLogin} />} />
@@ -165,11 +152,10 @@ function App() {
             <Route path="/costumers" element={<AdminCostumers />} />
             <Route path="/costumerbusiness" element={<AdminCostumerBusiness />} />
             <Route path="/costumeredit" element={<AdminCostumerEdit />} />
-            <Route path="/Products" element={<AdminProducts />} />
+            <Route path="/products" element={<AdminProducts />} />
             <Route path="/inbox" element={<AdminInbox />} />
             <Route path="/productversions" element={<AdminProductVersions />} />
-            <Route path="/managerPackage" element={<AdminManagerPackage/>} />
-
+          </>
         ) : (
           <>
             <Route path="/" element={<Home />} />
@@ -181,8 +167,7 @@ function App() {
             <Route path="/search/:searchvalue" element={<Search />} />
             <Route path="/owner/managers" element={<Managers />} />
             <Route path="/owner/plans" element={<Plans />} />
-            <Route path="/views/manager/product" element={<Product/>} />
-
+            <Route path="/views/manager/product" element={<ManagerProduct />} />
           </>
         )}
       </Routes>
