@@ -33,6 +33,8 @@ import AdminProduct from './views/admin/createProduct';
 import ManagerProduct from './views/manager/product';
 import AdminProductAddons from './views/admin/productAddons';
 import AdminProductAddonsVersions from './views/admin/productAddonsVersions';
+import CostumPlan from './views/admin/costumplan';
+
 
 function App() {
   const navigate = useNavigate();
@@ -161,6 +163,8 @@ function App() {
             <Route path="/createbusiness" element={<AdminCreateBusiness />} />
             <Route path="/productaddons" element={<AdminProductAddons />} />
             <Route path="/productaddonsversions" element={<AdminProductAddonsVersions />} />
+            <Route path="/costumplan" element={<AdminCostumPlan />} />
+
 
           </>
         ) : (
