@@ -5,7 +5,7 @@ import axios from 'axios';
 import "./managerPackage.css";
 import { Helmet } from 'react-helmet';
 
-export default function managerPackage() {
+export default function ManagerPackage() {
     const baseURL = 'http://localhost:3000';
     const navigate = useNavigate();
     let { id } = useParams();
