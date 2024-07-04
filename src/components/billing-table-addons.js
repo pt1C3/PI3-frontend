@@ -38,9 +38,9 @@ const BillingTable = ({ title, type, billingDate, paymentDate, status, maxUsers,
                         className="search-input"
                     />
                 </div>
-                <button className="add-product-button" onClick={handleAddProduct}>
+                <span className="add-product-text" onClick={handleAddProduct}>
                     Add Product
-                </button>
+                </span>
             </div>
             <table className="table table-bordered">
                 <thead>
