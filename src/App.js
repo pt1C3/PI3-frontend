@@ -20,17 +20,16 @@ import Plans from './views/owner/plans';
 import AuthService from './views/auth.service';
 import AdminDashboard from './views/admin/adminDashboard';
 import AdminBusiness from './views/admin/createBusiness';
-import AdminVersions from './views/admin/createVersion';
-import AdminCostumers from './views/admin/createCostumer';
+import AdminCreateBusiness from './views/admin/createVersion';
+import AdminCreateCostumer from './views/admin/createCostumer';
 import AdminCostumerBusiness from './views/admin/customerbusiness';
 import AdminCostumerEdit from './views/admin/customeredit';
 import AdminProducts from './views/admin/products';
 import AdminInbox from './views/admin/inbox';
 import AdminProductVersions from './views/admin/productVersions';
-import AdminManagerPackage from './views/admin/managerPackage';
-import AdminModais from './views/admin/Modais';
 import AdminFaq from './views/admin/createFaq';
 import ManagerProduct from './views/manager/product';
+import AdminProductAddons from './views/admin/productAddons';
 
 function App() {
   const navigate = useNavigate();
@@ -147,14 +146,16 @@ function App() {
           <>
             <Route path="/" element={<AdminDashboard />} />
             <Route path="/business" element={<AdminBusiness />} />
-            <Route path="/versions/:productid" element={<AdminVersions />} />
             <Route path="/faq/:productid" element={<AdminFaq />} />
-            <Route path="/costumers" element={<AdminCostumers />} />
             <Route path="/costumerbusiness" element={<AdminCostumerBusiness />} />
             <Route path="/costumeredit" element={<AdminCostumerEdit />} />
             <Route path="/products" element={<AdminProducts />} />
             <Route path="/inbox" element={<AdminInbox />} />
             <Route path="/productversions" element={<AdminProductVersions />} />
+            <Route path="/createcostumer" element={<AdminCreateCostumer />} />
+            <Route path="/createbusiness" element={<AdminCreateBusiness />} />
+            <Route path="/productaddons" element={<AdminProductAddons />} />
+
           </>
         ) : (
           <>

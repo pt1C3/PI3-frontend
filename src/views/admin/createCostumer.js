@@ -6,7 +6,7 @@ import countries from 'i18n-iso-countries';
 import 'i18n-iso-countries/langs/pt.json';
 import axios from 'axios';
 
-export default function Costumers() {
+export default function createCostumer() {
   const baseURL = 'http://localhost:3000';
   const [firstname, setFirstName] = useState("");
   const [lastname, setLastName] = useState("");

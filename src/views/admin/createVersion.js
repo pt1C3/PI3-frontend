@@ -3,7 +3,6 @@ import Breadcrumbs from "../../components/breadcrumbs";
 import { useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import axios from 'axios';
-import './adminversions.css';
 
 export default function Version() {
     const baseURL = 'http://localhost:3000';
