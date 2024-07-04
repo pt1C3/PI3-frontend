@@ -1,6 +1,6 @@
 import { version } from 'react';
-import Products from '../views/admin/productVersions';
-import './billing-table-versions.css';
+import Products from '../views/admin/productAddonsVersions';
+import './billing-table-addons-version';
 
 const BillingTable = ({ title, type, billingDate, status, action }) => { 
 
@@ -33,7 +33,6 @@ const BillingTable = ({ title, type, billingDate, status, action }) => {
                 <thead>
                     <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Product</th>
                     <th scope="col">Status</th>
                     <th scope="col">Release Data</th>
                     <th scope="col">Release Note</th>
@@ -45,8 +44,6 @@ const BillingTable = ({ title, type, billingDate, status, action }) => {
                 {data.map((item, index) => (
                         <tr key={index}>
                             <td>{item.id}</td>
-                            <td>{title}
-                            </td>
                             <td>
                             <span className={`text-${status === 'Pending' ? 'warning' : status === 'Payed' ? 'success' : 'danger'}`}>
                                     {status}
@@ -56,7 +53,7 @@ const BillingTable = ({ title, type, billingDate, status, action }) => {
                             <td>{item.releaseNote}</td>
                             <td>
                                 {version && <a className="linknormal" href="#">{version}</a>}
-                            </td>  
+                            </td>                      
                             <td>
                                 {action && <a className="linknormal" href="#">{action}</a>}
                             </td>

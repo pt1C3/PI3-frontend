@@ -30,6 +30,7 @@ import AdminProductVersions from './views/admin/productVersions';
 import AdminFaq from './views/admin/createFaq';
 import ManagerProduct from './views/manager/product';
 import AdminProductAddons from './views/admin/productAddons';
+import AdminProductAddonsVersions from './views/admin/productAddonsVersions';
 
 function App() {
   const navigate = useNavigate();
@@ -155,6 +156,7 @@ function App() {
             <Route path="/createcostumer" element={<AdminCreateCostumer />} />
             <Route path="/createbusiness" element={<AdminCreateBusiness />} />
             <Route path="/productaddons" element={<AdminProductAddons />} />
+            <Route path="/productaddonsversions" element={<AdminProductAddonsVersions />} />
 
           </>
         ) : (
