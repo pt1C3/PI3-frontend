@@ -34,6 +34,7 @@ import ManagerProduct from './views/manager/product';
 import AdminProductAddons from './views/admin/productAddons';
 import AdminProductAddonsVersions from './views/admin/productAddonsVersions';
 import AdminCostumPlan from './views/admin/costumplan';
+import AdminManagerList from './views/admin/productManagerListManagerList';
 
 
 function App() {
@@ -162,6 +163,7 @@ function App() {
             <Route path="/productaddons" element={<AdminProductAddons />} />
             <Route path="/productaddonsversions" element={<AdminProductAddonsVersions />} />
             <Route path="/costumplan" element={<AdminCostumPlan />} />
+            <Route path="/managerList" element={<AdminManagerList />} />
 
 
           </>
