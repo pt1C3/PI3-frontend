@@ -81,8 +81,7 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   padding: 5px 10px;
-  background-color: #f5f5f5; /* Fundo para combinar com o exemplo */
-  margin-right: 10px;
+  background-color: transparent; /* Barra de pesquisa transparente */
 }
 
 .search-icon {
@@ -94,37 +93,26 @@
   border: none;
   outline: none;
   flex: 1;
-  background-color: transparent;
-  color: #000;
+  background-color: transparent; /* Input transparente */
+  color: #000; /* Texto do input */
 }
 
-.country-container {
+.country-button {
+  border: none;
+  background: none;
+  color: #007bff;
   display: flex;
   align-items: center;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 5px 10px;
-  background-color: #f5f5f5; /* Fundo para combinar com o exemplo */
-  margin-right: 10px;
-}
-
-.country-select {
-  border: none;
-  background: transparent;
-  color: #000;
-  font-size: 14px;
   cursor: pointer;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
+  padding-left: 10px;
 }
 
 .caret-icon {
   margin-left: 5px;
-  color: #888;
 }
 
 .add-product-text {
+  margin-left: 10px;
   color: #007bff;
   cursor: pointer;
   font-size: 14px;
@@ -149,4 +137,3 @@
   background-color: #f2f2f2;
   text-align: left;
 }
-

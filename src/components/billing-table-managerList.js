@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { version } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass, faCaretDown } from "@fortawesome/free-solid-svg-icons";
-import './billing-table-addons-managerList.css';
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import './billing-table-managerList.css';
 
 const BillingTable = ({ title, type, billingDate, paymentDate, status, maxUsers, billingAmount, startDate, action }) => { 
     const [search, setSearch] = useState('');
@@ -91,4 +91,5 @@ const BillingTable = ({ title, type, billingDate, paymentDate, status, maxUsers,
     );
 };
 
-export default ManagerList;
+
+export default BillingTable;
