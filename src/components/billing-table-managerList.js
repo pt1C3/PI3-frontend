@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { version } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { faMagnifyingGlass, faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import './billing-table-managerList.css';
 
 const BillingTable = ({ title, type, billingDate, paymentDate, status, maxUsers, billingAmount, startDate, action }) => { 
@@ -60,9 +60,9 @@ const BillingTable = ({ title, type, billingDate, paymentDate, status, maxUsers,
                         <th scope="col">Addon</th>
                         <th scope="col">Status</th>
                         <th scope="col">Versions</th>
-                        <th scope="col">Active Costumers</th>
-                        <th scope="col">billingAmount (yr.)</th>
-                        <th scope="col">billingAmount (mo.)</th>
+                        <th scope="col">Active Customers</th>
+                        <th scope="col">Billing Amount (yr.)</th>
+                        <th scope="col">Billing Amount (mo.)</th>
                         <th scope="col">Actions</th>
                     </tr>
                 </thead>
@@ -90,6 +90,5 @@ const BillingTable = ({ title, type, billingDate, paymentDate, status, maxUsers,
         </div>
     );
 };
-
 
 export default BillingTable;
