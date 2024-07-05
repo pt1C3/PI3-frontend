@@ -30,7 +30,7 @@ import AdminProductVersions from './views/admin/productVersions';
 import AdminManagerPackage from './views/admin/managerPackage';
 import AdminModais from './views/admin/Modais';
 import AdminProduct from './views/admin/createProduct';
-import ManagerProduct from './views/manager/product';
+import ManagerProduct from './views/admin/managerProduct';
 import AdminProductAddons from './views/admin/productAddons';
 import AdminProductAddonsVersions from './views/admin/productAddonsVersions';
 import AdminCostumPlan from './views/admin/costumplan';
@@ -173,6 +173,7 @@ function App() {
             <Route path="/productbusinesslist" element={<AdminProductBusinessList />} />
             <Route path="/package" element={<AdminPackage/>} />
             <Route path='/saleslist' element={<AdminSalesList/>} />
+            <Route path="/managerProduct" element={<ManagerProduct />} />
           </>
         ) : (
           <>
@@ -185,7 +186,6 @@ function App() {
             <Route path="/search/:searchvalue" element={<Search />} />
             <Route path="/owner/managers" element={<Managers />} />
             <Route path="/owner/plans" element={<Plans />} />
-            <Route path="/views/manager/product" element={<ManagerProduct />} />
           </>
         )}
       </Routes>
