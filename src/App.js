@@ -37,6 +37,7 @@ import AdminCostumPlan from './views/admin/costumplan';
 import AdminSalesSupport from './views/admin/salessupport';
 import AdminManagerList from './views/admin/productManagerList';
 import AdminBusinessList from './views/admin/productBusinessList';
+import AdminPackage from './views/admin/package';
 
 function App() {
   const navigate = useNavigate();
@@ -169,6 +170,7 @@ function App() {
             <Route path="/salessupport" element={<AdminSalesSupport />} />
             <Route path="/managerlist" element={<AdminManagerList />} />
             <Route path="/businesslist" element={<AdminBusinessList />} />
+            <Route path="/package" element={<AdminPackage/>} />
           </>
         ) : (
           <>

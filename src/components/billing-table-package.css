@@ -1,0 +1,153 @@
+.container {
+  margin-top: 3rem;
+}
+
+.billing-table .table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  background-color: #ffffff;
+  border-spacing: 0;
+  border: 1px solid #dee2e6;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.billing-table .table-bordered {
+  border: 1px solid #dee2e6;
+}
+
+.billing-table .table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+  padding: 0.75rem;
+  text-align: left;
+  background-color: #f8f9fa;
+  font-weight: bold;
+  color: #495057;
+}
+
+.billing-table .table tbody td {
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
+  background-color: #ffffff;
+}
+
+.billing-table .table tbody tr:nth-of-type(odd) {
+  background-color: #f8f9fa;
+}
+
+.billing-table .table tbody tr:hover {
+  background-color: #e9ecef;
+}
+
+.billing-table .table .text-warning {
+  color: #ffc107 !important;
+}
+
+.billing-table .table .text-success {
+  color: #28a745 !important;
+}
+
+.billing-table .table .text-danger {
+  color: #dc3545 !important;
+}
+
+.billing-table .linknormal {
+  color: #007bff;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+.billing-table .linknormal:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+/* billing-table-addons-with-country.css */
+.container {
+  padding: 20px;
+}
+
+.search-bar-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 5px 10px;
+  background-color: #f5f5f5; /* Fundo para combinar com o exemplo */
+  margin-right: 10px;
+  height: 36px; /* Ajuste para coincidir com a altura do seletor de país */
+}
+
+.search-icon {
+  margin-right: 10px;
+  color: #888;
+}
+
+.search-input {
+  border: none;
+  outline: none;
+  flex: 1;
+  background-color: transparent;
+  color: #000;
+}
+
+.package-container {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 5px 10px;
+  background-color: transparent; /* Fundo transparente */
+  height: 36px; /* Ajuste para coincidir com a altura da barra de pesquisa */
+  margin-right: 10px;
+}
+
+.package-select {
+  border: none;
+  background: transparent;
+  color: #000;
+  font-size: 14px;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.caret-icon {
+  margin-left: 5px;
+  color: #888;
+}
+
+.add-product-text {
+  color: #007bff;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.add-product-text:hover {
+  text-decoration: underline;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.table th {
+  background-color: #f2f2f2;
+  text-align: left;
+}
