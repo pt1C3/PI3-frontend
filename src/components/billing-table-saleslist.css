@@ -53,6 +53,22 @@
   color: #dc3545 !important;
 }
 
+.billing-table .table .product-status-installed-and-used {
+  color: #28a745 !important; /* Verde */
+}
+
+.billing-table .table .product-status-installed {
+  color: #ffc107 !important; /* Amarelo */
+}
+
+.billing-table .table .product-status-pending {
+  color: #ffc107 !important; /* Amarelo */
+}
+
+.billing-table .table .product-status-not-installed {
+  color: #dc3545 !important; /* Vermelho */
+}
+
 .billing-table .linknormal {
   color: #007bff;
   text-decoration: none;
@@ -62,4 +78,24 @@
 .billing-table .linknormal:hover {
   color: #0056b3;
   text-decoration: underline;
+}
+
+.search-bar-container {
+  margin-bottom: 1rem;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  margin-right: 0.5rem;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #dee2e6;
+  border-radius: 0.25rem;
 }
