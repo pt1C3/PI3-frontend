@@ -167,7 +167,6 @@ function App() {
             <Route path="/salessupport" element={<AdminSalesSupport />} />
             <Route path="/managerlist" element={<AdminManagerList />} />
 
-
           </>
         ) : (
           <>

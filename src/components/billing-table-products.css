@@ -64,7 +64,7 @@
   text-decoration: underline;
 }
 
-/* billing-table-addons-with-country.css */
+/* billing-table-addons.css */
 .container {
   padding: 20px;
 }
@@ -81,6 +81,7 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   padding: 5px 10px;
+  width: 300px;
   background-color: transparent; /* Barra de pesquisa transparente */
 }
 
@@ -97,23 +98,9 @@
   color: #000; /* Texto do input */
 }
 
-.country-button {
-  border: none;
-  background: none;
-  color: #007bff;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  padding-left: 10px;
-}
-
-.caret-icon {
-  margin-left: 5px;
-}
-
 .add-product-text {
   margin-left: 10px;
-  color: #007bff;
+  color: #000000;
   cursor: pointer;
   font-size: 14px;
 }
