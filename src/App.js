@@ -36,7 +36,7 @@ import AdminProductAddonsVersions from './views/admin/productAddonsVersions';
 import AdminCostumPlan from './views/admin/costumplan';
 import AdminSalesSupport from './views/admin/salessupport';
 import AdminManagerList from './views/admin/productManagerList';
-
+import AdminBusinessList from './views/admin/productBusinessList';
 
 function App() {
   const navigate = useNavigate();
@@ -159,6 +159,8 @@ function App() {
             <Route path="/products" element={<AdminProducts />} />
             <Route path="/inbox" element={<AdminInbox />} />
             <Route path="/productversions" element={<AdminProductVersions />} />
+            <Route path="/managerpackage" element={<AdminManagerPackage />} />
+            <Route path="/modais" element={<AdminModais />} />
             <Route path="/createcostumer" element={<AdminCreateCostumer />} />
             <Route path="/createbusiness" element={<AdminCreateBusiness />} />
             <Route path="/productaddons" element={<AdminProductAddons />} />
@@ -166,7 +168,7 @@ function App() {
             <Route path="/costumplan" element={<AdminCostumPlan />} />      
             <Route path="/salessupport" element={<AdminSalesSupport />} />
             <Route path="/managerlist" element={<AdminManagerList />} />
-
+            <Route path="/businesslist" element={<AdminBusinessList />} />
           </>
         ) : (
           <>

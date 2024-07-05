@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { version } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass, faCaretDown } from "@fortawesome/free-solid-svg-icons";
-import './billing-table-ManagerList.css';
+import './billing-table-businessList.css';
 
-const BillingTable = ({ title, type, billingDate, paymentDate, status, maxUsers, billingAmount, startDate, action }) => { 
+const BillingTable = () => { 
     const [search, setSearch] = useState('');
     const [country, setCountry] = useState('');
 
@@ -19,31 +19,29 @@ const BillingTable = ({ title, type, billingDate, paymentDate, status, maxUsers,
     const data = [
         {
             id: '1',
-            firstName: 'António',
-            lastName: 'Mendes',
-            email: 'antoniomendes@empresa.com',
-            phoneNumber: '+123456789',
-            country: 'Portugal',
-            business: 'Empresa A',
-            status: 'Pending',
-            action: 'Send Notification'
+            name: 'Empresa A',
+            website: 'www.empresa.com',
+            owner: 'António Mendes',
+            ownerEmail: 'antoniomendes@empresa.com',
+            numberOfEmployees: '12',
+            status: 'Active',
+            action: 'View'
         },
         {
             id: '2',
-            firstName: 'António',
-            lastName: 'Mendes',
-            email: 'antoniomendes@empresa.com',
-            phoneNumber: '+123456789',
-            country: 'Portugal',
-            business: 'Empresa B',
-            status: 'Pending',
-            action: 'Send Notification'
-        }
+            name: 'Empresa B',
+            website: 'www.empresa.com',
+            owner: 'António Mendes',
+            ownerEmail: 'antoniomendes@empresa.com',
+            numberOfEmployees: '12',
+            status: 'Active',
+            action: 'View'
+        },
 
     ];
 
     return (
-        <div className="container mt-5 billing-table">
+        <div className="container mt-5 business-table">
             <div className="search-bar-container">
                 <div className="search-bar">
                     <FontAwesomeIcon icon={faMagnifyingGlass} className="search-icon" />
@@ -57,7 +55,7 @@ const BillingTable = ({ title, type, billingDate, paymentDate, status, maxUsers,
                 </div>
                 <div className="country-container">
                     <select className="country-select" value={country} onChange={handleCountryChange}>
-                        <option value="" disabled>Country</option>
+                        <option value="" disabled>Select Country</option>
                         <option value="Portugal">Portugal</option>
                         <option value="United States">United States</option>
                         <option value="United Kingdom">United Kingdom</option>
@@ -67,20 +65,16 @@ const BillingTable = ({ title, type, billingDate, paymentDate, status, maxUsers,
                     </select>
                     <FontAwesomeIcon icon={faCaretDown} className="caret-icon" />
                 </div>
-                <span className="add-product-text" onClick={() => console.log("Add Product clicked")}>
-                    Businesses
-                </span>
             </div>
             <table className="table table-bordered">
                 <thead>
                     <tr>
                         <th scope="col">ID</th>
-                        <th scope="col">First Name</th>
-                        <th scope="col">Last Name</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Phone Number</th>
-                        <th scope="col">Country</th>
-                        <th scope="col">Business</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Website</th>
+                        <th scope="col">Owner</th>
+                        <th scope="col">Owner Email</th>
+                        <th scope="col">Number of Employees</th>
                         <th scope="col">Status</th>
                         <th scope="col">Actions</th>
                     </tr>
@@ -89,14 +83,13 @@ const BillingTable = ({ title, type, billingDate, paymentDate, status, maxUsers,
                     {data.map((item, index) => (
                         <tr key={index}>
                             <td>{item.id}</td>
-                            <td>{item.firstName}</td>
-                            <td>{item.lastName}</td>
-                            <td>{item.email}</td>
-                            <td>{item.phoneNumber}</td>
-                            <td>{item.country}</td>
-                            <td>{item.business}</td>
+                            <td>{item.name}</td>
+                            <td><a href={`https://${item.website}`} target="_blank" rel="noopener noreferrer">{item.website}</a></td>
+                            <td>{item.owner}</td>
+                            <td>{item.ownerEmail}</td>
+                            <td>{item.numberOfEmployees}</td>
                             <td>
-                                <span className={`text-${item.status === 'Pending' ? 'warning' : item.status === 'Payed' ? 'success' : 'danger'}`}>
+                                <span className={`text-${item.status === 'Active' ? 'success' : 'danger'}`}>
                                     {item.status}
                                 </span>
                             </td>
