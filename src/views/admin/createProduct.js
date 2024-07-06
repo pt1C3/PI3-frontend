@@ -23,48 +23,66 @@ export default function Product() {
 
 
     const changePrice = (isCurrent, isFirst, value) => {
-        if (isCurrent) {
-            if (isFirst) {
-                setPrice1(value);
-                setOldPrice1(+(+value * (1 + (+discount1 / 100))).toFixed(2));
-            }
-            else {
-                setPrice2(value);
-                setOldPrice2(+(+value * (1 + (+discount2 / 100))).toFixed(2));
-            }
+        if (+value < 0) {
+            alert("Price value invalid.")
         }
         else {
-            if (isFirst) {
-                setOldPrice1(value);
-                setPrice1(+(+value * (1 - (+discount1 / 100))).toFixed(2));
+            if (isCurrent) {
+                value = (+value).toFixed(0);
+                if (isFirst) {
+                    setPrice1(value);
+                    setOldPrice1(+(+value * (1 + (+discount1 / 100))).toFixed(2));
+                }
+                else {
+                    setPrice2(value);
+                    setOldPrice2(+(+value * (1 + (+discount2 / 100))).toFixed(2));
+                }
             }
             else {
-                setOldPrice2(value);
-                setPrice2(+(+value * (1 - (+discount2 / 100))).toFixed(2));
+                value = (+value).toFixed(0);
+
+                if (isFirst) {
+                    value = (+value).toFixed(0);
+                    setOldPrice1(value);
+                    setPrice1(+(+value * (1 - (+discount1 / 100))).toFixed(2));
+                }
+                else {
+                    setOldPrice2(value);
+                    setPrice2(+(+value * (1 - (+discount2 / 100))).toFixed(2));
+                }
             }
         }
     }
     const changeDiscount = (isFirst, value) => {
-        if (isFirst) {
-            if (price1) {
-                setOldPrice1(+(+price1 * (1 + (+value / 100))).toFixed(2));
-            }
-            else if (oldPrice1) {
-                setPrice1(+(+oldPrice1 * (1 - (+value / 100))).toFixed(2));
-
-            }
-            setDiscount1(value)
+        if (+value >= 100 || +value < 0) {
+            alert("Discount value invalid.")
         }
         else {
-            if (price2) {
-                setOldPrice2(+(+price2 * (1 + (+value / 100))).toFixed(2));
-            } else if (oldPrice2) {
-                setPrice2(+(+oldPrice2 * (1 - (+value / 100))).toFixed(2));
+            value = (+value).toFixed(0);
+            if (isFirst) {
+                if (price1) {
+                    setOldPrice1(+(+price1 * (1 + (+value / 100))).toFixed(2));
+                }
+                else if (oldPrice1) {
+                    setPrice1(+(+oldPrice1 * (1 - (+value / 100))).toFixed(2));
+
+                }
+                setDiscount1(value)
+            }
+            else {
+                if (price2) {
+                    setOldPrice2(+(+price2 * (1 + (+value / 100))).toFixed(2));
+                } else if (oldPrice2) {
+                    setPrice2(+(+oldPrice2 * (1 - (+value / 100))).toFixed(2));
+
+                }
+                setDiscount2(value)
 
             }
-            setDiscount2(value)
-
         }
+        console.log(typeof(discount1));
+        console.log(discount1);
+
     }
 
     //FAQ
@@ -77,7 +95,7 @@ export default function Product() {
         setFaqs(newFaqs);
     };
 
-    const   addFaq = () => {
+    const addFaq = () => {
         setFaqs([...faqs, { question: '', answer: '' }]);
     };
 
@@ -101,7 +119,7 @@ export default function Product() {
 
     /*if (!product) {
         return <div className="wrapper">Loading...</div>;
-
+ 
     }*/
     return (
         <div className="wrapper" style={{ minHeight: '100vh' }}>
@@ -145,16 +163,16 @@ export default function Product() {
                                 <label htmlFor="price1">Final Price</label>
                                 <input type="number" className='form-control mb-3' name="price1" value={price1} onChange={(e) => { changePrice(true, true, e.target.value) }}></input>
                                 <label htmlFor="discount1">Discount Percentage</label>
-                                <input type="number" className='form-control mb-3' name="discount1" value={discount1} onChange={(e) => { changeDiscount(true, (e.target.value)) }}></input>
+                                <input type="number" className='form-control mb-3' max="100" name="discount1" value={discount1} onChange={(e) => { changeDiscount(true, (e.target.value)) }}></input>
                                 <label htmlFor="oldprice1">Previous Price</label>
                                 <input type="number" className='form-control mb-3' name="oldprice1" value={oldPrice1} onChange={(e) => { changePrice(false, true, e.target.value) }}></input>
                                 <div className='d-flex align-items-center'>
-                                    {discount1 ?
+                                    {discount1 || +discount1!= 0 ?
                                         <h3 className="card-discount rounded-3 p-1 text-white text-bold me-2 mb-0">-{discount1}%</h3>
                                         : <h3 className="my-1" style={{ width: "0" }}>-</h3>
                                     }
                                     <div>
-                                        {discount1 ?
+                                        {discount1 || +discount1!= 0 ?
                                             <h5 class="card-text fs-6 text-secondary text-decoration-line-through m-0">€{oldPrice1}/mo.</h5>
                                             : null}
                                         <h5 class="card-text fs-5 m-0">€{price1}/mo.</h5>
@@ -167,16 +185,16 @@ export default function Product() {
                                 <label htmlFor="price2">Final Price</label>
                                 <input type="number" className='form-control mb-3' name="price2" value={price2} onChange={(e) => { changePrice(true, false, e.target.value) }}></input>
                                 <label htmlFor="discount2">Discount Percentage</label>
-                                <input type="number" className='form-control mb-3' name="discount2" value={discount2} onChange={(e) => { changeDiscount(false, (e.target.value)) }}></input>
+                                <input type="number" className='form-control mb-3' max="100" name="discount2" value={discount2} onChange={(e) => { changeDiscount(false, (e.target.value)) }}></input>
                                 <label htmlFor="oldprice2">Previous Price</label>
                                 <input type="number" className='form-control mb-3' name="oldprice2" value={oldPrice2} onChange={(e) => { changePrice(false, false, e.target.value) }}></input>
                                 <div className='d-flex align-items-center'>
-                                    {discount2 ?
+                                    {discount2 || +discount2!= 0 ?
                                         <h3 className="card-discount rounded-3 p-1 text-white text-bold me-2 mb-0">-{discount2}%</h3>
                                         : <h3 className="my-1" style={{ width: "0" }}>-</h3>
                                     }
                                     <div>
-                                        {discount2 ?
+                                        {discount2 || +discount2!= 0 ?
                                             <h5 class="card-text fs-6 text-secondary text-decoration-line-through m-0">€{oldPrice2}/mo.</h5>
                                             : null}
                                         <h5 class="card-text fs-5 m-0">€{price2}/mo.</h5>
@@ -189,27 +207,33 @@ export default function Product() {
                     <div className='bg-white regular-border rounded-3 mb-4'>
                         <p className='m-0 px-4 py-3 text-medium'>FAQ</p>
                         <hr className='m-0' />
-                        <div className='px-4 py-3'>
+                        <div className='px-4 py-3 d-flex align-items-center flex-column'>
                             {faqs.map((faq, index) => (
-                                <div key={index}>
-                                    <p>Question number: {index}</p>
-                                    <label htmlFor={`question-${index}`}>Question</label>
-                                    <input
-                                        type="text"
-                                        className='form-control mb-3'
-                                        name="question"
-                                        value={faq.question}
-                                        onChange={(e) => handleFaqChange(index, e)}
-                                    />
-                                    <label htmlFor={`answer-${index}`}>Answer</label>
-                                    <input
-                                        type="text"
-                                        className='form-control mb-3'
-                                        name="answer"
-                                        value={faq.answer}
-                                        onChange={(e) => handleFaqChange(index, e)}
-                                    />
-                                    <button className='btn btn-secondary rounded-circle'type="button" onClick={() => removeFaq(index)}><FontAwesomeIcon icon={faSubtract} /></button>
+                                <div key={index} className='row w-100'>
+                                    <div className='col-1 d-flex justify-content-center align-items-center flex-column'>
+                                        <p className='text-medium'>{index}</p>
+                                        <button className='btn btn-secondary rounded-circle' type="button" onClick={() => removeFaq(index)}><FontAwesomeIcon icon={faSubtract} /></button>
+                                    </div>
+                                    <div className='col-11'>
+                                        <label htmlFor={`question-${index}`}>Question</label>
+                                        <input
+                                            type="text"
+                                            className='form-control mb-3'
+                                            name="question"
+                                            value={faq.question}
+                                            onChange={(e) => handleFaqChange(index, e)}
+                                        />
+                                        <label htmlFor={`answer-${index}`}>Answer</label>
+                                        <input
+                                            type="text"
+                                            className='form-control mb-3'
+                                            name="answer"
+                                            value={faq.answer}
+                                            onChange={(e) => handleFaqChange(index, e)}
+                                        />
+                                    </div>
+                                    <hr />
+
                                 </div>
                             ))}
                             <button className='btn btn-secondary rounded-circle' type="button" onClick={addFaq}><FontAwesomeIcon icon={faAdd} /></button>
