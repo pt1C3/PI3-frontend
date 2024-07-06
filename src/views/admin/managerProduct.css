@@ -1,3 +1,151 @@
-.form-container{
-    border: .1rem solid var(--gray-2)!important;
-}
+.wrapper {
+    font-family: Arial, sans-serif;
+  }
+  
+  .content {
+    max-width: 1200px; /* Increase the maximum width */
+    width: 100%;
+    padding: 20px;
+  }
+  
+  .card {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .card-body {
+    padding: 20px;
+  }
+  
+  .custom-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .divider {
+    height: 1px;
+    background-color: #e0e0e0;
+    margin-bottom: 10px;
+  }
+  
+  .logo {
+    margin-bottom: 20px;
+  }
+  
+  .logo-box {
+    width: 60px;
+    height: 60px;
+    background-color: #002F6C;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .logo-text-c {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .logo-text-v {
+    color: #E63946;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .title h1 {
+    margin: 0;
+    font-size: 24px;
+  }
+  
+  .title p {
+    margin: 5px 0 0;
+    color: #888;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .licenses {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .licenses-sidebar {
+    width: 30%;
+    border-right: 1px solid #e0e0e0;
+    padding-right: 20px;
+  }
+  
+  .search-bar {
+    margin-bottom: 10px;
+  }
+  
+  .search-bar input {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+  }
+  
+  .license-list {
+    max-height: 200px;
+    overflow-y: auto;
+  }
+  
+  .license-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .license-item p {
+    margin: 0;
+  }
+  
+  .license-check {
+    color: green;
+  }
+  
+  .add-license {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .add-license button {
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: #e0e0e0;
+    border-radius: 50%;
+    font-size: 20px;
+    line-height: 30px;
+    text-align: center;
+  }
+  
+  .licenses-details {
+    width: 65%;
+    padding-left: 20px;
+  }
+  
+  .remove-license {
+    margin-top: 20px;
+    padding: 5px 10px;
+    border: 1px solid #e0e0e0;
+    background-color: white;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .license-count {
+    margin-top: 10px;
+    text-align: right;
+  }
