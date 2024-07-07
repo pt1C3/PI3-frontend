@@ -1,0 +1,83 @@
+.licenses-sidebar {
+    width: 30%; /* Reduced width */
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 10px;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 20px;
+    outline: none;
+}
+
+.license-list {
+    max-height: 200px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+}
+
+.license-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+.license-item:hover {
+    background-color: #e0e0e0;
+}
+
+.license-name {
+    font-weight: bold;
+    margin: 0;
+}
+
+.license-email {
+    margin: 0;
+    color: #888;
+}
+
+.license-check {
+    color: green;
+    font-size: 24px;
+}
+
+.add-license {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.add-license button {
+    width: 40px;
+    height: 40px;
+    border: none;
+    background-color: #e0e0e0;
+    border-radius: 50%;
+    font-size: 24px;
+    line-height: 40px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-license button:hover {
+    background-color: #ccc;
+}
