@@ -13,6 +13,10 @@
     border-radius: 8px;
     margin-bottom: 30px;
   }
+
+  .no-items {
+    color: #888;
+  }
   
   .card-body {
     padding: 30px;

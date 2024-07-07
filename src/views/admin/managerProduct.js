@@ -26,7 +26,7 @@ export default function ManagerProduct() {
                   <div className="custom-title">Addons</div>
                   <div className="divider"></div>
                   <div className="form-group">
-                      <p>No items to show.</p>
+                  <p className="no-items">No items to show.</p>
                   </div>
               </div>
           </div>
