@@ -17,6 +17,7 @@ import Support from './views/support';
 import Search from './views/search';
 import ProfileDropdown from './components/profile-dropdown';
 import Plans from './views/owner/plans';
+import OwnerProduct from './views/owner/ownerproduct';
 import AuthService from './views/auth.service';
 import AdminDashboard from './views/admin/adminDashboard';
 import AdminBusiness from './views/admin/createBusiness';
@@ -188,6 +189,7 @@ function App() {
             <Route path="/search/:searchvalue" element={<Search />} />
             <Route path="/owner/managers" element={<Managers />} />
             <Route path="/owner/plans" element={<Plans />} />
+            <Route path="/owner/ownerproduct" element={<OwnerProduct />} />
           </>
         )}
       </Routes>
