@@ -4,9 +4,19 @@ import "./licenseSidebar.css";
 export default function LicenseSidebar() {
     return (
         <div className="licenses-sidebar">
-            <div className="search-bar">
-                <input type="text" placeholder="Search" />
-            </div>
+    <div className="search-container">
+      <input
+        type="search"
+        className="form-control2"
+        placeholder="Search"
+        aria-label="Search"
+        aria-describedby="search-addon"
+      />
+      <span className="input-group-text" id="search-addon">
+        <i className="fas fa-search"></i>
+      </span>
+    </div>
+      <br></br>
             <div className="license-list">
                 <div className="license-item">
                     <div>
@@ -43,3 +53,4 @@ export default function LicenseSidebar() {
         </div>
     );
 }
+
