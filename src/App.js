@@ -46,18 +46,18 @@ function App() {
   const navigate = useNavigate();
   const location = useLocation();
   const [search, setSearch] = useState('');
-  const [isAdmin, setIsAdmin] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false);
   const [isOwner, setIsOwner] = useState(true);
   const [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser());
 
   useEffect(() => {
     if (currentUser) {
       if (currentUser.utypeid === 4) { 
-        setIsAdmin(true); 
-        setIsOwner(false); 
+        setIsAdmin(false); 
+        setIsOwner(true); 
       }
       if (currentUser.utypeid === 3) { 
-        setIsOwner(true); 
+        setIsOwner(false); 
         setIsAdmin(false); 
       }
     }
