@@ -1,5 +1,5 @@
 import React from 'react';
-import "./product.css";
+import "./ownerproduct.css";
 import LicenseSidebar from '../../components/LicenseSidebar';
 import LicenseDetails from '../../components/LicenseDetails';
 
