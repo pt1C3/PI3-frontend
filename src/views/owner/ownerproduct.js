@@ -32,9 +32,9 @@ export default function OwnerProduct() {
                                 <p>Your next bill is for <strong>€649.99</strong> on <strong>2023-03-12</strong></p>
                             </div>
                             <div>
-                                <button className="btn btn-outline-secondary mr-2">Change Plan</button>
-                                <button className="btn btn-outline-secondary mr-2">Pause</button>
-                                <button className="btn btn-outline-secondary mr-2">Cancel</button>
+                                <button className="btn btn-outline-secondary rounded-pill mr-2">Change Plan</button>
+                                <button className="btn btn-outline-secondary rounded-pill mr-2">Pause</button>
+                                <button className="btn btn-outline-secondary rounded-pill mr-2">Cancel</button>
                                 <button className="btn btn-primary">Pay</button>
                             </div>
                         </div>
