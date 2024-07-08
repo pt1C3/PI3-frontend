@@ -41,6 +41,10 @@
     font-size: 15px;
 }
 
+.subtitulo2 {
+    font-size: 12px;
+}
+
 .remove-license {
     margin-top: 0; /* Remove top margin */
     padding: 5px 10px;
