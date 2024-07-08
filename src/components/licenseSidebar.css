@@ -99,3 +99,33 @@
 .add-license button:hover {
     background-color: #ccc;
 }
+
+/* Webkit browsers */
+.license-list::-webkit-scrollbar {
+    width: 12px;
+}
+
+.license-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.license-list::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+.license-list::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Firefox */
+.license-list {
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
+}
+
+/* Adjust the position of the scrollbar */
+.license-list {
+    padding-right: 10px; /* Adjust this value as needed */
+}
