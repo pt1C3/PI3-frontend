@@ -1,155 +1,84 @@
+/* ownreaallproducts.css */
 .wrapper {
   font-family: Arial, sans-serif;
-}
-
-.content {
-  max-width: 1200px; /* Increase the maximum width */
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 20px;
 }
 
-.card {
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  margin-bottom: 30px;
-}
-
-.no-items {
-  color: #888;
-}
-
-.card-body {
-  padding: 30px;
-}
-
-.custom-title {
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.divider {
-  height: 1px;
-  background-color: #e0e0e0;
-  margin-bottom: 10px;
-}
-
-.logo {
-  margin-bottom: 20px;
-}
-
-.logo-box {
-  width: 90px;
-  height: 90px;
-  background-color: #002F6C;
+.search-nav-bar {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 9px;
-  margin-bottom: 12px;
-}
-
-.logo-text-c {
-  color: white;
-  font-size: 34px;
-  font-weight: bold;
-}
-
-.logo-text-v {
-  color: #E63946;
-  font-size: 34px;
-  font-weight: bold;
-}
-
-.title h1 {
-  margin-left: 40px;
-  font-size: 24px;
-}
-
-.title p {
-  margin-left: 40px;
-  color: #888;
-}
-
-.form-group {
-  margin-bottom: 15px;
-}
-
-.licenses {
-  display: flex;
-  justify-content: space-between;
-}
-
-.licenses-sidebar {
-  width: 30%;
-  border-right: 1px solid #e0e0e0;
-  padding-right: 20px;
-}
-
-.search-bar {
-  margin-bottom: 10px;
-}
-
-.search-bar input {
   width: 100%;
-  padding: 5px;
-  border: 1px solid #e0e0e0;
-  border-radius: 4px;
-}
-
-.license-list {
-  max-height: 200px;
-  overflow-y: auto;
-}
-
-.license-item {
-  display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 0;
+  margin-bottom: 20px;
+  padding: 0 20px;
   border-bottom: 1px solid #e0e0e0;
 }
 
-.license-item p {
-  margin: 0;
+.search-bar {
+  display: flex;
+  align-items: center;
 }
 
-.license-check {
-  color: green;
+.search-input {
+  width: 200px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
-.add-license {
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+
+.nav-link {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+.nav-link.active {
+  text-decoration: underline;
+}
+
+.content {
   display: flex;
   justify-content: center;
-  margin-top: 10px;
+  width: 100%;
 }
 
-.add-license button {
-  width: 30px;
-  height: 30px;
-  border: none;
-  background-color: #e0e0e0;
-  border-radius: 50%;
-  font-size: 20px;
-  line-height: 30px;
-  text-align: center;
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px; /* Reduced gap between product cards */
+  width: 100%;
 }
 
-.licenses-details {
-  width: 65%;
-  padding-left: 20px;
+.product-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px; /* Reduced padding inside product cards */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
 }
 
-.remove-license {
-  margin-top: 20px;
-  padding: 5px 10px;
-  border: 1px solid #e0e0e0;
-  background-color: white;
+.image-placeholder {
+  width: 30px; /* Reduced width of image placeholder */
+  height: 30px; /* Reduced height of image placeholder */
+  background-color: #ccc;
   border-radius: 4px;
-  cursor: pointer;
 }
 
-.license-count {
-  margin-top: 10px;
-  text-align: right;
+.image-placeholder.design-pack {
+  background-color: #ff00ff;
+}
+
+.product-name, .product-count {
+  font-size: 14px; /* Reduced font size for product name and count */
 }
