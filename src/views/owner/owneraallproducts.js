@@ -11,11 +11,11 @@ export default function OwnerAllProducts() {
     { id: 1, name: 'Product Name', count: '15/30' },
     { id: 2, name: 'Product Name', count: '15/30' },
     { id: 3, name: 'Product Name', count: '15/30' },
-    { id: 4, name: 'Design Pack', count: '15/30' },
-    { id: 5, name: 'Product Name', count: '15/30' },
+    { id: 4, name: 'Product Name', count: '15/30' },
+    { id: 5, name: 'Design Pack', count: '15/30' },
     { id: 6, name: 'Product Name', count: '15/30' },
     { id: 7, name: 'Product Name', count: '15/30' },
-    { id: 8, name: 'Design Pack', count: '15/30' },
+    { id: 8, name: 'Product Name', count: '15/30' },
     { id: 9, name: 'Product Name', count: '15/30' }
   ]);
 
