@@ -1,66 +1,88 @@
+/* ownreaallproducts.css */
 .wrapper {
     font-family: Arial, sans-serif;
-}
-
-.search-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+  }
+  
+  .search-nav-bar {
+    display: flex;
+    width: 200%;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 0 20px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .search-bar {
     display: flex;
     align-items: center;
-    margin-bottom: 1rem;
-    padding: 1rem;
-    background-color: #f8f9fa;
-    border-bottom: 1px solid #e0e0e0;
-}
-
-.search-input {
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 0.25rem;
+  }
+  
+  .search-input {
     width: 200px;
-}
-
-.nav-links {
-    margin-left: auto;
-}
-
-.nav-link {
-    margin-left: 1rem;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .nav-links {
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-link {
+    margin-left: 20px;
     text-decoration: none;
     color: #333;
     font-weight: bold;
-}
-
-.nav-link.active {
+  }
+  
+  .nav-link.active {
     text-decoration: underline;
-}
-
-.container {
-    max-width: 1200px;
-}
-
-.card {
-    border: 1px solid #ccc;
-    border-radius: 0.25rem;
-    transition: box-shadow 0.3s ease-in-out;
-}
-
-.card:hover {
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.card-body {
+  }
+  
+  .content {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    width: 100%;
+  }
+  
+  .product-card {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    padding: 1rem;
-}
-
-.image-placeholder {
-    width: 40px;
-    height: 40px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    width: 200px;
+    height: 130px;
+    justify-content: space-between;
+  }
+  
+  .image-placeholder {
+    width: 50px;
+    height: 50px;
     background-color: #ccc;
-    border-radius: 0.25rem;
-}
-
-.design-pack {
+    border-radius: 4px;
+  }
+  
+  .image-placeholder.design-pack {
     background-color: #ff00ff;
-}
+  }
+  
+  .product-name, .product-count {
+    font-size: 14px;
+  }
+  
