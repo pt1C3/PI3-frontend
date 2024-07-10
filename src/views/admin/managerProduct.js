@@ -5,44 +5,44 @@ import LicenseDetails from '../../components/LicenseDetails';
 
 export default function ManagerProduct() {
     return (
-        <div className="wrapper d-flex flex-column justify-content-center align-items-center">
-        <div className="content mt-5">
-            <div className="card mb-3">
-                <div className="card-body">
-                    <div className="form-group d-flex">
-                        <div className="logo">
-                            <div className="logo-box">
-                                <span className="logo-text-c">C</span>
-                                <span className="logo-text-v">v</span>
+        <div className="managerProduct-wrapper d-flex flex-column justify-content-center align-items-center">
+            <div className="managerProduct-content mt-5">
+                <div className="managerProduct-card mb-3">
+                    <div className="managerProduct-card-body">
+                        <div className="managerProduct-form-group d-flex">
+                            <div className="managerProduct-logo">
+                                <div className="managerProduct-logo-box">
+                                    <span className="managerProduct-logo-text-c">C</span>
+                                    <span className="managerProduct-logo-text-v">v</span>
+                                </div>
+                            </div>
+                            <div className="managerProduct-title">
+                                <h1>Creativortex</h1>
+                                <p>Design</p>
                             </div>
                         </div>
-                        <div className="title">
-                            <h1>Creativortex</h1>
-                            <p>Design</p>
+                    </div>
+                </div>
+                <div className="managerProduct-card mb-3">
+                    <div className="managerProduct-card-body">
+                        <div className="managerProduct-custom-title">Addons</div>
+                        <div className="managerProduct-divider"></div>
+                        <div className="managerProduct-form-group">
+                            <p className="managerProduct-no-items">No items to show.</p>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className="card mb-3">
-                <div className="card-body">
-                    <div className="custom-title">Addons</div>
-                    <div className="divider"></div>
-                    <div className="form-group">
-                        <p className="no-items">No items to show.</p>
-                    </div>
-                </div>
-            </div>
-            <div className="card">
-                <div className="card-body">
-                    <div className="custom-title">Manage Licenses</div>
-                    <div className="divider"></div>
-                    <div className="form-group licenses">
-                        <LicenseSidebar />
-                        <LicenseDetails />
+                <div className="managerProduct-card">
+                    <div className="managerProduct-card-body">
+                        <div className="managerProduct-custom-title">Manage Licenses</div>
+                        <div className="managerProduct-divider"></div>
+                        <div className="managerProduct-form-group managerProduct-licenses">
+                            <LicenseSidebar />
+                            <LicenseDetails />
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     );
 };
