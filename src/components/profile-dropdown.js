@@ -8,20 +8,23 @@ export default function ProfileDropdown({ onLogout }) {
     onLogout(); // Trigger parent component's logout handler
   };
   var user;
-  if(localStorage.getItem('user')){
-     user= JSON.parse(localStorage.getItem('user')).data;
+  if (localStorage.getItem('user')) {
+    user = JSON.parse(localStorage.getItem('user')).data;
   }
   var isOwner;
   var isAdmin;
-  if(user){
-    isAdmin= user.utypeid===4;
-    isOwner = user.utypeid===3;
+  if (user) {
+    isAdmin = user.utypeid === 4;
+    isOwner = user.utypeid === 3;
   }
 
 
   if (!user) {
     return (
+      <>
       <Link className='btn btn-secondary' to="/login" >Login</Link>
+      <Link className='btn btn-secondary ms-1' to="/signup" >Sign up</Link>
+      </>
     )
   }
   return (
@@ -44,9 +47,11 @@ export default function ProfileDropdown({ onLogout }) {
             </Link>
           </>
         )}
-        <Link className="dropdown-item" to="/support">
-          <FontAwesomeIcon icon={faLifeRing} className="me-2" /> Support
-        </Link>
+        {!isAdmin && (
+          <Link className="dropdown-item" to="/support">
+            <FontAwesomeIcon icon={faLifeRing} className="me-2" /> Support
+          </Link>
+        )}
         <button className="dropdown-item" onClick={handleLogout}>
           <FontAwesomeIcon icon={faSignOutAlt} className="me-2" /> Log out</button>
       </div>

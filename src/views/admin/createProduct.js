@@ -80,7 +80,7 @@ export default function Product() {
 
             }
         }
-        console.log(typeof(discount1));
+        console.log(typeof (discount1));
         console.log(discount1);
 
     }
@@ -104,8 +104,28 @@ export default function Product() {
         setFaqs(newFaqs);
     };
 
+    //Version
+    const [version, setVersion] = useState('');
+    const [statusid, setStatusId] = useState('');
+    const [status, setStatus] = useState([]);
+    const [download, setDownload] = useState('');
+    const [releaseNotes, setReleaseNotes] = useState('');
+    const [sameReq, setSameReq] = useState(false);
+    const [req, setReq] = useState({
+        os: '',
+        processor: '',
+        ram: '',
+        hard_disk_space: '',
+        graphic_card: '',
+        internet_conection: ''
+    });
 
 
+    useEffect(() => {
+        axios.get(baseURL + "/version/status").then(res => {
+            setStatus(res.data)
+        })
+    }, [])
     const handleSubmit = (e) => {
         e.preventDefault();
         /*if (!question || !answer) alert("All fields are required. Please fill in all inputs.")
@@ -167,12 +187,12 @@ export default function Product() {
                                 <label htmlFor="oldprice1">Previous Price</label>
                                 <input type="number" className='form-control mb-3' name="oldprice1" value={oldPrice1} onChange={(e) => { changePrice(false, true, e.target.value) }}></input>
                                 <div className='d-flex align-items-center'>
-                                    {discount1 || +discount1!= 0 ?
+                                    {discount1 && +discount1 != 0 ?
                                         <h3 className="card-discount rounded-3 p-1 text-white text-bold me-2 mb-0">-{discount1}%</h3>
                                         : <h3 className="my-1" style={{ width: "0" }}>-</h3>
                                     }
                                     <div>
-                                        {discount1 || +discount1!= 0 ?
+                                        {discount1 && +discount1 != 0 ?
                                             <h5 class="card-text fs-6 text-secondary text-decoration-line-through m-0">€{oldPrice1}/mo.</h5>
                                             : null}
                                         <h5 class="card-text fs-5 m-0">€{price1}/mo.</h5>
@@ -189,12 +209,12 @@ export default function Product() {
                                 <label htmlFor="oldprice2">Previous Price</label>
                                 <input type="number" className='form-control mb-3' name="oldprice2" value={oldPrice2} onChange={(e) => { changePrice(false, false, e.target.value) }}></input>
                                 <div className='d-flex align-items-center'>
-                                    {discount2 || +discount2!= 0 ?
+                                    {discount2 && +discount2 != 0 ?
                                         <h3 className="card-discount rounded-3 p-1 text-white text-bold me-2 mb-0">-{discount2}%</h3>
                                         : <h3 className="my-1" style={{ width: "0" }}>-</h3>
                                     }
                                     <div>
-                                        {discount2 || +discount2!= 0 ?
+                                        {discount2 && +discount2 != 0 ?
                                             <h5 class="card-text fs-6 text-secondary text-decoration-line-through m-0">€{oldPrice2}/mo.</h5>
                                             : null}
                                         <h5 class="card-text fs-5 m-0">€{price2}/mo.</h5>
@@ -239,8 +259,50 @@ export default function Product() {
                             <button className='btn btn-secondary rounded-circle' type="button" onClick={addFaq}><FontAwesomeIcon icon={faAdd} /></button>
                         </div>
                     </div>
+                    <div className='bg-white regular-border rounded-3 mb-4'>
+                        <p className='m-0 px-4 py-3 text-medium'>First version</p>
+                        <hr className='m-0' />
+                        <div className='px-4 py-3'>
+                            <label htmlFor="version">
+                                Version
+                            </label>
+                            <input type="text" className="form-control mb-3" id="version" placeholder="1.1.1" value={version} onChange={(e) => { setVersion(e.target.value) }} />
+                            <label htmlFor="status" className="form-label">
+                                Status
+                            </label>
+                            <select className="form-control form-select mb-3" id="status" name="status" value={statusid} onChange={(e) => { setStatusId(e.target.value) }}>
+                                {status.map((item) => (
+                                    <option value={item.vstatusid}>{item.designation}</option>
+                                ))}
+                            </select>
+                            <label htmlFor="download">Download</label>
+                            <input type="url" className="form-control mb-3" id="download" name="download" placeholder="https://www.example.com" value={download} onChange={(e) => { setDownload(e.target.value) }} />
+                            <label htmlFor="releaseNotes">Release Notes</label>
+                            <textarea className="form-control mb-3 description" id="releaseNotes" name="releaseNotes" rows="5" value={releaseNotes} onChange={(e) => { setReleaseNotes(e.target.value) }} />
+                            <label htmlFor="os">Operating System</label>
+                            <input type="text" className="form-control mb-3" name="os" value={req.os} onChange={(e) => setReq({ ...req, os: e.target.value })}
+                            />
+                            <label htmlFor="processor">Processor</label>
+                            <input type="text" className="form-control mb-3" name="processor" value={req.processor} onChange={(e) => setReq({ ...req, processor: e.target.value })}
+                            />
+
+                            <label htmlFor="ram">RAM</label>
+                            <input type="text" className="form-control mb-3" name="ram" value={req.ram} onChange={(e) => setReq({ ...req, ram: e.target.value })}
+                            />
+                            <label htmlFor="hard_disk_space">Hard disk space</label>
+                            <input type="text" className="form-control mb-3" name="hard_disk_space" value={req.hard_disk_space} onChange={(e) => setReq({ ...req, hard_disk_space: e.target.value })}
+                            />
+                            <label htmlFor="graphic_card">Graphics card</label>
+                            <input type="text" className="form-control mb-3" name="graphic_card" value={req.graphic_card} onChange={(e) => setReq({ ...req, graphic_card: e.target.value })}
+                            />
+                            <label htmlFor="internet_conection">Internet connection</label>
+                            <input type="text" className="form-control" name="internet_conection" value={req.internet_conection} onChange={(e) => setReq({ ...req, internet_conection: e.target.value })}
+                            />
+                        </div>
+                    </div>
 
                 </div>
+
                 <input type="submit" className="btn btn-primary submit" value="Submit" />
             </form>
 

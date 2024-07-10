@@ -9,9 +9,11 @@ import { loadStripe } from '@stripe/stripe-js';
 import { CardElement, Elements, useElements, useStripe } from '@stripe/react-stripe-js';
 
 const PaymentForm = ({ stripePromise, data, price }) => {
+  const { productid } = useParams();
   const [countryList, setCountryList] = useState({});
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [showErrorModal, setShowErrorModal] = useState(false);
+  const [canBuy, setCanBuy] = useState(false);
   const stripe = useStripe();
   const elements = useElements();
   const navigate = useNavigate();
@@ -21,68 +23,79 @@ const PaymentForm = ({ stripePromise, data, price }) => {
     countries.registerLocale(require('i18n-iso-countries/langs/pt.json'));
     const countryNames = countries.getNames('pt', { select: 'official' });
     setCountryList(countryNames);
+
+    axios.get(baseURL + '/user/plans/' + JSON.parse(localStorage.getItem('user')).data.businessid)
+      .then(res => {
+        setCanBuy(!(Object.values(res.data).some(item => item.product.productid === productid)))
+        console.log(res.data)
+        console.log("can buy: " + !(Object.values(res.data).some(item => item.product.productid === productid)))
+      })
+      
   }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (!stripe || !elements) {
-      console.error('Stripe.js has not loaded yet.');
-      return;
-    }
-
-    const cardElement = elements.getElement('card');
-
-    const paymentDetails = {
-      email: event.target.email.value,
-      name: event.target.cardholder.value,
-      address: {
-        country: event.target.country.value,
-      },
-    };
-
-    try {
-      // Make a POST request to backend to create Payment Intent
-      const response = await axios.post(baseURL + '/create-payment-intent', {
-        amount: Math.round(data.prices[price].price * 100), // Stripe expects amount in cents
-        currency: 'eur', // Currency code (EUR in this case)
-      });
-
-      const { clientSecret } = response.data;
-
-      // Confirm the payment with the clientSecret
-      const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
-        payment_method: {
-          card: cardElement,
-          billing_details: paymentDetails,
-        },
-      });
-
-      if (error) {
-        console.error('[Error]', error);
-        setShowErrorModal(true); // Show error modal
-      } else {
-        axios.post(baseURL + '/owner/addplanpayment', {
-          priceid: data.prices[price].priceid,
-          businessid: JSON.parse(localStorage.getItem('user')).data.businessid,
-        }).then(response => {
-          if (!response.data.success) {
-            console.error('Error creating payment plan:', response.data.message);
-          }
-        })
-          .catch(error => {
-            console.error('Error creating payment plan:', error.message);
-            // Handle network or other errors
-          } );
-        setShowSuccessModal(true); // Show success modal
+    if (canBuy) {
+      if (!stripe || !elements) {
+        console.error('Stripe.js has not loaded yet.');
+        return;
       }
-    } catch (error) {
-      console.error('Error creating Payment Intent:', error);
-      setShowErrorModal(true); // Show error modal
+
+      const cardElement = elements.getElement('card');
+
+      const paymentDetails = {
+        email: event.target.email.value,
+        name: event.target.cardholder.value,
+        address: {
+          country: event.target.country.value,
+        },
+      };
+
+      try {
+        // Make a POST request to backend to create Payment Intent
+        const response = await axios.post(baseURL + '/create-payment-intent', {
+          amount: Math.round(data.prices[price].price * 100), // Stripe expects amount in cents
+          currency: 'eur', // Currency code (EUR in this case)
+        });
+
+        const { clientSecret } = response.data;
+
+        // Confirm the payment with the clientSecret
+        const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
+          payment_method: {
+            card: cardElement,
+            billing_details: paymentDetails,
+          },
+        });
+
+        if (error) {
+          console.error('[Error]', error);
+          setShowErrorModal(true); // Show error modal
+        } else {
+          axios.post(baseURL + '/owner/addplanpayment', {
+            priceid: data.prices[price].priceid,
+            businessid: JSON.parse(localStorage.getItem('user')).data.businessid,
+          }).then(response => {
+            if (!response.data.success) {
+              console.error('Error creating payment plan:', response.data.message);
+            }
+          })
+            .catch(error => {
+              console.error('Error creating payment plan:', error.message);
+              // Handle network or other errors
+            });
+          setShowSuccessModal(true); // Show success modal
+        }
+      } catch (error) {
+        console.error('Error creating Payment Intent:', error);
+        setShowErrorModal(true); // Show error modal
+      }
     }
+    else alert("You already own this product")
   };
 
-  const handleCloseSuccessModal = () => {setShowSuccessModal(false); navigate('/owner/plans')};
+  const handleCloseSuccessModal = () => { setShowSuccessModal(false); navigate('/owner/plans') };
   const handleCloseErrorModal = () => setShowErrorModal(false);
 
   if (!data) {
@@ -203,8 +216,8 @@ const PaymentForm = ({ stripePromise, data, price }) => {
 
 const Payment = () => {
   const baseURL = 'http://localhost:3000';
-  const { productid, price } = useParams();
   const [data, setData] = useState(null);
+  const { productid, price } = useParams();
 
   useEffect(() => {
     axios.get(`${baseURL}/product/${productid}`)

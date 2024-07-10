@@ -9,7 +9,7 @@ export default function Modais() {
       <Helmet>
         <title>Modais de edição</title>
       </Helmet>
-      <div className="wrapper d-flex flex-column justify-content-center mx-auto">
+      <div className="wrapper d-flex flex-column justify-content-center mx-auto modais">
         <div className="container mt-5">
           <div className="row justify-content-center">
             <div className="col-md-4">

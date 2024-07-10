@@ -5,7 +5,7 @@ import LicenseDetails from '../../components/LicenseDetails';
 
 export default function OwnerProduct() {
     return (
-        <div className="wrapper d-flex flex-column justify-content-center align-items-center">
+        <div className="wrapper d-flex flex-column justify-content-center align-items-center o-product">
             <div className="content mt-5">
                 <div className="card mb-3">
                     <div className="card-body">

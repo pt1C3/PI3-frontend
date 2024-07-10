@@ -4,28 +4,27 @@
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background-color: #f8f9fa;
   }
   
-  .container {
+  .inbox .container {
     margin-top: 3rem;
   }
   
-  .card {
+  .inbox .card {
     border-radius: 0.25rem;
     box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
   }
   
-  .card-title {
+  .inbox .card-title {
     font-size: 1.5rem;
     font-weight: bold;
   }
   
-  .text-left {
+  .inbox .text-left {
     text-align: left;
   }
   
-  .new-message-container {
+  .inbox .new-message-container {
     margin-top: 2rem;
     border: 1px solid #ddd;
     padding: 1rem;
@@ -34,17 +33,17 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra mais escura e com menos blur */
   }
   
-  .new-message-container h5 {
+  .inbox .new-message-container h5 {
     font-size: 1.25rem;
     margin-bottom: 1rem;
   }
   
-  .form-control {
+  .inbox .form-control {
     border-radius: 0.25rem;
   }
 
   
-  .btn-black {
+  .inbox .btn-black {
     background-color: #000;
     color: #fff;
   }

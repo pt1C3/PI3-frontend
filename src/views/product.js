@@ -4,6 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import "./product.css";
 import { Helmet } from 'react-helmet';
+import AuthService from './auth.service';
 
 export default function Product() {
     const baseURL = 'http://localhost:3000';
@@ -40,7 +41,13 @@ export default function Product() {
 
 
     const buyPlan = ()=>{
-        navigate('/payment/' + selectedPlan + '/' + data.productid)
+        const user = AuthService.getCurrentUser();
+        if(user)
+        {
+            if(user.utypeid !== 3) alert('You need to be a owner to acquire products')
+            else navigate('/payment/' + selectedPlan + '/' + data.productid)
+        }
+        else alert('You need to be logged in')
     }
     
     if (!data) {

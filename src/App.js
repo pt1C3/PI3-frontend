@@ -47,19 +47,19 @@ function App() {
   const navigate = useNavigate();
   const location = useLocation();
   const [search, setSearch] = useState('');
-  const [isAdmin, setIsAdmin] = useState(true);
-  const [isOwner, setIsOwner] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [isOwner, setIsOwner] = useState(false);
   const [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser());
 
   useEffect(() => {
     if (currentUser) {
-      if (currentUser.utypeid === 4) { 
-        setIsAdmin(false); 
-        setIsOwner(true); 
+      if (currentUser.utypeid === 4) {
+        setIsAdmin(true);
+        setIsOwner(false);
       }
-      if (currentUser.utypeid === 3) { 
-        setIsOwner(false); 
-        setIsAdmin(false); 
+      if (currentUser.utypeid === 3) {
+        setIsOwner(true);
+        setIsAdmin(false);
       }
     }
   }, [currentUser]);
@@ -143,9 +143,12 @@ function App() {
                 </div>
               </form>
             )}
-            <button className="btn btn-default">
+            {currentUser && (
+              <button className="btn btn-default">
               <FontAwesomeIcon icon={faBell} />
             </button>
+          )}
+
             {currentUser ? <ProfileDropdown onLogout={handleLogout} /> : <ProfileDropdown />}
           </span>
         </nav>
@@ -170,12 +173,12 @@ function App() {
             <Route path="/createbusiness" element={<AdminCreateBusiness />} />
             <Route path="/productaddons" element={<AdminProductAddons />} />
             <Route path="/productaddonsversions" element={<AdminProductAddonsVersions />} />
-            <Route path="/costumplan" element={<AdminCostumPlan />} />      
+            <Route path="/costumplan" element={<AdminCostumPlan />} />
             <Route path="/salessupport" element={<AdminSalesSupport />} />
             <Route path="/managerlist" element={<AdminManagerList />} />
             <Route path="/productbusinesslist" element={<AdminProductBusinessList />} />
-            <Route path="/package" element={<AdminPackage/>} />
-            <Route path='/saleslist' element={<AdminSalesList/>} />
+            <Route path="/package" element={<AdminPackage />} />
+            <Route path='/saleslist' element={<AdminSalesList />} />
             <Route path="/managerProduct" element={<ManagerProduct />} />
             <Route path="/managerallproducts" element={<Managerallproducts />} />
           </>
