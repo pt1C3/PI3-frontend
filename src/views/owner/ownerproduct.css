@@ -1,36 +1,34 @@
-.o-product.wrapper {
+.owner-product-wrapper {
   font-family: Arial, sans-serif;
 }
 
-.content {
+.owner-product-content {
   max-width: 1200px; /* Increase the maximum width */
   width: 100%;
   padding: 20px;
 }
 
-.no-items {
+.owner-product-no-items {
   color: #888;
 }
 
-
-
-.custom-title {
+.owner-product-custom-title {
   font-size: 20px;
   font-weight: bold;
   margin-bottom: 10px;
 }
 
-.divider {
+.owner-product-divider {
   height: 1px;
   background-color: #e0e0e0;
   margin-bottom: 10px;
 }
 
-.logo {
+.owner-product-logo {
   margin-bottom: 20px;
 }
 
-.logo-box {
+.owner-product-logo-box {
   width: 90px;
   height: 90px;
   background-color: #002F6C;
@@ -41,60 +39,60 @@
   margin-bottom: 12px;
 }
 
-.logo-text-c {
+.owner-product-logo-text-c {
   color: white;
   font-size: 34px;
   font-weight: bold;
 }
 
-.logo-text-v {
+.owner-product-logo-text-v {
   color: #E63946;
   font-size: 34px;
   font-weight: bold;
 }
 
-.title h1 {
+.owner-product-title h1 {
   margin-left: 40px;
   font-size: 24px;
 }
 
-.title p {
+.owner-product-title p {
   margin-left: 40px;
   color: #888;
 }
 
-.form-group {
+.owner-product-form-group {
   margin-bottom: 15px;
 }
 
-.licenses {
+.owner-product-licenses {
   display: flex;
   justify-content: space-between;
 }
 
-.licenses-sidebar {
+.owner-product-licenses-sidebar {
   width: 30%;
   border-right: 1px solid #e0e0e0;
   padding-right: 20px;
 }
 
-.search-bar {
+.owner-product-search-bar {
   margin-bottom: 10px;
 }
 
-.search-bar input {
+.owner-product-search-bar input {
   width: 100%;
   padding: 5px;
   border: 1px solid #e0e0e0;
   border-radius: 4px;
 }
 
-.license-list {
+.owner-product-license-list {
   max-height: 200px;
   overflow-y: auto;
 }
 
-.license-item {
+.owner-product-license-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -102,21 +100,21 @@
   border-bottom: 1px solid #e0e0e0;
 }
 
-.license-item p {
+.owner-product-license-item p {
   margin: 0;
 }
 
-.license-check {
+.owner-product-license-check {
   color: green;
 }
 
-.add-license {
+.owner-product-add-license {
   display: flex;
   justify-content: center;
   margin-top: 10px;
 }
 
-.add-license button {
+.owner-product-add-license button {
   width: 30px;
   height: 30px;
   border: none;
@@ -127,12 +125,12 @@
   text-align: center;
 }
 
-.licenses-details {
+.owner-product-licenses-details {
   width: 65%;
   padding-left: 20px;
 }
 
-.remove-license {
+.owner-product-remove-license {
   margin-top: 20px;
   padding: 5px 10px;
   border: 1px solid #e0e0e0;
@@ -141,7 +139,7 @@
   cursor: pointer;
 }
 
-.license-count {
+.owner-product-license-count {
   margin-top: 10px;
   text-align: right;
 }
