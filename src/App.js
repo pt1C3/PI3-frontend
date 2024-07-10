@@ -166,7 +166,8 @@ function App() {
             <Route path="/products" element={<AdminProducts />} />
             <Route path="/products/create" element={<AdminCreateProduct />} />
             <Route path="/products/versions/:productid" element={<AdminProductVersions />} />
-            <Route path="/products/addons" element={<AdminProductAddons />} />
+            <Route path="/products/addons/:productid" element={<AdminProductAddons />} />
+            <Route path="/addons/versions/:addonid" element={<AdminProductAddonsVersions />} />
             {/*Utilizadores*/}
             <Route path="/business" element={<AdminBusiness />} />
             <Route path="/costumer/business" element={<AdminCostumerBusiness />} />
@@ -176,7 +177,6 @@ function App() {
             <Route path="/modais" element={<AdminModais />} />
             <Route path="/createcostumer" element={<AdminCreateCostumer />} />
             <Route path="/createbusiness" element={<AdminCreateBusiness />} />
-            <Route path="/productaddonsversions" element={<AdminProductAddonsVersions />} />
             <Route path="/costumplan" element={<AdminCostumPlan />} />
             <Route path="/salessupport" element={<AdminSalesSupport />} />
             <Route path="/managerlist" element={<AdminManagerList />} />

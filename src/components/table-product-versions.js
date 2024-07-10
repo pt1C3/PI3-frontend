@@ -20,7 +20,7 @@ const Table = ({ data }) => {
         }
     };
     return (
-        <div className='w-100 px-10vw mt-4'>
+        <div className='w-100 px-10vw my-4'>
             <div className='w-100 rounded-3 regular-border bg-white'>
                 <table className="w-100 border-0">
                     <thead>
@@ -43,10 +43,10 @@ const Table = ({ data }) => {
                                 <td>{new Date(item.releasedate).toISOString().split('T')[0]}</td>
                                 <td>{item.releasenotes}</td>
                                 <td><Link to={item.downloadlink} className='linknormal'>{item.product.name + " " + item.version}</Link></td>
-                                <td>
+                                <td className='d-flex'>
                                     <Link to="/" className='linknormal me-2'><FontAwesomeIcon icon={faPen} /></Link>
                                     <Link to="/" className='linknormal'><FontAwesomeIcon icon={faTrash} /></Link>
-                                    x</td>
+                                    </td>
                             </tr>
                         ))}
 
