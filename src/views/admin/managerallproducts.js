@@ -29,7 +29,7 @@ export default function ManagerAllProducts() {
 
   return (
     <div className="container mt-5 billing-table">
-      <div className="wrapper d-flex flex-column justify-content-center mx-auto">
+      <div className="wrapper d-flex flex-column justify-content-center mx-auto m-all-products">
         <div className="d-flex align-items-center search-bar-container">
           <div className="search-bar mr-3">
             <FontAwesomeIcon icon={faSearch} className="search-icon" />

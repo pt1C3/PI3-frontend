@@ -12,39 +12,39 @@
 .nav-item button {
     color: var(--black) !important;
 }
-.table {
+#requirements .table {
     width: 80vw;
     background-color: red;
 }
 
-table,
-th,
-td {
+#requirements table,
+#requirements th,
+#requirements td {
     border: .1rem solid var(--gray-3) !important;
     border-collapse: collapse;
 }
 
-.table thead {
+#requirements .table thead {
     background-color: var(--gray-1);
 }
 
-.table>thead>th:first-child {
+#requirements .table>thead>th:first-child {
     width: 40%
 }
 
-.table td {
+#requirements .table td {
     vertical-align: middle;
 }
 
-.table td ul {
+#requirements .table td ul {
     margin: 0;
     padding: 0;
     list-style-position: inside;
 
 }
 
-.table td,
-.table th {
+#requirements .table td,
+#requirements .table th {
     box-sizing: border-box;
     padding: 1rem 1.5rem;
 }

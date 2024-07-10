@@ -1,16 +1,60 @@
 
-import BillingTable from "../../components/billing-table-products.js";
+import TableComponent from "../../components/table-products.js";
 import "./products.css";
+import axios from 'axios';
 import { Helmet } from 'react-helmet';
+import {useState, useEffect} from 'react';
+import Breadcrumbs from "../../components/breadcrumbs";
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 export default function Products() {
+  const baseURL = 'http://localhost:3000';
 
+  const [search, setSearch] = useState('');
+  const [data, setData] = useState();
+
+
+
+  useEffect(()=>{
+    axios.get(baseURL + "/product/admin/list/" + search).then(res => {setData(res.data)})
+  }, [search])
+
+  
+  if (!data) {
+    return <div className="wrapper">Loading...</div>;
+
+}
   return (
-    <div className="wrapper background-color d-flex flex-column align-items-center justify-content-center" style={{ minHeight: '100vh' }}>
+    <div className="wrapper background-color" style={{ minHeight: '100vh' }}>
       <Helmet>
-        <title>Payment history - CreatiVortex</title>
+        <title>Products - CreatiVortex</title>
       </Helmet>
-      <BillingTable title="Product Name" status="Pending" versions="1.0.1" billingDate="2023-03-12" billingAmount="€19.99" paymentDate="2023-03-12 11:45 AM" startDate="2023-03-12" action="Pay" />
+      <Breadcrumbs page1="Products" />
+      <div className="d-flex align-items-center bg-white py-3 px-10vw regular-border-bottom">
+        <form className="inline-form ">
+          <div className="input-group rounded-2 col-4">
+            <input
+              type="text"
+              className="form-control bg-transparent border-0"
+              placeholder="Search for name"
+              name="search"
+              value={search}
+              onChange={(event) => setSearch(event.target.value)}
+              />
+            <div className="input-group-btn">
+              <button className="btn btn-default" type="submit">
+                <FontAwesomeIcon icon={faMagnifyingGlass} />
+              </button>
+            </div>
+          </div>
+        </form>
+        <Link className="ms-3 linknormal" to="/products/create">
+          Add Product
+        </Link>
+      </div>
+      <TableComponent data={data} />
     </div>
   );
 }

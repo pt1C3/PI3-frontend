@@ -1,13 +1,13 @@
-.wrapper {
+.m-all-products.wrapper {
     max-width: 1200px;
   }
   
-  .card {
+  .m-all-products .card {
     border: none;
     background-color: #ffffff;
   }
   
-  .card-body {
+  .m-all-products .card-body {
     padding: 10px;
     background-color: #ffffff;
     border-radius: 5px;
@@ -24,7 +24,7 @@
     background-color: #ff00ff;
   }
   
-  .card-body span {
+  .m-all-products .card-body span {
     margin-left: 10px;
   }
   
@@ -36,14 +36,14 @@
     padding: 20px;
   }
   
-  .search-bar-container {
+  .m-all-products .search-bar-container {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
     justify-content: flex-start; /* Alinha os elementos à esquerda */
   }
   
-  .search-bar {
+  .m-all-products .search-bar {
     display: flex;
     align-items: center;
     border: 1px solid #ccc;
@@ -53,12 +53,12 @@
     height: 36px; /* Ajuste para coincidir com a altura do seletor de país */
   }
   
-  .search-icon {
+  .m-all-products .search-icon {
     margin-right: 10px;
     color: #888;
   }
   
-  .search-input {
+  .m-all-products .search-input {
     border: none;
     outline: none;
     flex: 1;

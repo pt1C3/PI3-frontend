@@ -143,9 +143,6 @@ hr{
 }
 
 
-.w-100 {
-    width: 100%;
-}
 
 /*Buttons*/
 .btn-primary {
@@ -247,4 +244,8 @@ hr{
     border-color: var(--gray-2);
     border-width: .1rem;
     border-style: solid;
+}
+.regular-border-bottom {
+    border-bottom: .1rem var(--gray-2) solid;
+
 }

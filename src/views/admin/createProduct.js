@@ -146,7 +146,7 @@ export default function Product() {
             <Helmet>
                 <title>Create Product - LogicLeap</title>
             </Helmet>
-            <Breadcrumbs page1="Products" page2="Create" link1="/"></Breadcrumbs>
+            <Breadcrumbs page1="Products" page2="Create" link1="/products" />
             <form className='row mx-10vw gx-3 mt-3 add-product' style={{ marginBottom: "10vh" }}>
                 <div className="col-4">
                     <div className='bg-white regular-border rounded-3 px-4 py-3'>

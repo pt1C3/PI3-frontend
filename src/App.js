@@ -21,19 +21,21 @@ import OwnerProduct from './views/owner/ownerproduct';
 import OwneraAllProducts from './views/owner/owneraallproducts';
 import AuthService from './views/auth.service';
 import AdminDashboard from './views/admin/adminDashboard';
+//Admin Products
+import AdminProducts from './views/admin/products';
+import AdminProductVersions from './views/admin/productVersions';
+import AdminCreateProduct from './views/admin/createProduct';
+import AdminProductAddons from './views/admin/productAddons';
+
 import AdminBusiness from './views/admin/createBusiness';
 import AdminCreateBusiness from './views/admin/createVersion';
 import AdminCreateCostumer from './views/admin/createCostumer';
 import AdminCostumerBusiness from './views/admin/customerbusiness';
 import AdminCostumerEdit from './views/admin/customeredit';
-import AdminProducts from './views/admin/products';
 import AdminInbox from './views/admin/inbox';
-import AdminProductVersions from './views/admin/productVersions';
 import AdminManagerPackage from './views/admin/managerPackage';
 import AdminModais from './views/admin/Modais';
-import AdminProduct from './views/admin/createProduct';
 import ManagerProduct from './views/admin/managerProduct';
-import AdminProductAddons from './views/admin/productAddons';
 import AdminProductAddonsVersions from './views/admin/productAddonsVersions';
 import AdminCostumPlan from './views/admin/costumplan';
 import AdminSalesSupport from './views/admin/salessupport';
@@ -106,7 +108,7 @@ function App() {
             <Link to="/" className="nav-link ms-2">
               <p className="mb-0 text-medium">Packages</p>
             </Link>
-            <Link to="/" className="nav-link ms-2">
+            <Link to="/products" className="nav-link ms-2">
               <p className="mb-0 text-medium">Products</p>
             </Link>
             <Link to="/" className="nav-link ms-2">
@@ -145,9 +147,9 @@ function App() {
             )}
             {currentUser && (
               <button className="btn btn-default">
-              <FontAwesomeIcon icon={faBell} />
-            </button>
-          )}
+                <FontAwesomeIcon icon={faBell} />
+              </button>
+            )}
 
             {currentUser ? <ProfileDropdown onLogout={handleLogout} /> : <ProfileDropdown />}
           </span>
@@ -160,18 +162,20 @@ function App() {
         {isAdmin ? (
           <>
             <Route path="/" element={<AdminDashboard />} />
+            {/*Produtos*/}
+            <Route path="/products" element={<AdminProducts />} />
+            <Route path="/products/create" element={<AdminCreateProduct />} />
+            <Route path="/products/versions" element={<AdminProductVersions />} />
+            <Route path="/products/addons" element={<AdminProductAddons />} />
+            {/*Utilizadores*/}
             <Route path="/business" element={<AdminBusiness />} />
-            <Route path="/products/create" element={<AdminProduct />} />
             <Route path="/costumer/business" element={<AdminCostumerBusiness />} />
             <Route path="/costumer/edit" element={<AdminCostumerEdit />} />
-            <Route path="/products" element={<AdminProducts />} />
             <Route path="/inbox" element={<AdminInbox />} />
-            <Route path="/productversions" element={<AdminProductVersions />} />
             <Route path="/managerpackage" element={<AdminManagerPackage />} />
             <Route path="/modais" element={<AdminModais />} />
             <Route path="/createcostumer" element={<AdminCreateCostumer />} />
             <Route path="/createbusiness" element={<AdminCreateBusiness />} />
-            <Route path="/productaddons" element={<AdminProductAddons />} />
             <Route path="/productaddonsversions" element={<AdminProductAddonsVersions />} />
             <Route path="/costumplan" element={<AdminCostumPlan />} />
             <Route path="/salessupport" element={<AdminSalesSupport />} />
