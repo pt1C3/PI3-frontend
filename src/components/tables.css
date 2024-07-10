@@ -1,0 +1,23 @@
+th, td{
+  padding: .8rem 1rem;
+}
+
+tbody>*:not(:last-child){
+  border-bottom: .1rem var(--gray-2) solid;
+
+}
+
+.status.text-warning {
+  color: var(--yellow) !important;
+}
+
+.status.text-success {
+  color: var(--green) !important;
+}
+
+.status.text-danger {
+  color: var(--red) !important;
+}
+.status.text-primary {
+  color: var(--primary-blue) !important;
+}

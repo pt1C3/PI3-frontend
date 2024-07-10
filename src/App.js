@@ -165,7 +165,7 @@ function App() {
             {/*Produtos*/}
             <Route path="/products" element={<AdminProducts />} />
             <Route path="/products/create" element={<AdminCreateProduct />} />
-            <Route path="/products/versions" element={<AdminProductVersions />} />
+            <Route path="/products/versions/:productid" element={<AdminProductVersions />} />
             <Route path="/products/addons" element={<AdminProductAddons />} />
             {/*Utilizadores*/}
             <Route path="/business" element={<AdminBusiness />} />

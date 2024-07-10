@@ -1,15 +1,30 @@
-import BillingTable from "../../components/billing-table-versions.js";
-import "./productVersions.css";
+import Table from "../../components/table-product-versions.js";
 import { Helmet } from 'react-helmet';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import Breadcrumbs from "../../components/breadcrumbs";
 
-export default function productVersions() {
+export default function ProductVersions() {
+  const [data, setData] = useState();
+  const baseURL = 'http://localhost:3000';
+  const { productid } = useParams();
+  useEffect(() => {
+    axios.get(baseURL + "/product/admin/versions/" + productid).then(res => { setData(res.data) })
+  }, [])
 
+  if (!data) {
+    return <div className="wrapper">Loading...</div>;
+
+  }
   return (
-    <div className="wrapper background-color d-flex flex-column align-items-center justify-content-center" style={{ minHeight: '100vh' }}>
+    <div className="wrapper" style={{ minHeight: '100vh' }}>
       <Helmet>
-        <title>Payment history - CreatiVortex</title>
+        <title>{data[0].product.name} versions - LogicLeap</title>
       </Helmet>
-      <BillingTable title="Product Name" status="Pending" versions="1.0.1" billingDate="2023-03-12" billingAmount="€19.99" paymentDate="2023-03-12 11:45 AM" startDate="2023-03-12" action="Pay" />
+      <Breadcrumbs page1="Products" page2={data[0].product.name} page3='Versions' link1="/products" link2="/products"/> 
+
+      <Table data={data} />
     </div>
   );
 }

@@ -1,9 +1,8 @@
 
 import TableComponent from "../../components/table-products.js";
-import "./products.css";
 import axios from 'axios';
 import { Helmet } from 'react-helmet';
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import Breadcrumbs from "../../components/breadcrumbs";
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -17,22 +16,22 @@ export default function Products() {
 
 
 
-  useEffect(()=>{
-    axios.get(baseURL + "/product/admin/list/" + search).then(res => {setData(res.data)})
+  useEffect(() => {
+    axios.get(baseURL + "/product/admin/list/" + search).then(res => { setData(res.data) })
   }, [search])
 
-  
+
   if (!data) {
     return <div className="wrapper">Loading...</div>;
 
-}
+  }
   return (
     <div className="wrapper background-color" style={{ minHeight: '100vh' }}>
       <Helmet>
-        <title>Products - CreatiVortex</title>
+        <title>Products - LogicLeap</title>
       </Helmet>
       <Breadcrumbs page1="Products" />
-      <div className="d-flex align-items-center bg-white py-3 px-10vw regular-border-bottom">
+      <div className="d-flex align-items-center bg-white py-2 px-10vw regular-border-bottom">
         <form className="inline-form ">
           <div className="input-group rounded-2 col-4">
             <input
@@ -42,9 +41,9 @@ export default function Products() {
               name="search"
               value={search}
               onChange={(event) => setSearch(event.target.value)}
-              />
+            />
             <div className="input-group-btn">
-              <button className="btn btn-default" type="submit">
+              <button className="btn btn-default border-0" type="button" disabled>
                 <FontAwesomeIcon icon={faMagnifyingGlass} />
               </button>
             </div>
