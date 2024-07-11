@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 
-const Table = ({ data }) => {
+const Table = ({ data, deleteItem }) => {
     console.log(data[0].addon.productid)
     const getStatusClass = (status) => {
         switch (status) {
@@ -45,8 +45,8 @@ const Table = ({ data }) => {
                                 <td><Link to={item.downloadlink} className='linknormal'>{item.addon.name + " " + item.version}</Link></td>
                                 <td className='d-flex'>
                                     <Link to={"/versions/form/" + false + "/" + item.addonid + "/" + item.versionid} className='linknormal me-2'><FontAwesomeIcon icon={faPen} /></Link>
-                                    <Link to="/" className='linknormal'><FontAwesomeIcon icon={faTrash} /></Link>
-                                </td>
+                                    <button className='btn m-0 p-0 linknormal' onClick={() => deleteItem(item.versionid)}>
+                                        <FontAwesomeIcon icon={faTrash} /></button>                                </td>
                             </tr>
                         ))}
                     </tbody>
