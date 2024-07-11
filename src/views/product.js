@@ -40,16 +40,15 @@ export default function Product() {
     }
 
 
-    const buyPlan = ()=>{
+    const buyPlan = () => {
         const user = AuthService.getCurrentUser();
-        if(user)
-        {
-            if(user.utypeid !== 3) alert('You need to be a owner to acquire products')
+        if (user) {
+            if (user.utypeid !== 3) alert('You need to be a owner to acquire products')
             else navigate('/payment/' + selectedPlan + '/' + data.productid)
         }
         else alert('You need to be logged in')
     }
-    
+
     if (!data) {
         return <div className="wrapper text-center">Loading...</div>;
 
@@ -83,8 +82,9 @@ export default function Product() {
                         <div className="row justify-content-center">
                             <div className="col-12 col-md-8 col-xl-12">
                                 <div className="bg-primary ratio ratio-16x9">
+                                    O upload de imagem ainda não foi implementado
 
-                                    a</div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -198,17 +198,17 @@ export default function Product() {
                 <div className="plans-wrapper mx-10vw row g-4">
                     {data.prices.map((item, index) => (
                         <div className="col-lg-4">
-                        <button className={`plan rounded-3 py-3 px-5 ${selectedPlan === index ? 'active' : ''}`} onClick={() => setPlan(index)}>
-                            <div className="d-flex align-items-center flex-column">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" checked={selectedPlan === index} onChange={() => setPlan(index)} />
-                                <h3 className="fs-2 mt-4">{item.number_of_licenses} users</h3>
-                            </div>
-                            <p className="fs-4 text-bold">€{item.price}/mo.</p>
-                            <p>Auto renews monthly</p>
-                        </button>
-                    </div>
+                            <button className={`plan rounded-3 py-3 px-5 ${selectedPlan === index ? 'active' : ''}`} onClick={() => setPlan(index)}>
+                                <div className="d-flex align-items-center flex-column">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" checked={selectedPlan === index} onChange={() => setPlan(index)} />
+                                    <h3 className="fs-2 mt-4">{item.number_of_licenses} users</h3>
+                                </div>
+                                <p className="fs-4 text-bold">€{item.price}/mo.</p>
+                                <p>Auto renews monthly</p>
+                            </button>
+                        </div>
                     ))}
-                    
+
                     <div className="col-lg-4">
                         <button className={`plan rounded-3 py-3 px-5 ${selectedPlan === 2 ? 'active' : ''}`} onClick={() => setPlan(2)}>
                             <div className="d-flex align-items-center flex-column">
