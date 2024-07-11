@@ -3,23 +3,25 @@ import CardIcon from "../components/card-icon"
 import { Helmet } from 'react-helmet';
 import axios from 'axios';
 import { useEffect, useState } from "react";
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './home.css';
 
 export default function Home() {
     const baseURL = 'http://localhost:3000';
     const [data, setData] = useState();
+    const [heroLogo, setHeroLogo] = useState("");
     useEffect(() => {
         axios.get(baseURL + '/product')
             .then(res => {
                 setData(res.data);
+                const item = res.data.find(item => item.productid === 1);
+                setHeroLogo(item ? item.icon : '')
             })
             .catch(error => {
                 console.log('Error fetching data:', error);
             });
 
     }, []);
-
 
 
     if (!data) {
@@ -38,7 +40,7 @@ export default function Home() {
                         <p class="carousel-title display-4 text-medium text-white mb-3 lh-1">Enter the Creative Vortex</p>
                         <Link className="btn btn-primary fs-5" to="product/1">Buy now</Link>
                     </div>
-                    <img src={data[0].icon} className="landing-product-icon rounded-2" />
+                    <img src={heroLogo} className="landing-product-icon rounded-2" />
 
                 </div>
             </section>
@@ -46,8 +48,8 @@ export default function Home() {
                 <h1 class="fs-4">Popular</h1>
                 <div className="row gx-5">
                     {data.slice(0, 3).map((item, index) => (
-                    <CardBigImage title={item.name} category={item.category.designation} image={item.icon} price={item.prices[0].price} toLink={"/product/" + item.productid} discount={item.prices[0].discount_percentage ? item.prices[0].discount_percentage : null}
-                    />
+                        <CardBigImage title={item.name} category={item.category.designation} image={item.icon} price={item.prices[0].price} toLink={"/product/" + item.productid} discount={item.prices[0].discount_percentage ? item.prices[0].discount_percentage : null}
+                        />
                     ))}
 
                 </div>
@@ -55,12 +57,12 @@ export default function Home() {
             <section className="pb-5 mx-10vw">
                 <h1 class="fs-4">Design Tools</h1>
                 <div className="row gx-5">
-                {data
+                    {data
                         .filter(item => item.category.designation === 'Design')
                         .slice(0, 3).map((item, index) => (
                             <CardIcon title={item.name} category={item.category.designation} image={item.icon} price={item.prices[0].price} description={item.description} discount={item.prices[0].discount_percentage ? item.prices[0].discount_percentage : null} toLink={'/product/' + item.productid} square="true" />
                         ))}
-                    
+
 
 
                 </div>

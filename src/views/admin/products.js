@@ -49,7 +49,7 @@ export default function Products() {
             </div>
           </div>
         </form>
-        <Link className="ms-3 linknormal" to="/products/create">
+        <Link className="ms-3 linknormal" to="/products/form">
           Add Product
         </Link>
       </div>

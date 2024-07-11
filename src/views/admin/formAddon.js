@@ -37,7 +37,7 @@ export default function Version() {
     function roundToTwoDecimals(num) {
         const roundedNum = Math.round(num * 100) / 100;
         return parseFloat(roundedNum.toString());
-      }
+    }
     const changePrice = (isCurrent, value) => {
         if (+value <= 0) {
             alert("Price value invalid.")
@@ -120,7 +120,7 @@ export default function Version() {
                 }
             }
             else {//Se for para editar uma versão para o addon
-                axios.post(baseURL + "/addon/admin/edit", { addonid: addonid, name: name, status: statusid, description: description, productid: productid, priceid:priceid, priceVal: price, discount_percentage: discount })
+                axios.post(baseURL + "/addon/admin/edit", { addonid: addonid, name: name, status: statusid, description: description, productid: productid, priceid: priceid, priceVal: price, discount_percentage: discount })
                     .then(res => {
                         alert(res.data.message);
                         console.log(res.data);

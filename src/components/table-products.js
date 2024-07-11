@@ -50,7 +50,7 @@ const Table = ({ data }) => {
                                 <td className='d-flex'>
                                     <Link to={"/products/versions/" + item.productid} className='linknormal me-2'>Versions</Link>
                                     <Link to={"/products/addons/" + item.productid} className='linknormal me-2'>Addons</Link>
-                                    <Link to="/" className='linknormal me-2'><FontAwesomeIcon icon={faPen} /></Link>
+                                    <Link to={"/products/form/" + item.productid} className='linknormal me-2'><FontAwesomeIcon icon={faPen} /></Link>
                                     <Link to="/" className='linknormal'><FontAwesomeIcon icon={faTrash} /></Link>
                                 </td>
                             </tr>
