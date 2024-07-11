@@ -14,10 +14,18 @@ export default function Products() {
   const [search, setSearch] = useState('');
   const [data, setData] = useState();
 
-
-
-  useEffect(() => {
+  const deleteItem = (id) => {
+    axios.delete(baseURL + "/product/delete/" + id).then(res => {
+      alert(res.data.message);
+      if (res.data.success) fetchData();
+    })
+  }
+  function fetchData() {
     axios.get(baseURL + "/product/admin/list/" + search).then(res => { setData(res.data) })
+
+  }
+  useEffect(() => {
+    fetchData();
   }, [search])
 
 
@@ -53,7 +61,7 @@ export default function Products() {
           Add Product
         </Link>
       </div>
-      <TableComponent data={data} />
+      <TableComponent data={data} deleteItem={deleteItem} />
     </div>
   );
 }

@@ -211,24 +211,29 @@ export default function Product() {
                     alert("All fields are required. Please fill in all inputs.")
                 }
                 else {
-
+                    axios.post(baseURL + "/product/add", { name: name, description: markParagraphs(description), statusid: statusid, features: markParagraphs(features), categoryid: categoryid, priceid1: priceid1, priceVal1: price1, discount_percentage1: discount1, number_of_licenses1: nLicenses1, priceid2: priceid2, priceVal2: price2, discount_percentage2: discount2, number_of_licenses2: nLicenses2, faqs: faqs, versionNUm: version, vstatusid: vstatusid, downloadlink: download, releasenotes: releaseNotes, reqNew: req }).then(res => {
+                        alert(res.data.message);
+                        if (res.data.success) navigate('/products/')
+                    })
                 }
 
             }
         }
 
     }
+    if (productid) {
+        if (!name) {
+            return <div className="wrapper">Loading...</div>;
 
-    /*if (!product) {
-        return <div className="wrapper">Loading...</div>;
- 
-    }*/
+        }
+    }
     return (
         <div className="wrapper" style={{ minHeight: '100vh' }}>
             <Helmet>
                 <title>Create Product - LogicLeap</title>
             </Helmet>
-            <Breadcrumbs page1="Products" page2="Create" link1="/products" />
+            <Breadcrumbs page1="Products" page2={productid ? "Edit " + previousname : "Create"} link1="/products" />
+
             <form className='row mx-10vw gx-3 mt-3 add-product' onSubmit={handleSubmit} style={{ marginBottom: "10vh" }}>
                 <div className="col-4">
                     <div className='bg-white regular-border rounded-3 px-4 py-3'>

@@ -14,10 +14,18 @@ export default function Products() {
   const [search, setSearch] = useState('');
   const [data, setData] = useState();
 
+  const deleteItem = (id) => {
+    axios.delete(baseURL + "/addon/admin/delete/" + id).then(res => {
+      alert(res.data.message);
+      if (res.data.success) fetchData();
+    })
+  }
+  function fetchData() {
+    axios.get(baseURL + "/addon/admin/list/" + productid + "/" + search).then(res => { setData(res.data); })
 
-
+  }
   useEffect(() => {
-    axios.get(baseURL + "/addon/admin/list/" + productid + "/" + search).then(res => { setData(res.data); console.log(res.data) })
+    fetchData();
   }, [search])
 
 
@@ -65,7 +73,7 @@ export default function Products() {
           Add addon
         </Link>
       </div>
-      <TableComponent data={data} />
+      <TableComponent data={data} deleteItem={deleteItem} />
     </div>
   );
 }
