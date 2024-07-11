@@ -14,7 +14,7 @@ export default function Version() {
     const [sameReq, setSameReq] = useState(false);
 
     const [version, setVersion] = useState("");
-    const [statusid, setStatusId] = useState(null);
+    const [statusid, setStatusId] = useState(1);
     const [download, setDownload] = useState("");
     const [releaseNotes, setReleaseNotes] = useState("");
     const [req, setReq] = useState({
@@ -112,11 +112,22 @@ export default function Version() {
     if (!item || !status) {
         return (<div className='wrapper'>Loading...</div>)
     }
+    const breadcrumbs = () => {
+        if (isProductBool) {
+            return <Breadcrumbs page1={item.name} page2="Versions" page3="Version" link1="/products/" link2={"/products/versions/" + item.productid} />
+        }
+        else {
+            return <Breadcrumbs page1={item.name} page2="Versions" page3="Version" link1={"/products/addons/" + item.productid} link2={"/addons/versions/" + item.addonid} />
+
+        }
+
+    }
     return (
         <div className="wrapper">
             <Helmet>
-                <title>Versions - LogicLeap</title>
+                <title>Version Form - LogicLeap</title>
             </Helmet>
+            {breadcrumbs()}
             <div className="d-flex flex-column align-items-center justify-content-center w-100">
 
                 <div className="col-6 bg-white p-4 rounded-3 regular-border mt-5">
@@ -168,7 +179,7 @@ export default function Version() {
                             <>
                                 <div className="form-group mt-3">
                                     <input className="form-check-input me-2" type="checkbox" checked={sameReq} onChange={() => { setSameReq(!sameReq) }} name="samereq" />
-                                    <label htmlFor="samereq">{versionid ? 'Same requirements': 'Same requirements as latest version'}</label>
+                                    <label htmlFor="samereq">{versionid ? 'Same requirements' : 'Same requirements as latest version'}</label>
                                 </div>
                                 {!sameReq && (
                                     <div>

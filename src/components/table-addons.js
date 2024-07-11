@@ -45,7 +45,7 @@ const Table = ({ data }) => {
                                 <td>{item.prices[0].price}€/mo.</td>
                                 <td className='d-flex'>
                                     <Link to={"/addons/versions/" + item.addonid} className='linknormal me-2'>Versions</Link>
-                                    <Link to="/" className='linknormal me-2'><FontAwesomeIcon icon={faPen} /></Link>
+                                    <Link to={"/addons/form/" + item.addonid} className='linknormal me-2'><FontAwesomeIcon icon={faPen} /></Link>
                                     <Link to="/" className='linknormal'><FontAwesomeIcon icon={faTrash} /></Link>
                                 </td>
                             </tr>

@@ -29,6 +29,12 @@ export default function Products() {
     return (
       <div className="wrapper text-center">
         <Breadcrumbs page1="Products" page2="?" page3="Addons" link1="/products" link2="/products" />
+        <div className="d-flex align-items-center bg-white py-2 px-10vw regular-border-bottom">
+
+          <Link className="ms-3 linknormal" to="/addons/form">
+            Add addon
+          </Link>
+        </div>
         No addons available</div>);
   }
   return (
@@ -55,7 +61,7 @@ export default function Products() {
             </div>
           </div>
         </form>
-        <Link className="ms-3 linknormal" to="/">
+        <Link className="ms-3 linknormal" to="/addons/form">
           Add addon
         </Link>
       </div>

@@ -80,9 +80,6 @@ export default function Product() {
 
             }
         }
-        console.log(typeof (discount1));
-        console.log(discount1);
-
     }
 
     //FAQ
@@ -110,7 +107,6 @@ export default function Product() {
     const [status, setStatus] = useState([]);
     const [download, setDownload] = useState('');
     const [releaseNotes, setReleaseNotes] = useState('');
-    const [sameReq, setSameReq] = useState(false);
     const [req, setReq] = useState({
         os: '',
         processor: '',
