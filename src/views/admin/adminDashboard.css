@@ -12,19 +12,17 @@
 }
 
 .adminHub-large-card {
-    height: 250px;
-    width: 100%;
-    max-width: 300px; /* Adjusted size */
+    height: 300px;
     background-color: white;
     border: 1px solid #ddd;
-    margin-bottom: 20px;
+    width: 100%;
 }
 
 .adminHub-small-card {
     height: 150px;
     background-color: white;
     border: 1px solid #ddd;
-    margin-bottom: 20px;
+    margin-bottom: 20px; /* Adjust if needed */
 }
 
 .adminHub-card-body {
