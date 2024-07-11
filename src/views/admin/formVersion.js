@@ -72,7 +72,22 @@ export default function Version() {
             }
         }
         else if (isProductBool && versionid) { //Se for para editar uma versão para o produto
+            if (!version || !statusid || !download || !releaseNotes) {
+                alert("All fields are required. Please fill in all inputs.")
+            }
+            else if (sameReq) { //Se for para utilizar os reqs da versão mais recente
+                axios.post(baseURL + "/version/product/edit", { versionNum: version, statusid: statusid, downloadlink: download, releasenotes: releaseNotes, productid: id, versionid: versionid }).then(res => {
+                    alert(res.data.message);
+                    if (res.data.success) navigate('/products/versions/' + id)
 
+                })
+            }
+            else { //Se for para utilizar novos reqs
+                axios.post(baseURL + "/version/product/edit", { versionNum: version, statusid: statusid, downloadlink: download, releasenotes: releaseNotes, productid: id, reqNew: req, versionid: versionid }).then(res => {
+                    alert(res.data.message);
+                    if (res.data.success) navigate('/products/versions/' + id)
+                })
+            }
         }
         else if (!isProductBool && !versionid) { //Se for para criar uma versão para o addon
             if (!version || !statusid || !download || !releaseNotes) alert("All fields are required. Please fill in all inputs.")
@@ -153,7 +168,7 @@ export default function Version() {
                             <>
                                 <div className="form-group mt-3">
                                     <input className="form-check-input me-2" type="checkbox" checked={sameReq} onChange={() => { setSameReq(!sameReq) }} name="samereq" />
-                                    <label htmlFor="samereq">Same requirements as latest version</label>
+                                    <label htmlFor="samereq">{versionid ? 'Same requirements': 'Same requirements as latest version'}</label>
                                 </div>
                                 {!sameReq && (
                                     <div>
