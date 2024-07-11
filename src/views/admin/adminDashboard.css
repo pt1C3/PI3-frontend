@@ -1,6 +1,20 @@
-.adminHub-square-card {
-    height: 300px;
-    width: 300px;
+.adminHub-wrapper {
+    padding: 20px;
+}
+
+.adminHub-container {
+    padding: 20px;
+}
+
+.adminHub-row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.adminHub-large-card {
+    height: 250px;
+    width: 100%;
+    max-width: 300px; /* Adjusted size */
     background-color: white;
     border: 1px solid #ddd;
     margin-bottom: 20px;
@@ -13,22 +27,14 @@
     margin-bottom: 20px;
 }
 
-.adminHub-container {
-    padding: 20px;
-}
-
-.adminHub-innerContainer {
-    padding: 0 15px;
-}
-
-.adminHub-wrapper {
-    padding: 20px;
-}
-
 .adminHub-card-body {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100%;
+}
+
+.adminHub-card-title {
+    margin: 0;
 }
