@@ -1,18 +1,20 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import './tables.css';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 
-const Table = ({ data }) => { 
+const Table = ({ data }) => {
+    console.log(data[0].addon.productid)
     const getStatusClass = (status) => {
         switch (status) {
             case 'Hidden':
                 return 'text-warning';
-            case 'Visible':
+            case 'Stable':
                 return 'text-success';
             case 'Removed':
                 return 'text-danger';
+            case 'Beta':
+                return 'text-primary';
             default:
                 return '';
         }
@@ -24,38 +26,36 @@ const Table = ({ data }) => {
                     <thead>
                         <tr className='regular-border-bottom'>
                             <th scope="col">#</th>
-                            <th scope="col">Addon</th>
+                            <th scope="col">Version</th>
                             <th scope="col">Status</th>
-                            <th scope="col">Latest Version</th>
-                            <th scope="col">Active Costumers</th>
-                            <th scope="col">Price</th>
+                            <th scope="col">Release date</th>
+                            <th scope="col">Release notes</th>
+                            <th scope="col">Download link</th>
                             <th scope="col">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         {data.map((item) => (
                             <tr>
-                                <td>{item.addonid}</td>
-                                <td>{item.name}</td>
-                                <td className={`status ${getStatusClass(item.status)}`}>
-                                    {item.status}
-                                </td>
-                                <td>{item.versions[0].version}</td>
-                                <td>{item.totalPlans}</td>
-                                <td>{item.prices[0].price}€/mo.</td>
+                                <td>{item.versionid}</td>
+                                <td>{item.version}</td>
+                                <td className={`status ${getStatusClass(item.status.designation)}`}>{item.status.designation}</td>
+                                <td>{new Date(item.releasedate).toISOString().split('T')[0]}</td>
+                                <td>{item.releasenotes}</td>
+                                <td><Link to={item.downloadlink} className='linknormal'>{item.addon.name + " " + item.version}</Link></td>
                                 <td className='d-flex'>
-                                    <Link to={"/addons/versions/" + item.addonid} className='linknormal me-2'>Versions</Link>
-                                    <Link to="/" className='linknormal me-2'><FontAwesomeIcon icon={faPen} /></Link>
+                                    <Link to={"/versions/form/" + false + "/" + item.addonid + "/" + item.versionid} className='linknormal me-2'><FontAwesomeIcon icon={faPen} /></Link>
                                     <Link to="/" className='linknormal'><FontAwesomeIcon icon={faTrash} /></Link>
                                 </td>
                             </tr>
                         ))}
-
                     </tbody>
                 </table>
             </div>
         </div>
+
     );
 };
+
 
 export default Table;

@@ -28,7 +28,7 @@ import AdminCreateProduct from './views/admin/createProduct';
 import AdminProductAddons from './views/admin/productAddons';
 
 import AdminBusiness from './views/admin/createBusiness';
-import AdminCreateBusiness from './views/admin/createVersion';
+import AdminCreateBusiness from './views/admin/formVersion';
 import AdminCreateCostumer from './views/admin/createCostumer';
 import AdminCostumerBusiness from './views/admin/customerbusiness';
 import AdminCostumerEdit from './views/admin/customeredit';
@@ -44,6 +44,7 @@ import AdminProductBusinessList from './views/admin/productBusinessList';
 import AdminPackage from './views/admin/package';
 import AdminSalesList from './views/admin/saleslist';
 import Managerallproducts from './views/admin/managerallproducts';
+import AdminFormVersion from './views/admin/formVersion';
 
 function App() {
   const navigate = useNavigate();
@@ -168,6 +169,7 @@ function App() {
             <Route path="/products/versions/:productid" element={<AdminProductVersions />} />
             <Route path="/products/addons/:productid" element={<AdminProductAddons />} />
             <Route path="/addons/versions/:addonid" element={<AdminProductAddonsVersions />} />
+            <Route path="/versions/form/:isproduct/:id/:versionid?" element={<AdminFormVersion />} />
             {/*Utilizadores*/}
             <Route path="/business" element={<AdminBusiness />} />
             <Route path="/costumer/business" element={<AdminCostumerBusiness />} />

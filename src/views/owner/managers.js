@@ -190,7 +190,7 @@ function Managers() {
     }
 
     if (!managerList || !plans) {
-        return <div className="wrapper">Loading...</div>;
+        return <div className="wrapper text-center">Loading...</div>;
     }
     return (
         <div className="wrapper">

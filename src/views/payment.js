@@ -99,7 +99,7 @@ const PaymentForm = ({ stripePromise, data, price }) => {
   const handleCloseErrorModal = () => setShowErrorModal(false);
 
   if (!data) {
-    return <div className="wrapper">Loading...</div>;
+    return <div className="wrapper text-center">Loading...</div>;
   }
 
   return (
@@ -232,7 +232,7 @@ const Payment = () => {
   const stripePromise = loadStripe('pk_test_51PVjYGAJPMUjqPpZSTVhiOBBLKrevztR8K9MBnm4tibPvb8BtM4vWiBYFmB0DjZQYB5o16QP1W4RwKzK8fDIQ7ZB00Im3xRwVk');
 
   if (!data) {
-    return <div className="wrapper">Loading...</div>;
+    return <div className="wrapper text-center">Loading...</div>;
   }
 
   return (

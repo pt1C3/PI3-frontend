@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const Table = ({ data }) => {
-    console.log(data)
     const getStatusClass = (status) => {
         switch (status) {
             case 'Hidden':
@@ -44,33 +43,11 @@ const Table = ({ data }) => {
                                 <td>{item.releasenotes}</td>
                                 <td><Link to={item.downloadlink} className='linknormal'>{item.product.name + " " + item.version}</Link></td>
                                 <td className='d-flex'>
-                                    <Link to="/" className='linknormal me-2'><FontAwesomeIcon icon={faPen} /></Link>
+                                    <Link to={"/versions/form/" + true + "/" + item.productid + "/" + item.versionid} className='linknormal me-2'><FontAwesomeIcon icon={faPen} /></Link>
                                     <Link to="/" className='linknormal'><FontAwesomeIcon icon={faTrash} /></Link>
-                                    </td>
+                                </td>
                             </tr>
                         ))}
-
-                        {/*data.map((item, index) => (
-                            <tr key={index}>
-                                <td>{item.id}</td>
-                                <td>{title}
-                                </td>
-                                <td>
-                                    <span className={`text-${status === 'Pending' ? 'warning' : status === 'Payed' ? 'success' : 'danger'}`}>
-                                        {status}
-                                    </span>
-                                </td>
-                                <td>{billingDate}</td>
-                                <td>{item.releaseNote}</td>
-                                <td>
-                                    {version && <a className="linknormal" href="#">{version}</a>}
-                                </td>
-                                <td>
-                                    {action && <a className="linknormal" href="#">{action}</a>}
-                                </td>
-
-                            </tr>
-                        ))*/}
                     </tbody>
                 </table>
             </div>

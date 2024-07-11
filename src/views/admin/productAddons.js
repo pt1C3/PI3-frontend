@@ -22,15 +22,21 @@ export default function Products() {
 
 
   if (!data) {
-    return <div className="wrapper">Loading...</div>;
+    return <div className="wrapper text-center">Loading...</div>;
 
+  }
+  if (data.length === 0) {
+    return (
+      <div className="wrapper text-center">
+        <Breadcrumbs page1="Products" page2="?" page3="Addons" link1="/products" link2="/products" />
+        No addons available</div>);
   }
   return (
     <div className="wrapper background-color" style={{ minHeight: '100vh' }}>
       <Helmet>
         <title>{data[0].product_name} addons - LogicLeap</title>
       </Helmet>
-      <Breadcrumbs page1="Products" page2={data[0].product_name} page3="Addons" link1="/products" link2="/products"/>
+      <Breadcrumbs page1="Products" page2={data[0].product_name} page3="Addons" link1="/products" link2="/products" />
       <div className="d-flex align-items-center bg-white py-2 px-10vw regular-border-bottom">
         <form className="inline-form ">
           <div className="input-group rounded-2 col-4">

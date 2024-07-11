@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const Table = ({ data }) => {
-    console.log(data);
     const getStatusClass = (status) => {
         switch (status) {
             case 'Hidden':

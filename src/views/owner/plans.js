@@ -82,7 +82,7 @@ const Plans = () => {
     };
 
     if (!data) {
-        return <div className="wrapper">Loading...</div>;
+        return <div className="wrapper text-center">Loading...</div>;
     }
 
     return (
