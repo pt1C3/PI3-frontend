@@ -51,8 +51,8 @@ function App() {
   const navigate = useNavigate();
   const location = useLocation();
   const [search, setSearch] = useState('');
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [isOwner, setIsOwner] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(true);
+  const [isOwner, setIsOwner] = useState(false);
   const [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser());
 
   useEffect(() => {
@@ -163,7 +163,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         {isAdmin ? (
           <>
-            <Route path="/" element={<AdminDashboard />} />
+            <Route path="/dashboard" element={<AdminDashboard />} />
             {/*Produtos*/}
             <Route path="/products" element={<AdminProducts />} />
             <Route path="/products/form/:productid?" element={<AdminFormProduct />} />
