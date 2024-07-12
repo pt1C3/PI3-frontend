@@ -49,3 +49,11 @@
     font-size: 34px; /* Example size, adjust as needed */
     font-family: 'Metropolis Bold';
 }
+
+.reduce-top-margin {
+    margin-top: 10px; /* Adjust the value as needed */
+}
+
+.adminHub-container {
+    margin-top: 10px !important; /* Use !important to ensure it overrides any other styles */
+}
