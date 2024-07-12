@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass, faSortUp, faSortDown } from '@fortawesome/free-solid-svg-icons';
 import ListItem from "../../components/list-item";
 
-import "./owneraallproducts.css";
 import axios from 'axios';
 
 export default function OwnerAllProducts() {
@@ -15,7 +14,7 @@ export default function OwnerAllProducts() {
   const businessid = JSON.parse(localStorage.getItem('user')).data.businessid;
   useEffect(() => {
     axios.get(baseURL + "/owner/products/" + businessid).then(res => {
-      /*setProducts(res.data.map(plan => plan.price.product));*/
+      setProducts(res.data.map(plan => plan.price.product));
       console.log(res.data);
     })
   }, [search])

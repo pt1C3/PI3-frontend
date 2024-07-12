@@ -43,7 +43,7 @@ export default function Product() {
     const buyPlan = () => {
         const user = AuthService.getCurrentUser();
         if (user) {
-            if (user.utypeid !== 3) alert('You need to be a owner to acquire products')
+            if (user.utypeid !== 3) alert('You need to be an owner to acquire products')
             else {
                 if (selectedPlan !== 2) navigate('/payment/' + selectedPlan + '/' + data.productid)
                 else {
@@ -61,7 +61,7 @@ export default function Product() {
     return (
         <div className="wrapper bg-white">
             <Helmet>
-                <title>CreatiVortex - LogicLeap</title>
+                <title>{data.name} - LogicLeap</title>
             </Helmet>
             <Breadcrumbs page1={data.name} />
             <section className="mx-10vw mt-3">

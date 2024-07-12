@@ -7,8 +7,11 @@ import { faBell } from "@fortawesome/free-regular-svg-icons";
 import './App.css';
 import Home from './views/home';
 import Payment from './views/payment';
+import PaymentAddon from './views/paymentAddon';
 import Product from './views/product';
 import Package from './views/package';
+import Addons from './views/addons';
+
 import Login from './views/Login';
 import SignUp from "./views/SignUp";
 import Managers from './views/owner/managers';
@@ -55,6 +58,7 @@ function App() {
   const [search, setSearch] = useState('');
   const [isAdmin, setIsAdmin] = useState(false);
   const [isOwner, setIsOwner] = useState(true);
+
   const [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser());
 
   useEffect(() => {
@@ -80,6 +84,7 @@ function App() {
     setCurrentUser(null);
     setIsOwner(false);
     setIsAdmin(false);
+    navigate('/')
   };
 
   const searchSubmit = (event) => {
@@ -200,16 +205,19 @@ function App() {
             <Route path="/product/custom/:id" element={<CustomPlan />} />
             <Route path="/package/:id" element={<Package />} />
             <Route path="/search/:searchvalue" element={<Search />} />
+            <Route path="/product/addons/:productid" element={<Addons />} />
 
             {/*Owner*/}
             <Route path='/owner/product' element={<OwneraAllProducts />} />
             <Route path="/owner/product/:productid" element={<OwnerProduct />} />
             <Route path="/payment/:price/:productid" element={<Payment />} />
+            <Route path="/payment/addon/:addonid" element={<PaymentAddon />} />
             <Route path="/owner/history" element={<PaymentHistory />} />
-            <Route path="/support" element={<Support />} />
             <Route path="/owner/managers" element={<Managers />} />
             <Route path="/owner/plans" element={<Plans />} />
             <Route path="/owner/productsPackage" element={<ProductsPackage />} />
+
+            <Route path="/support" element={<Support />} />
           </>
         )}
       </Routes>
