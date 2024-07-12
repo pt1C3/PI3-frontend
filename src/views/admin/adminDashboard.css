@@ -29,10 +29,19 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start; /* Aligns text to the left */
     height: 100%;
+    padding-left: 15px; /* Adds padding to the left for better spacing */
 }
 
 .adminHub-card-title {
     margin: 0;
+    font-size: 16px; /* Example size, adjust as needed */
+    font-weight: bold; /* Makes the title bold */
+}
+
+.adminHub-card-body h2 {
+    margin-top: 5px; /* Adds a little space between the title and the number */
+    font-size: 34px; /* Example size, adjust as needed */
+    font-family: 'Metropolis Bold';
 }

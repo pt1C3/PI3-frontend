@@ -21,7 +21,7 @@ export default function AdminHub() {
                         <div className="col-md-4">
                             <div className="card adminHub-small-card adminHub-card text-center">
                                 <div className="adminHub-card-body">
-                                    <h6 className="adminHub-card-title">Gestores</h6>
+                                    <p>Gestores</p>
                                     <h2>200</h2>
                                 </div>
                             </div>
@@ -29,7 +29,7 @@ export default function AdminHub() {
                         <div className="col-md-4">
                             <div className="card adminHub-small-card adminHub-card text-center">
                                 <div className="adminHub-card-body">
-                                    <h6 className="adminHub-card-title">Managers</h6>
+                                <p>Managers</p>
                                     <h2>150</h2>
                                 </div>
                             </div>
@@ -37,7 +37,7 @@ export default function AdminHub() {
                         <div className="col-md-4">
                             <div className="card adminHub-small-card adminHub-card text-center">
                                 <div className="adminHub-card-body">
-                                    <h6 className="adminHub-card-title">Número produtos</h6>
+                                <p>Número de produtos</p>
                                     <h2>30</h2>
                                 </div>
                             </div>
@@ -45,7 +45,7 @@ export default function AdminHub() {
                         <div className="col-md-4">
                             <div className="card adminHub-small-card adminHub-card text-center">
                                 <div className="adminHub-card-body">
-                                    <h6 className="adminHub-card-title">Número Tickets</h6>
+                                <p>Número de Tickets</p>
                                     <h2>15</h2>
                                 </div>
                             </div>
@@ -53,7 +53,7 @@ export default function AdminHub() {
                         <div className="col-md-4">
                             <div className="card adminHub-small-card adminHub-card text-center">
                                 <div className="adminHub-card-body">
-                                    <h6 className="adminHub-card-title">Receita</h6>
+                                <p>Receita</p>
                                     <h2>$3,500</h2>
                                 </div>
                             </div>
@@ -61,7 +61,7 @@ export default function AdminHub() {
                         <div className="col-md-4">
                             <div className="card adminHub-small-card adminHub-card text-center">
                                 <div className="adminHub-card-body">
-                                    <h6 className="adminHub-card-title">Receita Total</h6>
+                                <p>Receita Total</p>
                                     <h2>$3,500</h2>
                                 </div>
                             </div>
