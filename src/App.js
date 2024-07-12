@@ -21,6 +21,7 @@ import OwnerProduct from './views/owner/ownerproduct';
 import OwneraAllProducts from './views/owner/owneraallproducts';
 import AuthService from './views/auth.service';
 import AdminDashboard from './views/admin/adminDashboard';
+import ProductsPackage from './views/owner/productsPackage';
 //Admin Products
 import AdminProducts from './views/admin/products';
 import AdminProductVersions from './views/admin/productVersions';
@@ -52,19 +53,19 @@ function App() {
   const navigate = useNavigate();
   const location = useLocation();
   const [search, setSearch] = useState('');
-  const [isAdmin, setIsAdmin] = useState(true);
-  const [isOwner, setIsOwner] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [isOwner, setIsOwner] = useState(true);
   const [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser());
 
   useEffect(() => {
     if (currentUser) {
       if (currentUser.utypeid === 4) {
-        setIsAdmin(true);
-        setIsOwner(false);
+        setIsAdmin(false);
+        setIsOwner(true);
       }
       if (currentUser.utypeid === 3) {
-        setIsOwner(true);
-        setIsAdmin(false);
+        setIsOwner(false);
+        setIsAdmin(true);
       }
     }
   }, [currentUser]);
@@ -208,6 +209,7 @@ function App() {
             <Route path="/support" element={<Support />} />
             <Route path="/owner/managers" element={<Managers />} />
             <Route path="/owner/plans" element={<Plans />} />
+            <Route path="/owner/productsPackage" element={<ProductsPackage />} />
           </>
         )}
       </Routes>
