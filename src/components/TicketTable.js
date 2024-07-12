@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './Ticketable.css';
 
 const TicketsTable = () => { 
     const [search, setSearch] = useState('');

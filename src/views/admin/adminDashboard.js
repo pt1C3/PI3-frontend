@@ -7,8 +7,8 @@ import TicketsTable from '../../components/TicketTable';
 export default function AdminHub() {
     return (
         <div className="adminHub-wrapper d-flex flex-column justify-content-center mx-auto adminHub-modais">
-            <div className="adminHub-container mt-5">
-                <div className="row adminHub-row">
+            <div className="adminHub-container">
+                <div className="row adminHub-row m-5">
                     <div className="col-lg-6 col-md-12">
                         <div className="row">
                             <div className="col-md-6 mb-4">
@@ -76,9 +76,11 @@ export default function AdminHub() {
                         </div>
                     </div>
                 </div>
-                <div className="row mt-3"> {/* Reduce the top margin */}
-                    <div className="col-12">
-                        <TicketsTable />
+                <div className="row justify-content-center custom-margin-top"> {/* Reduce the top margin and center the row */}
+                    <div className="col-11">
+                    <div className="transparent-card">
+                            <TicketsTable />
+                        </div>
                     </div>
                 </div>
             </div>

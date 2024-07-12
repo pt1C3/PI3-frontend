@@ -57,3 +57,7 @@
 .adminHub-container {
     margin-top: 10px !important; /* Use !important to ensure it overrides any other styles */
 }
+
+.custom-margin-top {
+    margin-top: -90px; /* Adjust this value as needed to reduce the top margin */
+}
