@@ -1,20 +1,20 @@
 import React from 'react';
 import { Chart } from 'react-google-charts';
 
-const DoughnutChart = () => {
+const DoughnutChart2 = () => {
   const data = [
     ['Task', 'Hours per Day'],
-    ['New', 150],
-    ['Inactive', 50],
+    ['Photoshop', 15],
+    ['Illustrator', 15],
   ];
 
   const options = {
-    title: 'Gestores',
+    title: 'Produtos',
     pieHole: 0.4,
     backgroundColor: 'transparent',
     slices: {
-      0: { color: '#FFA139' },  
-      1: { color: '#D3D3D3' },  
+      0: { color: '#D3D3D3' },  
+      1: { color: '#FFA139' },  
     },
     legend: {
       position: 'bottom',
@@ -42,4 +42,4 @@ const DoughnutChart = () => {
   );
 };
 
-export default DoughnutChart;
+export default DoughnutChart2;

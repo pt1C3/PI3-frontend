@@ -1,6 +1,7 @@
 
 import './adminDashboard.css'
 import DoughnutChart from '../../components/DoughnutChart';
+import DoughnutChart2 from '../../components/DoughnutChart2';
 
 export default function AdminHub() {
     return (
@@ -15,7 +16,7 @@ export default function AdminHub() {
     </div></div>
                         </div>
                         <div className="col-md-6 mb-4">
-                            <div className="card adminHub-large-card adminHub-card"></div>
+                            <div className="card adminHub-large-card adminHub-card"> <DoughnutChart2 /></div>
                         </div>
                     </div>
                 </div>
@@ -24,7 +25,7 @@ export default function AdminHub() {
                         <div className="col-md-4">
                             <div className="card adminHub-small-card adminHub-card text-center">
                                 <div className="adminHub-card-body">
-                                    <p>Gestores</p>
+                                    <bold><p>Gestores</p></bold>
                                     <h2>200</h2>
                                 </div>
                             </div>
