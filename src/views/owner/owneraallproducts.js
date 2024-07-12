@@ -1,76 +1,84 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import "bootstrap/dist/css/bootstrap.min.css";
+import { faMagnifyingGlass, faSortUp, faSortDown } from '@fortawesome/free-solid-svg-icons';
+import ListItem from "../../components/list-item";
+
 import "./owneraallproducts.css";
+import axios from 'axios';
 
 export default function OwnerAllProducts() {
+  const baseURL = 'http://localhost:3000';
+
   const [search, setSearch] = useState('');
-  const [sortBy, setSortBy] = useState('recent'); // Estado para controlar a ordenação
-  const [products, setProducts] = useState([
-    { id: 1, name: 'Product Name', count: '15/30' },
-    { id: 2, name: 'Product Name', count: '15/30' },
-    { id: 3, name: 'Product Name', count: '15/30' },
-    { id: 4, name: 'Product Name', count: '15/30' },
-    { id: 5, name: 'Design Pack', count: '15/30' },
-    { id: 6, name: 'Product Name', count: '15/30' },
-    { id: 7, name: 'Product Name', count: '15/30' },
-    { id: 8, name: 'Product Name', count: '15/30' },
-    { id: 9, name: 'Product Name', count: '15/30' }
-  ]);
+  const [searchFilter, setSearchFilter] = useState('pop-');
+  const [products, setProducts] = useState([]);
+  const businessid = JSON.parse(localStorage.getItem('user')).data.businessid;
+  useEffect(() => {
+    axios.get(baseURL + "/owner/products/" + businessid).then(res => {
+      /*setProducts(res.data.map(plan => plan.price.product));*/
+      console.log(res.data);
+    })
+  }, [search])
 
-  const handleSearchChange = (event) => {
-    setSearch(event.target.value);
+  const changeFilter = (isPop) => {
+    switch (searchFilter) {
+      case 'pop+':
+        isPop ? setSearchFilter("pop-") : setSearchFilter("pri-");
+        break;
+      case 'pop-':
+        isPop ? setSearchFilter("pop+") : setSearchFilter("pri-")
+        break;
+      case 'pri+':
+        isPop ? setSearchFilter("pop-") : setSearchFilter("pri-")
+        break;
+      case 'pri-':
+        isPop ? setSearchFilter("pop-") : setSearchFilter("pri+")
+        break;
+      default:
+        setSearchFilter("pop-")
+        break;
+    }
   };
+  if (!products) {
+    return <div className="wrapper text-center">Loading...</div>;
 
-  const handleSortBy = (sortByType) => {
-    setSortBy(sortByType);
-    // Implemente a lógica de ordenação aqui, se necessário
-  };
-
+  }
+  if (products.length === 0) {
+    return (
+      <div className="wrapper text-center">No products available</div>);
+  }
   return (
-    <div className="container mt-5 billing-table">
-      <div className="wrapper d-flex flex-column justify-content-center mx-auto o-all-products">
-        <div className="d-flex align-items-center search-bar-container">
-          <div className="search-bar mr-3">
-            <FontAwesomeIcon icon={faSearch} className="search-icon" />
+    <div className="wrapper">
+      <section className='filter-tab bg-white d-flex regular-border-bottom px-10vw align-items-center'>
+        <div className='col-4 me-3'>
+          <div className="input-group rounded-2 ">
             <input
               type="text"
-              value={search}
-              onChange={handleSearchChange}
+              className="form-control bg-transparent border-0"
               placeholder="Search"
-              className="search-input"
+              name="search"
+              value={search}
+              onChange={(event) => setSearch(event.target.value)}
             />
-          </div>
-          <div className="buttons-container">
-            <button
-              className={`btn btn-link ${sortBy === 'recent' ? 'active' : ''}`}
-              onClick={() => handleSortBy('recent')}
-            >
-              Recents
-            </button>
-            <button
-              className={`btn btn-link ${sortBy === 'az' ? 'active' : ''}`}
-              onClick={() => handleSortBy('az')}
-            >
-              A-Z
-            </button>
+            <div className="input-group-btn">
+              <button className="btn btn-default" disabled>
+                <FontAwesomeIcon icon={faMagnifyingGlass} />
+              </button>
+            </div>
           </div>
         </div>
-        <div className="container mt-3">
-          <div className="row">
-            {products.map((product) => (
-              <div key={product.id} className="col-md-4 card-margin-reduced">
-                <div className="card">
-                  <div className="card-body d-flex justify-content-between align-items-center">
-                    <div className={`image-placeholder ${product.name === 'Design Pack' ? 'design-pack' : ''}`}></div>
-                    <span>{product.name}</span>
-                    <span>{product.count}</span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+        <button className={'btn py-3' + (searchFilter.substring(0, 3) === "pop" ? ' active' : '')} onClick={() => changeFilter(true)}>
+          Popularity {searchFilter.includes("pop") && <FontAwesomeIcon icon={searchFilter.includes('+') ? faSortUp : faSortDown} />}
+        </button>
+        <button className={'btn py-3' + (searchFilter.substring(0, 3) === "pri" ? ' active' : '')} onClick={() => changeFilter(false)}>
+          Price {searchFilter.includes("pri") && <FontAwesomeIcon icon={searchFilter.includes('+') ? faSortUp : faSortDown} />}
+        </button>
+      </section>
+      <div className="mx-10vw mt-3">
+        <div className="row">
+          {products.map((item) => (
+            <ListItem title={item.name} image={item.icon} toLink={"/owner/product/" + item.productid} />
+          ))}
         </div>
       </div>
     </div>

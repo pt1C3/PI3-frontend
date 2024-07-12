@@ -22,8 +22,8 @@ export default function ProfileDropdown({ onLogout }) {
   if (!user) {
     return (
       <>
-      <Link className='btn btn-secondary' to="/login" >Login</Link>
-      <Link className='btn btn-secondary ms-1' to="/signup" >Sign up</Link>
+        <Link className='btn btn-secondary' to="/login" >Login</Link>
+        <Link className='btn btn-secondary ms-1' to="/signup" >Sign up</Link>
       </>
     )
   }
@@ -39,6 +39,9 @@ export default function ProfileDropdown({ onLogout }) {
         <li><hr className="dropdown-divider" /></li>
         {isOwner && (
           <>
+            <Link className="dropdown-item" to="/owner/product">
+              My products
+            </Link>
             <Link className="dropdown-item" to="/owner/managers">
               Managers
             </Link>
