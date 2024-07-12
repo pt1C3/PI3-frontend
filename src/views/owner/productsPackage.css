@@ -1,141 +1,86 @@
-.managerProduct-content {
-    max-width: 1200px; /* Increase the maximum width */
+.managerProduct-wrapper {
+    font-family: Arial, sans-serif;
+  }
+  
+  .managerProduct-content {
+    max-width: 1200px;
     width: 100%;
     padding: 20px;
-}
-
-.managerProduct-no-items {
+  }
+  
+  .managerProduct-no-items {
     color: #888;
-}
-
-.managerProduct-custom-title {
+  }
+  
+  .managerProduct-custom-title {
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 10px;
-}
-
-.managerProduct-divider {
+  }
+  
+  .managerProduct-divider {
     height: 1px;
     background-color: #e0e0e0;
     margin-bottom: 10px;
-}
-
-.managerProduct-logo {
+  }
+  
+  .managerProduct-logo {
     margin-bottom: 20px;
-}
-
-.managerProduct-logo-box {
+  }
+  
+  .managerProduct-logo-box {
     width: 90px;
     height: 90px;
-    background-color: #002F6C;
+    background-color: #c81990;
+    margin-bottom: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 9px;
-    margin-bottom: 12px;
-}
-
-.managerProduct-logo-text-c {
+  }
+  
+  .managerProduct-logo-text-c {
     color: white;
     font-size: 34px;
     font-weight: bold;
-}
-
-.managerProduct-logo-text-v {
+  }
+  
+  .managerProduct-logo-text-v {
     color: #E63946;
     font-size: 34px;
     font-weight: bold;
-}
-
-.managerProduct-title h1 {
+  }
+  
+  .managerProduct-title h1 {
     margin-left: 40px;
     font-size: 24px;
-}
-
-.managerProduct-title p {
+  }
+  
+  .managerProduct-title p {
     margin-left: 40px;
     color: #888;
-}
-
-.managerProduct-form-group {
+  }
+  
+  .managerProduct-form-group {
     margin-bottom: 15px;
-}
-
-.managerProduct-licenses {
+  }
+  
+  .managerProduct-licenses {
     display: flex;
     justify-content: space-between;
-}
-
-.managerProduct-licenses-sidebar {
+  }
+  
+  .managerProduct-licenses-sidebar {
     width: 30%;
     border-right: 1px solid #e0e0e0;
     padding-right: 20px;
-}
-
-.managerProduct-search-bar {
+  }
+  
+  .managerProduct-search-bar {
     margin-bottom: 10px;
-}
-
-.managerProduct-search-bar input {
+  }
+  
+  .managerProduct-search-bar input {
     width: 100%;
     padding: 5px;
-    border: 1px solid #e0e0e0;
-    border-radius: 4px;
-}
-
-.managerProduct-license-list {
-    max-height: 200px;
-    overflow-y: auto;
-}
-
-.managerProduct-license-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px solid #e0e0e0;
-}
-
-.managerProduct-license-item p {
-    margin: 0;
-}
-
-.managerProduct-license-check {
-    color: green;
-}
-
-.managerProduct-add-license {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-}
-
-.managerProduct-add-license button {
-    width: 30px;
-    height: 30px;
-    border: none;
-    background-color: #e0e0e0;
-    border-radius: 50%;
-    font-size: 20px;
-    line-height: 30px;
-    text-align: center;
-}
-
-.managerProduct-licenses-details {
-    width: 65%;
-    padding-left: 20px;
-}
-
-.managerProduct-remove-license {
-    margin-top: 20px;
-    padding: 5px 10px;
-    border: 1px solid #e0e0e0;
-    background-color: white;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.managerProduct-license-count {
-    margin-top: 10px;
-    text-align: right;
-}
+    border: 1px solid #e0e0e0
+  }  
