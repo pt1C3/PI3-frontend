@@ -64,12 +64,12 @@ function App() {
   useEffect(() => {
     if (currentUser) {
       if (currentUser.utypeid === 4) {
-        setIsAdmin(false);
-        setIsOwner(true);
+        setIsAdmin(true);
+        setIsOwner(false);
       }
       if (currentUser.utypeid === 3) {
-        setIsOwner(false);
-        setIsAdmin(true);
+        setIsOwner(true);
+        setIsAdmin(false);
       }
     }
   }, [currentUser]);
