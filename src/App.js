@@ -46,6 +46,7 @@ import AdminProductBusinessList from './views/admin/productBusinessList';
 import AdminPackage from './views/admin/package';
 import AdminSalesList from './views/admin/saleslist';
 import Managerallproducts from './views/admin/managerallproducts';
+import CustomPlan from './views/customPlan';
 
 function App() {
   const navigate = useNavigate();
@@ -192,17 +193,21 @@ function App() {
           </>
         ) : (
           <>
+            {/*Venda de produtos*/}
             <Route path="/" element={<Home />} />
-            <Route path="/payment/:price/:productid" element={<Payment />} />
             <Route path="/product/:id" element={<Product />} />
+            <Route path="/product/custom/:id" element={<CustomPlan />} />
             <Route path="/package/:id" element={<Package />} />
-            <Route path="/paymenthistory" element={<PaymentHistory />} />
-            <Route path="/support" element={<Support />} />
             <Route path="/search/:searchvalue" element={<Search />} />
+
+            {/*Owner*/}
+            <Route path='/owner/product' element={<OwneraAllProducts />} />
+            <Route path="/owner/product/:productid" element={<OwnerProduct />} />
+            <Route path="/payment/:price/:productid" element={<Payment />} />
+            <Route path="/owner/history" element={<PaymentHistory />} />
+            <Route path="/support" element={<Support />} />
             <Route path="/owner/managers" element={<Managers />} />
             <Route path="/owner/plans" element={<Plans />} />
-            <Route path="/owner/ownerproduct" element={<OwnerProduct />} />
-            <Route path='/owner/owneraallproducts' element={<OwneraAllProducts />} />
           </>
         )}
       </Routes>

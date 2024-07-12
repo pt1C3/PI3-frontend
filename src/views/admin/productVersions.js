@@ -9,8 +9,19 @@ export default function ProductVersions() {
   const [data, setData] = useState();
   const baseURL = 'http://localhost:3000';
   const { productid } = useParams();
-  useEffect(() => {
+
+  const deleteItem = (id) => {
+    axios.delete(baseURL + "/version/delete/" + id).then(res => {
+      alert(res.data.message);
+      if (res.data.success) fetchData();
+    })
+  }
+  function fetchData() {
     axios.get(baseURL + "/product/admin/versions/" + productid).then(res => { setData(res.data) })
+
+  }
+  useEffect(() => {
+    fetchData();
   }, [])
 
   if (!data) {
@@ -28,7 +39,7 @@ export default function ProductVersions() {
           Add Version
         </Link>
       </div>
-      <TableComponent data={data} />
+      <TableComponent data={data} deleteItem={deleteItem} />
     </div>
   );
 }

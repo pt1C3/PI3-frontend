@@ -6,7 +6,7 @@ import Breadcrumbs from "../../components/breadcrumbs";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 
-const SubscriptionItem = ({ id, image, name, status, nextBillDate, price, saleDate, cancelPlan }) => {
+const SubscriptionItem = ({ id, image, name, status, nextBillDate, price, saleDate, cancelPlan, licenses}) => {
     const [isExpanded, setIsExpanded] = useState(false);
 
     const handleCancelPlan = () => {
@@ -41,6 +41,7 @@ const SubscriptionItem = ({ id, image, name, status, nextBillDate, price, saleDa
             </div>
             {isExpanded && status !== 1 && (
                 <div className="card-body border-top">
+                    <p className="mb-2">Maximum of <span className='text-bold'>{licenses} users</span></p>
                     <p className="mb-2">Subscription started in <span className='text-bold'>{saleDate}</span></p>
                     <div className='d-flex justify-content-end'>
                         <button className="btn-secondary" onClick={handleCancelPlan}>Cancel</button>
@@ -100,6 +101,7 @@ const Plans = () => {
                         name={item.price.product.name}
                         nextBillDate={item.payments[0].due_date}
                         price={item.price.price}
+                        licenses={item.price.number_of_licenses}
                         status={item.planstatusid}
                         saleDate={item.sale_date}
                         cancelPlan={cancelPlan}

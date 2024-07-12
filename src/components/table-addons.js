@@ -4,7 +4,7 @@ import './tables.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 
-const Table = ({ data }) => { 
+const Table = ({ data, deleteItem }) => { 
     const getStatusClass = (status) => {
         switch (status) {
             case 'Hidden':
@@ -46,7 +46,8 @@ const Table = ({ data }) => {
                                 <td className='d-flex'>
                                     <Link to={"/addons/versions/" + item.addonid} className='linknormal me-2'>Versions</Link>
                                     <Link to={"/addons/form/" + item.addonid} className='linknormal me-2'><FontAwesomeIcon icon={faPen} /></Link>
-                                    <Link to="/" className='linknormal'><FontAwesomeIcon icon={faTrash} /></Link>
+                                    <button className='btn m-0 p-0 linknormal' onClick={() => deleteItem(item.addonid)}>
+                                        <FontAwesomeIcon icon={faTrash} /></button>
                                 </td>
                             </tr>
                         ))}
