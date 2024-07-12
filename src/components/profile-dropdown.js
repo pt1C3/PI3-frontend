@@ -6,6 +6,7 @@ import './profile-dropdown.css';
 export default function ProfileDropdown({ onLogout }) {
   const handleLogout = () => {
     onLogout(); // Trigger parent component's logout handler
+    
   };
   var user;
   if (localStorage.getItem('user')) {
@@ -47,6 +48,9 @@ export default function ProfileDropdown({ onLogout }) {
             </Link>
             <Link className="dropdown-item" to="/owner/plans">
               Plans
+            </Link>
+            <Link className="dropdown-item" to="/owner/history">
+              Payment History
             </Link>
           </>
         )}

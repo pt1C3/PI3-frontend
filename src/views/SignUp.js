@@ -28,10 +28,10 @@ export default function SignUp() {
 
   useEffect(() => {
     // Register the Portuguese locale
-    countries.registerLocale(require('i18n-iso-countries/langs/pt.json'));
+    countries.registerLocale(require('i18n-iso-countries/langs/en.json'));
 
     // Get the country names in Portuguese
-    const countryNames = countries.getNames('pt', { select: 'official' });
+    const countryNames = countries.getNames('en', { select: 'official' });
 
     // Set the country names to state
     setCountryList(countryNames);

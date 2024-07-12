@@ -33,7 +33,7 @@ export default function ProductVersions() {
       <Helmet>
         <title>{data[0].product.name} versions - LogicLeap</title>
       </Helmet>
-      <Breadcrumbs page1="Products" page2={data[0].product.name} page3='Versions' link1="/products" link2="/products" />
+      <Breadcrumbs page1="Products" page2={data[0].product.name} page3='Versions' link1="/products" link2={"/products/form/"+productid} />
       <div className="d-flex align-items-center bg-white py-2 px-10vw regular-border-bottom">
         <Link className="ms-3 linknormal" to={"/versions/form/" + true + "/" + productid}>
           Add Version

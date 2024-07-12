@@ -4,7 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import axios from 'axios';
 
-export default function Version() {
+export default function Addon() {
     const baseURL = 'http://localhost:3000';
     const { addonid } = useParams();
     const navigate = useNavigate();

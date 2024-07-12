@@ -9,7 +9,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import { CardElement, Elements, useElements, useStripe } from '@stripe/react-stripe-js';
 
 const PaymentForm = ({ stripePromise, data, price }) => {
-  const { productid } = useParams();
+  const { addonid } = useParams();
   const [countryList, setCountryList] = useState({});
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [showErrorModal, setShowErrorModal] = useState(false);
@@ -24,12 +24,10 @@ const PaymentForm = ({ stripePromise, data, price }) => {
     const countryNames = countries.getNames('en', { select: 'official' });
     setCountryList(countryNames);
 
-    axios.get(baseURL + '/user/plans/' + JSON.parse(localStorage.getItem('user')).data.businessid)
+    axios.get(baseURL + '/user/addon/plans/' + JSON.parse(localStorage.getItem('user')).data.businessid)
       .then(res => {
-        setCanBuy(!(Object.values(res.data).some(item => item.price.product.productid.toString() === productid.toString())))
-        console.log(res.data)
-        console.log(productid)
-        console.log("can buy: " + !(Object.values(res.data).some(item => item.price.product.productid.toString() === productid.toString())))
+        setCanBuy(!(Object.values(res.data).some(item => item.price.addon.addonid.toString() === addonid.toString())))
+        console.log("Can buy: " + !(Object.values(res.data).some(item => item.price.addon.addonid.toString() === addonid.toString())))
       })
 
   }, []);
@@ -74,7 +72,7 @@ const PaymentForm = ({ stripePromise, data, price }) => {
           console.error('[Error]', error);
           setShowErrorModal(true); // Show error modal
         } else {
-          axios.post(baseURL + '/owner/addplanpayment', {
+          axios.post(baseURL + '/owner/addplan/addon/payment', {
             priceid: data.prices[price].priceid,
             businessid: JSON.parse(localStorage.getItem('user')).data.businessid,
           }).then(response => {
@@ -218,17 +216,17 @@ const PaymentForm = ({ stripePromise, data, price }) => {
 const Payment = () => {
   const baseURL = 'http://localhost:3000';
   const [data, setData] = useState(null);
-  const { productid, price } = useParams();
+  const { addonid } = useParams();
 
   useEffect(() => {
-    axios.get(`${baseURL}/product/${productid}`)
+    axios.get(`${baseURL}/addon/${addonid}`)
       .then(res => {
         setData(res.data);
       })
       .catch(error => {
         console.log('Error fetching data:', error);
       });
-  }, [productid]);
+  }, []);
 
   const stripePromise = loadStripe('pk_test_51PVjYGAJPMUjqPpZSTVhiOBBLKrevztR8K9MBnm4tibPvb8BtM4vWiBYFmB0DjZQYB5o16QP1W4RwKzK8fDIQ7ZB00Im3xRwVk');
 
@@ -239,36 +237,35 @@ const Payment = () => {
   return (
     <div className="wrapper bg-white">
       <Helmet>
-        <title>Payment - LogicLeap</title>
+        <title>Addon Payment - LogicLeap</title>
       </Helmet>
-      <Breadcrumbs page1="Designer Pack" page2={data.name} page3="Payment" link1="/" link2={`/product/${data.productid}`} />
+      <Breadcrumbs page1={data.name} page2="Payment" link1="/owner/product" />
       <div className="mx-10vw">
         <div className="row">
           <div className="col-md-6 mt-4">
             <div>
               <div className="d-flex align-items-center mb-5">
-                <img src={data.icon} alt={data.name} height="70" />
-                <span className="ms-3"><h4>{data.name}</h4></span>
+                <h4>{data.name}</h4>
               </div>
               <div className="d-flex align-items-end justify-content-between mb-2">
                 <div>
                   <p className="product-info">
-                    Up to {data.prices[price].number_of_licenses} users - Initial Payment<br />€{data.prices[price].price} a month
+                    Initial Payment<br />€{data.prices[0].price} a month
                   </p>
                 </div>
-                <p className="product-price">€{data.prices[price].price}</p>
+                <p className="product-price">€{data.prices[0].price}</p>
               </div>
               <hr />
               <div className="payment-total d-flex justify-content-between">
                 <p>Total</p>
-                <p>€{data.prices[price].price}</p>
+                <p>€{data.prices[0].price}</p>
               </div>
             </div>
           </div>
 
           <div className="col-md-6 mt-4">
             <Elements stripe={stripePromise}>
-              <PaymentForm stripePromise={stripePromise} data={data} price={price} />
+              <PaymentForm stripePromise={stripePromise} data={data} price={0} />
             </Elements>
           </div>
         </div>

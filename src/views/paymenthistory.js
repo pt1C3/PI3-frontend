@@ -1,16 +1,26 @@
 
-import BillingTable from "../components/billing-table.js";
+import TableComponent from "../components/billing-table.js";
 import "./login.css";
 import { Helmet } from 'react-helmet';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 export default function PaymentHistory() {
+  const [data, setData] = useState([]);
+  const baseURL = 'http://localhost:3000';
+  const businessid = JSON.parse(localStorage.getItem('user')).data.businessid;
+  useEffect(() => {
+    axios.get(baseURL + "/user/history/" + businessid).then(res => {
+      setData(res.data);
+    })
+  }, [])
 
   return (
-    <div className="wrapper background-color d-flex flex-column align-items-center justify-content-center" style={{ minHeight: '100vh' }}>
+    <div className="wrapper" style={{ minHeight: '100vh' }}>
       <Helmet>
-        <title>Payment history - CreatiVortex</title>
+        <title>Payment history - LogicLeap</title>
       </Helmet>
-      <BillingTable title="Product Name" type="Software" status="Pending" maxUsers="-" billingDate="2023-03-12" billingAmount="€19.99" paymentDate="2023-03-12 11:45 AM" startDate="2023-03-12" action="Pay" />
+      <TableComponent data={data} />
     </div>
   );
 }
