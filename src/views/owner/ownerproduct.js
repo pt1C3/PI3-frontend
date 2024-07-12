@@ -13,15 +13,31 @@ export default function OwnerProduct() {
     const [product, setProduct] = useState()
     const baseURL = 'http://localhost:3000';
     const [addons, setAddons] = useState();
+    function fetchAddons() {
+        axios.get(baseURL + "/owner/addons/" + businessid + "/" + productid).then(res => {
+            console.log(res.data)
+
+            setAddons(res.data)
+        })
+    }
     useEffect(() => {
         axios.get(baseURL + "/product/" + productid).then(res => {
             setProduct(res.data)
         });
-        axios.get(baseURL + "/owner/addons/" + businessid + "/" + productid).then(res => {
-            console.log(res.data)
-            setAddons(Object.values(res.data).map(plan => plan.price.addon))
-        })
+        fetchAddons()
     }, [])
+
+    function removeAddon(id) {
+        axios.delete(baseURL + "/owner/cancelplan/" + id).then(res => {
+            if (res.data.success) {
+                alert(res.data.message);
+                fetchAddons();
+            }
+            else {
+                alert(res.data.message);
+            }
+        })
+    }
     if (!product || !addons) {
         return <div className="wrapper text-center">Loading...</div>;
     }
@@ -63,12 +79,18 @@ export default function OwnerProduct() {
                             <Link to={"/product/addons/" + productid} className='linknormal'>Buy addons</Link>
                         </div>
                         <hr />
-                        <div className="owner-product-form-group">
+                        <div className="row g-3">
                             {addons.map(item => (
-                                <p>{item.name}</p>
+                                <div className='col-4'>
+                                    <div className='p-3 regular-border rounded-3 d-flex align-items-center justify-content-between'>
+                                        <p className='mb-0'>{item.price.addon.name}</p>
+                                        <button className='btn linknormal' onClick={() => { removeAddon(item.planid) }}>Remove</button>
+                                    </div>
+                                </div>
                             ))}
-                            {addons.length === 0 && (<p className="owner-product-no-items">No items to show.</p>
+                            {addons.length === 0 && (<p className="text-center">No items to show.</p>
                             )}
+
                         </div>
                     </div>
                     <div className="bg-white regular-border rounded-3 p-4 mb-3">
