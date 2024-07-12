@@ -47,54 +47,19 @@ export default function ProductsPackage() {
         </div>
 
         {/* Manage Licenses Container */}
-        <div className="bg-white border rounded-3 p-4 mb-3">
-                <div className="d-flex justify-content-between mb-2">
-                  <p className="fs-5 m-0 fw-medium">Manage Licenses</p>
-                  <p className="fs-5 m-0 fw-medium">15/30</p>
-                </div>
-                <hr />
-                <div className="d-flex">
-                  <div className="managerProduct-licenses-sidebar">
-                    <div className="managerProduct-search-bar">
-                      <input type="text" placeholder="Search" />
-                    </div>
-                    <div className="managerProduct-license-list">
-                      <div className="managerProduct-license-item">
-                        <p>António Mendes</p>
-                        <span className="managerProduct-license-check">&#x2714;</span>
-                      </div>
-                      <div className="managerProduct-license-item">
-                        <p>Employee 1</p>
-                        <span className="managerProduct-license-check">&#x2714;</span>
-                      </div>
-                      <div className="managerProduct-license-item">
-                        <p>Employee 2</p>
-                        <span className="managerProduct-license-check">&#x2714;</span>
-                      </div>
-                      <div className="managerProduct-license-item">
-                        <p>Employee 3</p>
-                        <span className="managerProduct-license-check">&#x2714;</span>
-                      </div>
-                    </div>
-                    <div className="managerProduct-add-license">
-                      <button>+</button>
-                    </div>
-                  </div>
-                  <div className="managerProduct-licenses-details">
-                    <p>António Mendes</p>
-                    <p>antonio.mendes@empresa.pt</p>
-                    <div className="managerProduct-license-keys">
-                      <p>12345 12345 54321 54321 123</p>
-                      <p>12345 12345 54321 54321 123</p>
-                      <p>12345 12345 54321 54321 123</p>
-                    </div>
-                    <button className="managerProduct-remove-license">Remove Licenses</button>
-                  </div>
-                </div>
-              </div>
+        <div className="managerProduct-card card shadow-sm">
+          <div className="managerProduct-card-body card-body">
+            <div className="managerProduct-custom-title">Manage Licenses</div>
+            <div className="managerProduct-divider"></div>
+            <div className="managerProduct-form-group managerProduct-licenses">
+              <LicenseSidebar />
+              <LicenseDetails />
+            </div>
+          </div>
+        </div>
 
         {/* Software Included Container */}
-        <div className="managerProduct-container card shadow-sm">
+        <div className="managerProduct-container card shadow-sm mt-4">
           <div className="managerProduct-card-body card-body">
             <div className="managerProduct-custom-title">Software Included</div>
             <div className="managerProduct-divider"></div>
@@ -147,3 +112,5 @@ export default function ProductsPackage() {
     </div>
   );
 }
+
+

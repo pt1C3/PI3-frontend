@@ -56,8 +56,8 @@ function App() {
   const navigate = useNavigate();
   const location = useLocation();
   const [search, setSearch] = useState('');
-  const [isAdmin, setIsAdmin] = useState(true);
-  const [isOwner, setIsOwner] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [isOwner, setIsOwner] = useState(true);
 
   const [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser());
 
