@@ -108,19 +108,19 @@ function App() {
             <Link to="/" className="nav-link">
               <p className="mb-0 text-medium">Dashboard</p>
             </Link>
-            <Link to="/" className="nav-link ms-2">
+            <Link to="/sales" className="nav-link ms-2">
               <p className="mb-0 text-medium">Sales</p>
             </Link>
             <Link to="/" className="nav-link ms-2">
               <p className="mb-0 text-medium">Customers</p>
             </Link>
-            <Link to="/" className="nav-link ms-2">
+            <Link to="/package" className="nav-link ms-2">
               <p className="mb-0 text-medium">Packages</p>
             </Link>
             <Link to="/products" className="nav-link ms-2">
               <p className="mb-0 text-medium">Products</p>
             </Link>
-            <Link to="/" className="nav-link ms-2">
+            <Link to="/costumplan" className="nav-link ms-2">
               <p className="mb-0 text-medium">Custom Plans</p>
             </Link>
             <Link to="/" className="nav-link ms-2">
@@ -170,7 +170,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         {isAdmin ? (
           <>
-            <Route path="/dashboard" element={<AdminDashboard />} />
+            <Route path="/" element={<AdminDashboard />} />
             {/*Produtos*/}
             <Route path="/products" element={<AdminProducts />} />
             <Route path="/products/form/:productid?" element={<AdminFormProduct />} />
@@ -193,7 +193,7 @@ function App() {
             <Route path="/managerlist" element={<AdminManagerList />} />
             <Route path="/productbusinesslist" element={<AdminProductBusinessList />} />
             <Route path="/package" element={<AdminPackage />} />
-            <Route path='/saleslist' element={<AdminSalesList />} />
+            <Route path='/sales' element={<AdminSalesList />} />
             <Route path="/managerProduct" element={<ManagerProduct />} />
             <Route path="/managerallproducts" element={<Managerallproducts />} />
           </>
