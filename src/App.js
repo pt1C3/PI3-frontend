@@ -46,6 +46,7 @@ import AdminProductBusinessList from './views/admin/productBusinessList';
 import AdminPackage from './views/admin/package';
 import AdminSalesList from './views/admin/saleslist';
 import Managerallproducts from './views/admin/managerallproducts';
+import CustomPlan from './views/customPlan';
 
 function App() {
   const navigate = useNavigate();
@@ -195,6 +196,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/payment/:price/:productid" element={<Payment />} />
             <Route path="/product/:id" element={<Product />} />
+            <Route path="/product/custom/:id" element={<CustomPlan />} />
             <Route path="/package/:id" element={<Package />} />
             <Route path="/paymenthistory" element={<PaymentHistory />} />
             <Route path="/support" element={<Support />} />

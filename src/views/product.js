@@ -44,7 +44,12 @@ export default function Product() {
         const user = AuthService.getCurrentUser();
         if (user) {
             if (user.utypeid !== 3) alert('You need to be a owner to acquire products')
-            else navigate('/payment/' + selectedPlan + '/' + data.productid)
+            else {
+                if (selectedPlan !== 2) navigate('/payment/' + selectedPlan + '/' + data.productid)
+                else {
+                    navigate('/product/custom/' + data.productid);
+                }
+            }
         }
         else alert('You need to be logged in')
     }
@@ -58,7 +63,7 @@ export default function Product() {
             <Helmet>
                 <title>CreatiVortex - LogicLeap</title>
             </Helmet>
-            <Breadcrumbs page1="Designer Pack" page2={data.name} link1="/"></Breadcrumbs>
+            <Breadcrumbs page1={data.name} />
             <section className="mx-10vw mt-3">
                 <div className="row g-4 align-items-top">
                     <div className="col-12 col-xl-6">
