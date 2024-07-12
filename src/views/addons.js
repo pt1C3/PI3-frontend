@@ -9,7 +9,7 @@ export default function Addons() {
     const { productid } = useParams();
     const [product, setProduct] = useState();
     const [addons, setAddons] = useState();
-    const baseURL = 'http://localhost:3000';
+    const baseURL = 'https://pi3-backend.onrender.com';
 
     useEffect(() => {
         axios.get(baseURL + '/product/' + productid).then(res=>{

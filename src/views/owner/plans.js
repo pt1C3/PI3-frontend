@@ -53,7 +53,7 @@ const SubscriptionItem = ({ id, image, name, status, nextBillDate, price, saleDa
 };
 
 const Plans = () => {
-    const baseURL = 'http://localhost:3000';
+    const baseURL = 'https://pi3-backend.onrender.com';
     const [data, setData] = useState([]);
 
     useEffect(() => {

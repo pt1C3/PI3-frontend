@@ -7,7 +7,7 @@ import axios from 'axios';
 
 export default function CustomPlan() {
     let { id } = useParams();
-    const baseURL = 'http://localhost:3000';
+    const baseURL = 'https://pi3-backend.onrender.com';
     const [product, setProduct] = useState({});
     const [licenses, setLicenses] = useState(0);
     useEffect(() => {

@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 export default function Products() {
-  const baseURL = 'http://localhost:3000';
+  const baseURL = 'https://pi3-backend.onrender.com';
 
   const [search, setSearch] = useState('');
   const [data, setData] = useState();

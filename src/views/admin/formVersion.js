@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet';
 import axios from 'axios';
 
 export default function Version() {
-    const baseURL = 'http://localhost:3000';
+    const baseURL = 'https://pi3-backend.onrender.com';
     const { isproduct, id, versionid } = useParams();
     const isProductBool = (isproduct === 'true');
     const navigate = useNavigate();

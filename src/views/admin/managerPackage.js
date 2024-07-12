@@ -6,7 +6,7 @@ import "./managerPackage.css";
 import { Helmet } from 'react-helmet';
 
 export default function ManagerPackage() {
-    const baseURL = 'http://localhost:3000';
+    const baseURL = 'https://pi3-backend.onrender.com';
     const navigate = useNavigate();
     let { id } = useParams();
     const [section, setSection] = useState('plans');

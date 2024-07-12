@@ -17,7 +17,7 @@ const PaymentForm = ({ stripePromise, data, price }) => {
   const stripe = useStripe();
   const elements = useElements();
   const navigate = useNavigate();
-  const baseURL = 'http://localhost:3000';
+  const baseURL = 'https://pi3-backend.onrender.com';
 
   useEffect(() => {
     countries.registerLocale(require('i18n-iso-countries/langs/en.json'));
@@ -214,7 +214,7 @@ const PaymentForm = ({ stripePromise, data, price }) => {
 };
 
 const Payment = () => {
-  const baseURL = 'http://localhost:3000';
+  const baseURL = 'http://localhost:3000https://pi3-backend.onrender.com';
   const [data, setData] = useState(null);
   const { addonid } = useParams();
 

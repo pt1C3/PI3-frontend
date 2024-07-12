@@ -7,7 +7,7 @@ import 'i18n-iso-countries/langs/pt.json';
 import axios from 'axios';
 
 export default function CreateCustomer() {
-  const baseURL = 'http://localhost:3000';
+  const baseURL = 'https://pi3-backend.onrender.com';
   const [firstname, setFirstName] = useState("");
   const [lastname, setLastName] = useState("");
   const [email, setEmail] = useState("");

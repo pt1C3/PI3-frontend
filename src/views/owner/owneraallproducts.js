@@ -6,7 +6,7 @@ import ListItem from "../../components/list-item";
 import axios from 'axios';
 
 export default function OwnerAllProducts() {
-  const baseURL = 'http://localhost:3000';
+  const baseURL = 'https://pi3-backend.onrender.com';
 
   const [search, setSearch] = useState('');
   const [searchFilter, setSearchFilter] = useState('pop-');

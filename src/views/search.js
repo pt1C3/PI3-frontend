@@ -10,7 +10,7 @@ import ListItem from "../components/list-item"
 
 export default function Search() {
     const { searchvalue } = useParams();
-    const baseURL = 'http://localhost:3000';
+    const baseURL = 'https://pi3-backend.onrender.com';
     const [data, setData] = useState();
     const [searchFilter, setSearchFilter] = useState('pop-');
 

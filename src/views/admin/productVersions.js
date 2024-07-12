@@ -7,7 +7,7 @@ import Breadcrumbs from "../../components/breadcrumbs";
 
 export default function ProductVersions() {
   const [data, setData] = useState();
-  const baseURL = 'http://localhost:3000';
+  const baseURL = 'https://pi3-backend.onrender.com';
   const { productid } = useParams();
 
   const deleteItem = (id) => {

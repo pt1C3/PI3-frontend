@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 function Managers() {
-    const baseURL = 'http://localhost:3000';
+    const baseURL = 'https://pi3-backend.onrender.com';
     const [managerList, setManagerList] = useState([]);
     const [plans, setPlans] = useState([]);
     const [selectedUser, setSelectedUser] = useState(null);

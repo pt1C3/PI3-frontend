@@ -11,7 +11,7 @@ export default function OwnerProduct() {
     const { productid } = useParams();
     const businessid = JSON.parse(localStorage.getItem('user')).data.businessid;
     const [product, setProduct] = useState()
-    const baseURL = 'http://localhost:3000';
+    const baseURL = 'https://pi3-backend.onrender.com';
     const [addons, setAddons] = useState();
     function fetchAddons() {
         axios.get(baseURL + "/owner/addons/" + businessid + "/" + productid).then(res => {

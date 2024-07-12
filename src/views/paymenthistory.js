@@ -7,7 +7,7 @@ import axios from 'axios';
 
 export default function PaymentHistory() {
   const [data, setData] = useState([]);
-  const baseURL = 'http://localhost:3000';
+  const baseURL = 'https://pi3-backend.onrender.com';
   const businessid = JSON.parse(localStorage.getItem('user')).data.businessid;
   useEffect(() => {
     axios.get(baseURL + "/user/history/" + businessid).then(res => {

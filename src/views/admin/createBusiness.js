@@ -9,7 +9,7 @@ export default function CreateBusiness() {
   const [website, setWebsite] = useState(null);
   const [ownerId, setOwnerId] = useState(null);
   const [freeUsers, setFreeUsers] = useState(null);
-  const baseURL = 'http://localhost:3000';
+  const baseURL = 'https://pi3-backend.onrender.com';
 
   useEffect(() => {
     axios.get(baseURL + '/user/free')

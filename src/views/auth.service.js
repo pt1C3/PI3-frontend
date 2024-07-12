@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = 'http://localhost:3000';
+const baseURL = 'https://pi3-backend.onrender.com';
 
 class AuthService {
     login(email, password) {

@@ -7,7 +7,7 @@ import { Helmet } from 'react-helmet';
 import AuthService from './auth.service';
 
 export default function Product() {
-    const baseURL = 'http://localhost:3000';
+    const baseURL = 'https://pi3-backend.onrender.com';
     const navigate = useNavigate();
     let { id } = useParams();
     const [section, setSection] = useState('plans');

@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import './home.css';
 
 export default function Home() {
-    const baseURL = 'http://localhost:3000';
+    const baseURL = 'https://pi3-backend.onrender.com';
     const [data, setData] = useState();
     const [heroLogo, setHeroLogo] = useState("");
     useEffect(() => {

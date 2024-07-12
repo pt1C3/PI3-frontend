@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAdd, faSubtract } from "@fortawesome/free-solid-svg-icons";
 
 export default function Product() {
-    const baseURL = 'http://localhost:3000';
+    const baseURL = 'https://pi3-backend.onrender.com';
     const { productid } = useParams();
     const navigate = useNavigate();
 
