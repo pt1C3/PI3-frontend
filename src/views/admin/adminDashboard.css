@@ -12,10 +12,15 @@
 }
 
 .adminHub-large-card {
-    height: 320px;
+    height: 320px;  
+    width: 100%;  
     background-color: white;
     border: 1px solid #ddd;
-    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+    padding: 15px;  
+    box-sizing: border-box;  
 }
 
 .adminHub-small-card {
@@ -41,7 +46,6 @@
 }
 
 .adminHub-card-body h2 {
-    margin-top: 5px; /* Adds a little space between the title and the number */
     font-size: 34px; /* Example size, adjust as needed */
     font-family: 'Metropolis Bold';
 }
