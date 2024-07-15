@@ -214,7 +214,7 @@ const PaymentForm = ({ stripePromise, data, price }) => {
 };
 
 const Payment = () => {
-  const baseURL = 'http://localhost:3000https://pi3-backend.onrender.com';
+  const baseURL = 'https://pi3-backend.onrender.com';
   const [data, setData] = useState(null);
   const { addonid } = useParams();
 
